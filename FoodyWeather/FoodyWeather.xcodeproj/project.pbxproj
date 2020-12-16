@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C1258A337B003A4D14 /* AppDelegate.swift */; };
+		B83834C4258A337B003A4D14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C3258A337B003A4D14 /* SceneDelegate.swift */; };
+		B83834C6258A337B003A4D14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C5258A337B003A4D14 /* ViewController.swift */; };
+		B83834C9258A337B003A4D14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83834C7258A337B003A4D14 /* Main.storyboard */; };
+		B83834CB258A337D003A4D14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B83834CA258A337D003A4D14 /* Assets.xcassets */; };
+		B83834CE258A337D003A4D14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83834CC258A337D003A4D14 /* LaunchScreen.storyboard */; };
+		B83834D9258A337D003A4D14 /* FoodyWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834D8258A337D003A4D14 /* FoodyWeatherTests.swift */; };
+		B83834E4258A337D003A4D14 /* FoodyWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834E3258A337D003A4D14 /* FoodyWeatherUITests.swift */; };
+		B83834F9258A3794003A4D14 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834F8258A3794003A4D14 /* Business.swift */; };
+		B83834FE258A3CDD003A4D14 /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834FD258A3CDD003A4D14 /* YelpAPI.swift */; };
+		B8383513258A75D2003A4D14 /* BusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8383512258A75D2003A4D14 /* BusinessesViewController.swift */; };
+		B8383518258A7657003A4D14 /* BusinessTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8383517258A7657003A4D14 /* BusinessTableCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B83834D5258A337D003A4D14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B83834B6258A337B003A4D14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B83834BD258A337B003A4D14;
+			remoteInfo = FoodyWeather;
+		};
+		B83834E0258A337D003A4D14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B83834B6258A337B003A4D14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B83834BD258A337B003A4D14;
+			remoteInfo = FoodyWeather;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B83834BE258A337B003A4D14 /* FoodyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B83834C1258A337B003A4D14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B83834C3258A337B003A4D14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B83834C5258A337B003A4D14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B83834C8258A337B003A4D14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B83834CA258A337D003A4D14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B83834CD258A337D003A4D14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B83834CF258A337D003A4D14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B83834D4258A337D003A4D14 /* FoodyWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodyWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B83834D8258A337D003A4D14 /* FoodyWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodyWeatherTests.swift; sourceTree = "<group>"; };
+		B83834DA258A337D003A4D14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B83834DF258A337D003A4D14 /* FoodyWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodyWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B83834E3258A337D003A4D14 /* FoodyWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodyWeatherUITests.swift; sourceTree = "<group>"; };
+		B83834E5258A337D003A4D14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B83834F8258A3794003A4D14 /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		B83834FD258A3CDD003A4D14 /* YelpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPI.swift; sourceTree = "<group>"; };
+		B8383512258A75D2003A4D14 /* BusinessesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessesViewController.swift; sourceTree = "<group>"; };
+		B8383517258A7657003A4D14 /* BusinessTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B83834BB258A337B003A4D14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B83834D1258A337D003A4D14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B83834DC258A337D003A4D14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B83834B5258A337B003A4D14 = {
+			isa = PBXGroup;
+			children = (
+				B83834C0258A337B003A4D14 /* FoodyWeather */,
+				B83834D7258A337D003A4D14 /* FoodyWeatherTests */,
+				B83834E2258A337D003A4D14 /* FoodyWeatherUITests */,
+				B83834BF258A337B003A4D14 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B83834BF258A337B003A4D14 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B83834BE258A337B003A4D14 /* FoodyWeather.app */,
+				B83834D4258A337D003A4D14 /* FoodyWeatherTests.xctest */,
+				B83834DF258A337D003A4D14 /* FoodyWeatherUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B83834C0258A337B003A4D14 /* FoodyWeather */ = {
+			isa = PBXGroup;
+			children = (
+				B83834C1258A337B003A4D14 /* AppDelegate.swift */,
+				B83834C3258A337B003A4D14 /* SceneDelegate.swift */,
+				B83834C5258A337B003A4D14 /* ViewController.swift */,
+				B83834C7258A337B003A4D14 /* Main.storyboard */,
+				B8383517258A7657003A4D14 /* BusinessTableCell.swift */,
+				B8383512258A75D2003A4D14 /* BusinessesViewController.swift */,
+				B83834CA258A337D003A4D14 /* Assets.xcassets */,
+				B83834CC258A337D003A4D14 /* LaunchScreen.storyboard */,
+				B83834CF258A337D003A4D14 /* Info.plist */,
+				B83834F8258A3794003A4D14 /* Business.swift */,
+				B83834FD258A3CDD003A4D14 /* YelpAPI.swift */,
+			);
+			path = FoodyWeather;
+			sourceTree = "<group>";
+		};
+		B83834D7258A337D003A4D14 /* FoodyWeatherTests */ = {
+			isa = PBXGroup;
+			children = (
+				B83834D8258A337D003A4D14 /* FoodyWeatherTests.swift */,
+				B83834DA258A337D003A4D14 /* Info.plist */,
+			);
+			path = FoodyWeatherTests;
+			sourceTree = "<group>";
+		};
+		B83834E2258A337D003A4D14 /* FoodyWeatherUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B83834E3258A337D003A4D14 /* FoodyWeatherUITests.swift */,
+				B83834E5258A337D003A4D14 /* Info.plist */,
+			);
+			path = FoodyWeatherUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B83834BD258A337B003A4D14 /* FoodyWeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B83834E8258A337D003A4D14 /* Build configuration list for PBXNativeTarget "FoodyWeather" */;
+			buildPhases = (
+				B83834BA258A337B003A4D14 /* Sources */,
+				B83834BB258A337B003A4D14 /* Frameworks */,
+				B83834BC258A337B003A4D14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FoodyWeather;
+			productName = FoodyWeather;
+			productReference = B83834BE258A337B003A4D14 /* FoodyWeather.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B83834D3258A337D003A4D14 /* FoodyWeatherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B83834EB258A337D003A4D14 /* Build configuration list for PBXNativeTarget "FoodyWeatherTests" */;
+			buildPhases = (
+				B83834D0258A337D003A4D14 /* Sources */,
+				B83834D1258A337D003A4D14 /* Frameworks */,
+				B83834D2258A337D003A4D14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B83834D6258A337D003A4D14 /* PBXTargetDependency */,
+			);
+			name = FoodyWeatherTests;
+			productName = FoodyWeatherTests;
+			productReference = B83834D4258A337D003A4D14 /* FoodyWeatherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B83834DE258A337D003A4D14 /* FoodyWeatherUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B83834EE258A337D003A4D14 /* Build configuration list for PBXNativeTarget "FoodyWeatherUITests" */;
+			buildPhases = (
+				B83834DB258A337D003A4D14 /* Sources */,
+				B83834DC258A337D003A4D14 /* Frameworks */,
+				B83834DD258A337D003A4D14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B83834E1258A337D003A4D14 /* PBXTargetDependency */,
+			);
+			name = FoodyWeatherUITests;
+			productName = FoodyWeatherUITests;
+			productReference = B83834DF258A337D003A4D14 /* FoodyWeatherUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B83834B6258A337B003A4D14 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					B83834BD258A337B003A4D14 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					B83834D3258A337D003A4D14 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = B83834BD258A337B003A4D14;
+					};
+					B83834DE258A337D003A4D14 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = B83834BD258A337B003A4D14;
+					};
+				};
+			};
+			buildConfigurationList = B83834B9258A337B003A4D14 /* Build configuration list for PBXProject "FoodyWeather" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B83834B5258A337B003A4D14;
+			productRefGroup = B83834BF258A337B003A4D14 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B83834BD258A337B003A4D14 /* FoodyWeather */,
+				B83834D3258A337D003A4D14 /* FoodyWeatherTests */,
+				B83834DE258A337D003A4D14 /* FoodyWeatherUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B83834BC258A337B003A4D14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B83834CE258A337D003A4D14 /* LaunchScreen.storyboard in Resources */,
+				B83834CB258A337D003A4D14 /* Assets.xcassets in Resources */,
+				B83834C9258A337B003A4D14 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B83834D2258A337D003A4D14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B83834DD258A337D003A4D14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B83834BA258A337B003A4D14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B83834C6258A337B003A4D14 /* ViewController.swift in Sources */,
+				B83834F9258A3794003A4D14 /* Business.swift in Sources */,
+				B8383513258A75D2003A4D14 /* BusinessesViewController.swift in Sources */,
+				B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */,
+				B83834C4258A337B003A4D14 /* SceneDelegate.swift in Sources */,
+				B8383518258A7657003A4D14 /* BusinessTableCell.swift in Sources */,
+				B83834FE258A3CDD003A4D14 /* YelpAPI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B83834D0258A337D003A4D14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B83834D9258A337D003A4D14 /* FoodyWeatherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B83834DB258A337D003A4D14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B83834E4258A337D003A4D14 /* FoodyWeatherUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B83834D6258A337D003A4D14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B83834BD258A337B003A4D14 /* FoodyWeather */;
+			targetProxy = B83834D5258A337D003A4D14 /* PBXContainerItemProxy */;
+		};
+		B83834E1258A337D003A4D14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B83834BD258A337B003A4D14 /* FoodyWeather */;
+			targetProxy = B83834E0258A337D003A4D14 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B83834C7258A337B003A4D14 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B83834C8258A337B003A4D14 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B83834CC258A337D003A4D14 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B83834CD258A337D003A4D14 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B83834E6258A337D003A4D14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B83834E7258A337D003A4D14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B83834E9258A337D003A4D14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FoodyWeather/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BigNerdRanchSAFCSP.FoodyWeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B83834EA258A337D003A4D14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FoodyWeather/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BigNerdRanchSAFCSP.FoodyWeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B83834EC258A337D003A4D14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FoodyWeatherTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BigNerdRanchSAFCSP.FoodyWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodyWeather.app/FoodyWeather";
+			};
+			name = Debug;
+		};
+		B83834ED258A337D003A4D14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FoodyWeatherTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BigNerdRanchSAFCSP.FoodyWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodyWeather.app/FoodyWeather";
+			};
+			name = Release;
+		};
+		B83834EF258A337D003A4D14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FoodyWeatherUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BigNerdRanchSAFCSP.FoodyWeatherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FoodyWeather;
+			};
+			name = Debug;
+		};
+		B83834F0258A337D003A4D14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FoodyWeatherUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BigNerdRanchSAFCSP.FoodyWeatherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FoodyWeather;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B83834B9258A337B003A4D14 /* Build configuration list for PBXProject "FoodyWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B83834E6258A337D003A4D14 /* Debug */,
+				B83834E7258A337D003A4D14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B83834E8258A337D003A4D14 /* Build configuration list for PBXNativeTarget "FoodyWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B83834E9258A337D003A4D14 /* Debug */,
+				B83834EA258A337D003A4D14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B83834EB258A337D003A4D14 /* Build configuration list for PBXNativeTarget "FoodyWeatherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B83834EC258A337D003A4D14 /* Debug */,
+				B83834ED258A337D003A4D14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B83834EE258A337D003A4D14 /* Build configuration list for PBXNativeTarget "FoodyWeatherUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B83834EF258A337D003A4D14 /* Debug */,
+				B83834F0258A337D003A4D14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B83834B6258A337B003A4D14 /* Project object */;
+}
