@@ -9,6 +9,13 @@ import UIKit
 
 class BusinessTableCell: UITableViewCell {
 
+    @IBOutlet var businessName: UILabel!
+    @IBOutlet var category: UILabel!
+    @IBOutlet var reviews: UILabel!
+    @IBOutlet var starsImage: UIImageView!
+    @IBOutlet var phoneNumber: UILabel!
+    @IBOutlet var businessImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

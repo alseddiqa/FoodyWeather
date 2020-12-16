@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="-197" y="42"/>
         </scene>
-        <!--ViewController-->
+        <!--Business List-->
         <scene sceneID="F4y-VS-jH5">
             <objects>
-                <viewController title="ViewController" id="vU6-t7-hCq" customClass="BusinessesViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Business List" id="vU6-t7-hCq" customClass="BusinessesViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ids-6G-FWk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,12 +106,17 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="businessImage" destination="jQS-4t-jek" id="jEK-J1-6oa"/>
+                                            <outlet property="businessName" destination="YHY-ei-6wu" id="CLy-Ue-5qB"/>
+                                            <outlet property="category" destination="oes-WD-2Wy" id="SOB-Ak-bac"/>
                                             <outlet property="categoryLabel" destination="oes-WD-2Wy" id="okz-aE-hFf"/>
                                             <outlet property="nameLabel" destination="YHY-ei-6wu" id="tuq-UF-fBM"/>
                                             <outlet property="phoneLabel" destination="lqr-2S-DvL" id="X0l-01-PO8"/>
+                                            <outlet property="phoneNumber" destination="lqr-2S-DvL" id="xs8-JD-bWn"/>
                                             <outlet property="restaurantImage" destination="jQS-4t-jek" id="xSM-rR-Dq3"/>
+                                            <outlet property="reviews" destination="lUP-Fe-av8" id="N0A-jk-RZR"/>
                                             <outlet property="reviewsLabel" destination="lUP-Fe-av8" id="UbW-WJ-PC9"/>
-                                            <outlet property="starsImage" destination="cB1-3v-IwW" id="UYh-MT-Rfy"/>
+                                            <outlet property="starsImage" destination="cB1-3v-IwW" id="IUI-hG-yzc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -127,6 +132,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="businessTableView" destination="MAM-qE-gdY" id="jSV-2P-K7O"/>
                         <outlet property="tableView" destination="MAM-qE-gdY" id="zxd-bm-vY3"/>
                     </connections>
                 </viewController>
