@@ -17,6 +17,8 @@
 		B83834E4258A337D003A4D14 /* FoodyWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834E3258A337D003A4D14 /* FoodyWeatherUITests.swift */; };
 		B83834F9258A3794003A4D14 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834F8258A3794003A4D14 /* Business.swift */; };
 		B83834FE258A3CDD003A4D14 /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834FD258A3CDD003A4D14 /* YelpAPI.swift */; };
+		B8383513258A75D2003A4D14 /* BusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8383512258A75D2003A4D14 /* BusinessesViewController.swift */; };
+		B8383518258A7657003A4D14 /* BusinessTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8383517258A7657003A4D14 /* BusinessTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		B83834E5258A337D003A4D14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B83834F8258A3794003A4D14 /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		B83834FD258A3CDD003A4D14 /* YelpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPI.swift; sourceTree = "<group>"; };
+		B8383512258A75D2003A4D14 /* BusinessesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessesViewController.swift; sourceTree = "<group>"; };
+		B8383517258A7657003A4D14 /* BusinessTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 				B83834C3258A337B003A4D14 /* SceneDelegate.swift */,
 				B83834C5258A337B003A4D14 /* ViewController.swift */,
 				B83834C7258A337B003A4D14 /* Main.storyboard */,
+				B8383517258A7657003A4D14 /* BusinessTableCell.swift */,
+				B8383512258A75D2003A4D14 /* BusinessesViewController.swift */,
 				B83834CA258A337D003A4D14 /* Assets.xcassets */,
 				B83834CC258A337D003A4D14 /* LaunchScreen.storyboard */,
 				B83834CF258A337D003A4D14 /* Info.plist */,
@@ -266,8 +272,10 @@
 			files = (
 				B83834C6258A337B003A4D14 /* ViewController.swift in Sources */,
 				B83834F9258A3794003A4D14 /* Business.swift in Sources */,
+				B8383513258A75D2003A4D14 /* BusinessesViewController.swift in Sources */,
 				B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */,
 				B83834C4258A337B003A4D14 /* SceneDelegate.swift in Sources */,
+				B8383518258A7657003A4D14 /* BusinessTableCell.swift in Sources */,
 				B83834FE258A3CDD003A4D14 /* YelpAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

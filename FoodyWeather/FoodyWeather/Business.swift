@@ -9,35 +9,36 @@ import Foundation
 
 // MARK: - Empty
 struct Result: Codable {
-    let total: Int
     let businesses: [Business]
+    let total: Int
     let region: Region
 }
 
-
 // MARK: - Business
 struct Business: Codable {
-    let rating: Int
-    let price, phone, id, alias: String
-    let isClosed: Bool
-    let categories: [Category]
-    let reviewCount: Int
-    let name: String
-    let url: String
-    let coordinates: Center
+    let id, alias, name: String
     let imageURL: String
-    let location: Location
-    let distance: Double
+    let isClosed: Bool
+    let url: String
+    let reviewCount: Int
+    let categories: [Category]
+    let rating: Int
+    let coordinates: Center
     let transactions: [String]
+    let price: String
+    let location: Location
+    let phone, displayPhone: String
+    let distance: Double
 
     enum CodingKeys: String, CodingKey {
-        case rating, price, phone, id, alias
-        case isClosed = "is_closed"
-        case categories
-        case reviewCount = "review_count"
-        case name, url, coordinates
+        case id, alias, name
         case imageURL = "image_url"
-        case location, distance, transactions
+        case isClosed = "is_closed"
+        case url
+        case reviewCount = "review_count"
+        case categories, rating, coordinates, transactions, price, location, phone
+        case displayPhone = "display_phone"
+        case distance
     }
 }
 
@@ -53,12 +54,15 @@ struct Center: Codable {
 
 // MARK: - Location
 struct Location: Codable {
-    let city, country, address2, address3: String
-    let state, address1, zipCode: String
+    let address1, address2, address3, city: String
+    let zipCode, country, state: String
+    let displayAddress: [String]
 
     enum CodingKeys: String, CodingKey {
-        case city, country, address2, address3, state, address1
+        case address1, address2, address3, city
         case zipCode = "zip_code"
+        case country, state
+        case displayAddress = "display_address"
     }
 }
 

@@ -16,7 +16,7 @@ struct YelpAPI {
     var latitude = ""
     var longitude = ""
     
-    /// The Yelp API init to get photos for a supploed lat and long
+    /// The Yelp API init to get businesses for a supploed lat and long
     /// - Parameters:
     ///   - lat: latitude of the location to get businesses for
     ///   - lon: longitude of the location get businesses for
@@ -28,13 +28,14 @@ struct YelpAPI {
     /// A function to set up the Yelp URL to get businesses
     /// - Returns: a URL after adding all of the params
     func getYelpUrl() -> URL {
-        
         var components = URLComponents(string: baseURLString)!
         var queryItems = [URLQueryItem]()
         
         let baseParams = [
             "latitude": latitude,
             "longitude": longitude,
+//            "limit": "15",
+//            "offset": "5"
         ]
         
         for (key, value) in baseParams {
@@ -54,6 +55,29 @@ struct YelpAPI {
         
         // Insert API Key to request
         request.setValue("Bearer \(self.apiKey)", forHTTPHeaderField: "Authorization")
+        
+        print(request)
+        
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                print(String(data: data, encoding: .utf8))
+                
+                guard let safeResponse = try? JSONDecoder().decode(Result.self, from: data) else {
+                    print("error decoding")
+                    return
+                }
+                
+                print(safeResponse.businesses)
+                //print(safeResponse.total)
+                
+                }
+            }
+        
+            task.resume()
     }
     
 }
