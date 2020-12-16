@@ -47,15 +47,15 @@ extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.category.text = categorie
         
         // Set stars images
-        let reviewDouble = 
-            restaurant["rating"] as! Double
-        cell.starsImage.image = Stars.dict[reviewDouble]!
+        let reviewDouble = business.rating
+        //cell.starsImage.image = Stars.dict[reviewDouble]!
         
         // Set Image of restaurant
-        if let imageUrlString = restaurant["image_url"] as? String {
-            let imageUrl = URL(string: imageUrlString)
-            cell.restaurantImage.af.setImage(withURL: imageUrl!)
+        let imageUrlString = business.imageURL
+        if let imageUrl = URL(string: imageUrlString) {
+            cell.businessImage.load(url: imageUrl)
         }
+    
         return cell
 
     }
