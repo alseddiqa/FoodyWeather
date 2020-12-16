@@ -1,0 +1,59 @@
+//
+//  YelpAPI.swift
+//  FoodyWeather
+//
+//  Created by Abdullah Alseddiq on 12/16/20.
+//
+
+import Foundation
+
+struct YelpAPI {
+    
+    //Declaring params to prepare for call
+    let baseURLString = "https://api.yelp.com/v3/businesses/search"
+    private var apiKey = "OP-aAcjnPw7tYtofhaksNCxwZCVg6V2IOJ57UtSasvytaQxWAD3gSqrIY2kuz00Xc1vY9y6DhO3itWS_tP-JIWdV6mP4UNyfNOQMTqJRPyAzeTHMJ9GtZNL9qvrZX3Yx"
+
+    var latitude = ""
+    var longitude = ""
+    
+    /// The Yelp API init to get photos for a supploed lat and long
+    /// - Parameters:
+    ///   - lat: latitude of the location to get businesses for
+    ///   - lon: longitude of the location get businesses for
+    init(lat:Double, lon: Double) {
+        self.latitude = String(lat)
+        self.longitude = String(lon)
+    }
+    
+    /// A function to set up the Yelp URL to get businesses
+    /// - Returns: a URL after adding all of the params
+    func getYelpUrl() -> URL {
+        
+        var components = URLComponents(string: baseURLString)!
+        var queryItems = [URLQueryItem]()
+        
+        let baseParams = [
+            "latitude": latitude,
+            "longitude": longitude,
+        ]
+        
+        for (key, value) in baseParams {
+            let item = URLQueryItem(name: key, value: value)
+            queryItems.append(item)
+        }
+        
+        components.queryItems = queryItems
+        return components.url!
+    }
+    
+    func getBusinessListForLocation() {
+        
+        let url = getYelpUrl()
+        
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        
+        // Insert API Key to request
+        request.setValue("Bearer \(self.apiKey)", forHTTPHeaderField: "Authorization")
+    }
+    
+}
