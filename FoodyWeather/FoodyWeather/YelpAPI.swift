@@ -34,8 +34,6 @@ struct YelpAPI {
         let baseParams = [
             "latitude": latitude,
             "longitude": longitude,
-//            "limit": "15",
-//            "offset": "5"
         ]
         
         for (key, value) in baseParams {
@@ -64,7 +62,6 @@ struct YelpAPI {
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                print(String(data: data, encoding: .utf8))
                 
                 guard let safeResponse = try? JSONDecoder().decode(Result.self, from: data) else {
                     print("error decoding")
@@ -72,7 +69,7 @@ struct YelpAPI {
                 }
                 
                 print(safeResponse.businesses)
-                //print(safeResponse.total)
+                print(safeResponse.total)
                 
                 }
             }
