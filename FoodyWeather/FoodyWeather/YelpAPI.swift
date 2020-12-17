@@ -47,17 +47,16 @@ struct YelpAPI {
         return components.url!
     }
     
-    func getBusinessListForLocation() {
+    func getBusinessListForLocation(completion: @escaping ([Business]?) -> Void) {
         
         let url = getYelpUrl()
-        
+        let nc = NotificationCenter.default
+
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         
         // Insert API Key to request
         request.setValue("Bearer \(self.apiKey)", forHTTPHeaderField: "Authorization")
-        
-        print(request)
-        
+                
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
             // This will run when the network request returns
@@ -70,14 +69,17 @@ struct YelpAPI {
                     return
                 }
                 
-                
-                print(safeResponse.businesses)
-                print(safeResponse.total)
-                
+                let businessList = safeResponse.businesses
+                return completion(businessList)
+
                 }
             }
         
             task.resume()
     }
     
+}
+
+extension Notification.Name {
+    static let businessesLoadedFromYelp = Notification.Name(rawValue: "businessesLoadedFromYelp")
 }

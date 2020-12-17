@@ -12,14 +12,26 @@ class BusinessesViewController: UIViewController {
     var businessesList: [Business]!
     var yelpApi: YelpAPI!
     
-    @IBOutlet var businessTableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        businessesList = [Business]()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         yelpApi = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)
+        yelpApi.getBusinessListForLocation() { (restaurants) in
+            guard let restaurants = restaurants else {
+                return
+            }
+            self.businessesList = restaurants
+            self.tableView.reloadData()
+        }
         // Do any additional setup after loading the view.
+        
     }
+    
     
 }
 
@@ -30,7 +42,7 @@ extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as! BusinessTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell") as! BusinessTableCell
         
         let business = businessesList[indexPath.row]
         
@@ -59,7 +71,6 @@ extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
 
     }
-    
     
 }
 
