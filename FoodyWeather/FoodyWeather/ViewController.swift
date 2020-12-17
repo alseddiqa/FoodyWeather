@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let api = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)
-        api.getBusinessListForLocation()
+        //api.getBusinessListForLocation()
     }
 
 

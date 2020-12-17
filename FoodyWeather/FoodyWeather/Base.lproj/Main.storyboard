@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vU6-t7-hCq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -35,7 +35,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" id="M3j-Dd-nG9" customClass="BusinessTableCell" customModule="FoodyWeather" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="172.5" id="M3j-Dd-nG9" customClass="BusinessTableCell" customModule="FoodyWeather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="172.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M3j-Dd-nG9" id="l6B-5j-mOj">
@@ -51,7 +51,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oes-WD-2Wy">
                                                     <rect key="frame" x="8" y="48" width="234" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mpB-Az-N8m">
@@ -75,7 +75,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqr-2S-DvL">
                                                     <rect key="frame" x="8" y="104" width="234" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                                    <color key="textColor" systemColor="viewFlipsideBackgroundColor"/>
+                                                    <color key="textColor" red="0.41502902330000002" green="0.55771295509999996" blue="0.47058701520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jQS-4t-jek">
@@ -109,13 +109,8 @@
                                             <outlet property="businessImage" destination="jQS-4t-jek" id="jEK-J1-6oa"/>
                                             <outlet property="businessName" destination="YHY-ei-6wu" id="CLy-Ue-5qB"/>
                                             <outlet property="category" destination="oes-WD-2Wy" id="SOB-Ak-bac"/>
-                                            <outlet property="categoryLabel" destination="oes-WD-2Wy" id="okz-aE-hFf"/>
-                                            <outlet property="nameLabel" destination="YHY-ei-6wu" id="tuq-UF-fBM"/>
-                                            <outlet property="phoneLabel" destination="lqr-2S-DvL" id="X0l-01-PO8"/>
                                             <outlet property="phoneNumber" destination="lqr-2S-DvL" id="xs8-JD-bWn"/>
-                                            <outlet property="restaurantImage" destination="jQS-4t-jek" id="xSM-rR-Dq3"/>
                                             <outlet property="reviews" destination="lUP-Fe-av8" id="N0A-jk-RZR"/>
-                                            <outlet property="reviewsLabel" destination="lUP-Fe-av8" id="UbW-WJ-PC9"/>
                                             <outlet property="starsImage" destination="cB1-3v-IwW" id="IUI-hG-yzc"/>
                                         </connections>
                                     </tableViewCell>
@@ -132,8 +127,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="businessTableView" destination="MAM-qE-gdY" id="jSV-2P-K7O"/>
-                        <outlet property="tableView" destination="MAM-qE-gdY" id="zxd-bm-vY3"/>
+                        <outlet property="tableView" destination="MAM-qE-gdY" id="fjJ-ud-xly"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6d-xc-7dc" sceneMemberID="firstResponder"/>
@@ -144,9 +138,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
