@@ -7,28 +7,27 @@
 
 import Foundation
 
-// MARK: - Empty
 struct WeatherResult: Codable {
-    let location: Location
+    let location: WeatherLocation
     let current: Current
 }
 
-// MARK: - Current
 struct Current: Codable {
     let lastUpdatedEpoch: Int
     let lastUpdated: String
-    let tempC, tempF, isDay: Int
+    let tempC,tempF: Double
+    let isDay: Int
     let condition: Condition
-    let windMph, windKph: Double
+    let windMph,windKph: Double
     let windDegree: Int
     let windDir: String
-    let pressureMB: Int
-    let pressureIn: Double
-    let precipMm, precipIn, humidity, cloud: Int
-    let feelslikeC, feelslikeF: Double
-    let visKM, visMiles, uv: Int
-    let gustMph: Double
-    let gustKph: Int
+    let pressureMB: Double
+    let pressureIn, precipMm, precipIn: Double
+    let humidity, cloud: Int
+    let feelslikeC: Double
+    let feelslikeF: Double
+    let visKM, visMiles, uv: Double
+    let gustMph, gustKph: Double
 
     enum CodingKeys: String, CodingKey {
         case lastUpdatedEpoch = "last_updated_epoch"

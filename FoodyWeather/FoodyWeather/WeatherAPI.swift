@@ -49,7 +49,7 @@ struct WeatherAPI {
         return components.url!
     }
     
-    func getWeatherForLocation(completion: @escaping ([Business]?) -> Void) {
+    func getWeatherForLocation() {
         
         let url = getYelpUrl()
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -60,14 +60,13 @@ struct WeatherAPI {
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                
-                guard let safeResponse = try? JSONDecoder().decode(Result.self, from: data) else {
+                print(String(data: data, encoding: .utf8))
+                guard let safeResponse = try? JSONDecoder().decode(WeatherResult.self, from: data) else {
                     print("error decoding")
                     return
                 }
                 
-                let businessList = safeResponse.businesses
-                return completion(businessList)
+                print(safeResponse.current)
 
                 }
             }
