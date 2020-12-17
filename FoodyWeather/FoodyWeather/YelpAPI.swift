@@ -9,6 +9,8 @@ import Foundation
 
 struct YelpAPI {
     
+    var businessesStore = [Business]()
+    
     //Declaring params to prepare for call
     let baseURLString = "https://api.yelp.com/v3/businesses/search"
     private var apiKey = "OP-aAcjnPw7tYtofhaksNCxwZCVg6V2IOJ57UtSasvytaQxWAD3gSqrIY2kuz00Xc1vY9y6DhO3itWS_tP-JIWdV6mP4UNyfNOQMTqJRPyAzeTHMJ9GtZNL9qvrZX3Yx"
@@ -67,6 +69,7 @@ struct YelpAPI {
                     print("error decoding")
                     return
                 }
+                
                 
                 print(safeResponse.businesses)
                 print(safeResponse.total)

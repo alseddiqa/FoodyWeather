@@ -17,10 +17,10 @@ class BusinessesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        yelpApi = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)
         // Do any additional setup after loading the view.
     }
     
-
 }
 
 extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -48,7 +48,7 @@ extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
         
         // Set stars images
         let reviewDouble = business.rating
-        //cell.starsImage.image = Stars.dict[reviewDouble]!
+        cell.starsImage.image = Stars.dict[reviewDouble]!
         
         // Set Image of restaurant
         let imageUrlString = business.imageURL
