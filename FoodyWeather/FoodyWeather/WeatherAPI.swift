@@ -12,6 +12,8 @@ import Foundation
 struct WeatherAPI {
         
     //Declaring params to prepare for call
+    var currentWeather: CurrentWeather!
+    
     let baseURLString = "http://api.weatherapi.com/v1/current.json"
     private var apiKey = "96e182aa893140daa75163258201712"
 
@@ -19,7 +21,7 @@ struct WeatherAPI {
     var longitude = ""
     var location = ""
     
-    /// The Yelp API init to get businesses for a supploed lat and long
+    /// The Weather API init to get weather information for a lat and long
     /// - Parameters:
     ///   - lat: latitude of the location to get businesses for
     ///   - lon: longitude of the location get businesses for
@@ -31,7 +33,7 @@ struct WeatherAPI {
     
     /// A function to set up the Yelp URL to get businesses
     /// - Returns: a URL after adding all of the params
-    func getYelpUrl() -> URL {
+    func getWeatherUrl() -> URL {
         var components = URLComponents(string: baseURLString)!
         var queryItems = [URLQueryItem]()
         
@@ -49,9 +51,9 @@ struct WeatherAPI {
         return components.url!
     }
     
-    func getWeatherForLocation() {
+    func getWeatherForLocation(completion: @escaping (CurrentWeather?) -> Void){
         
-        let url = getYelpUrl()
+        let url = getWeatherUrl()
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
                 
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
@@ -65,8 +67,9 @@ struct WeatherAPI {
                     print("error decoding")
                     return
                 }
-                
-                print(safeResponse.current)
+        
+                let weatherResult = safeResponse.current
+                return completion(weatherResult)
 
                 }
             }

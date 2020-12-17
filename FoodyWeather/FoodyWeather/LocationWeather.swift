@@ -9,10 +9,10 @@ import Foundation
 
 struct WeatherResult: Codable {
     let location: WeatherLocation
-    let current: Current
+    let current: CurrentWeather
 }
 
-struct Current: Codable {
+struct CurrentWeather: Codable {
     let lastUpdatedEpoch: Int
     let lastUpdated: String
     let tempC,tempF: Double
