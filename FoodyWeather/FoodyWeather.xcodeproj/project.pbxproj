@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B80397B2258BF51A006B9376 /* LocationWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80397B1258BF51A006B9376 /* LocationWeather.swift */; };
 		B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C1258A337B003A4D14 /* AppDelegate.swift */; };
 		B83834C4258A337B003A4D14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C3258A337B003A4D14 /* SceneDelegate.swift */; };
 		B83834C6258A337B003A4D14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C5258A337B003A4D14 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B80397B1258BF51A006B9376 /* LocationWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWeather.swift; sourceTree = "<group>"; };
 		B83834BE258A337B003A4D14 /* FoodyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83834C1258A337B003A4D14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B83834C3258A337B003A4D14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				B83834C5258A337B003A4D14 /* ViewController.swift */,
 				B83834C7258A337B003A4D14 /* Main.storyboard */,
 				B8447BAB258BC29400280790 /* WeatherAPI.swift */,
+				B80397B1258BF51A006B9376 /* LocationWeather.swift */,
 				B838352A258B9B4A003A4D14 /* BusinessStore.swift */,
 				B8383517258A7657003A4D14 /* BusinessTableCell.swift */,
 				B8383512258A75D2003A4D14 /* BusinessesViewController.swift */,
@@ -282,6 +285,7 @@
 				B838352B258B9B4A003A4D14 /* BusinessStore.swift in Sources */,
 				B83834C6258A337B003A4D14 /* ViewController.swift in Sources */,
 				B8383520258B76A3003A4D14 /* YelpStars.swift in Sources */,
+				B80397B2258BF51A006B9376 /* LocationWeather.swift in Sources */,
 				B83834F9258A3794003A4D14 /* Business.swift in Sources */,
 				B8383513258A75D2003A4D14 /* BusinessesViewController.swift in Sources */,
 				B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */,
