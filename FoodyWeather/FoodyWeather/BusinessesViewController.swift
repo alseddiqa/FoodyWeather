@@ -38,6 +38,15 @@ class BusinessesViewController: UIViewController {
         searchTextField.layer.masksToBounds = true
     }
     
+    @IBAction func searchRestaurant(_ sender: UIButton) {
+        print("se")
+        let searchKeyWord = searchTextField.text
+        print(searchKeyWord)
+
+        businessesStore.searchForBusiness(restaurant: searchKeyWord!)
+    }
+    
+    
 }
 
 extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
