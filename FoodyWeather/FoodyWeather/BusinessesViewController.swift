@@ -9,27 +9,36 @@ import UIKit
 
 class BusinessesViewController: UIViewController {
 
-    var businessesList: [Business]!
+    var businessesStore: BusinessStore!
     var yelpApi: YelpAPI!
     
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        businessesList = [Business]()
+        businessesStore = BusinessStore()
         tableView.delegate = self
         tableView.dataSource = self
         
-        yelpApi = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)
-        yelpApi.getBusinessListForLocation() { (restaurants) in
-            guard let restaurants = restaurants else {
-                return
-            }
-            self.businessesList = restaurants
-            self.tableView.reloadData()
-        }
+//        yelpApi = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)
+//        yelpApi.getBusinessListForLocation() { (restaurants) in
+//            guard let restaurants = restaurants else {
+//                return
+//            }
+//            self.businessesList = restaurants
+//            self.tableView.reloadData()
+//        }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(observeStoreLoadNotification(note:)),
+                                               name: .businessesLoadedYelp,
+                                               object: nil)
         // Do any additional setup after loading the view.
         
+    }
+    
+    @objc func observeStoreLoadNotification(note: Notification) {
+        tableView.reloadData()
     }
     
     
@@ -38,13 +47,13 @@ class BusinessesViewController: UIViewController {
 extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        businessesList.count
+        businessesStore.businesses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell") as! BusinessTableCell
         
-        let business = businessesList[indexPath.row]
+        let business = businessesStore.businesses[indexPath.row]
         
         // Set name and phone of cell label
         cell.businessName.text = business.name
