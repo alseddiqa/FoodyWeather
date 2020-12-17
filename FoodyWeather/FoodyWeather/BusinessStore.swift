@@ -12,12 +12,14 @@ class BusinessStore {
     var businesses = [Business]()
     
     init() {
-        loadBusinessesForLocation()
+        let lat = 37.7670169511878
+        let lon = -122.42184275
+        loadBusinessesForLocation(lat: lat, lon: lon)
     }
     
-    func loadBusinessesForLocation() {
+    func loadBusinessesForLocation(lat: Double, lon: Double) {
         let nc = NotificationCenter.default
-        let yelpApi = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)
+        let yelpApi = YelpAPI(lat: lat, lon: lon)
         yelpApi.getBusinessListForLocation() { (restaurants) in
             guard let restaurants = restaurants else {
                 return
