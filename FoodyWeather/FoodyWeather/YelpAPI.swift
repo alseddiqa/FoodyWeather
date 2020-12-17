@@ -50,8 +50,51 @@ struct YelpAPI {
     func getBusinessListForLocation(completion: @escaping ([Business]?) -> Void) {
         
         let url = getYelpUrl()
-        let nc = NotificationCenter.default
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        
+        // Insert API Key to request
+        request.setValue("Bearer \(self.apiKey)", forHTTPHeaderField: "Authorization")
+                
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                
+                guard let safeResponse = try? JSONDecoder().decode(Result.self, from: data) else {
+                    print("error decoding")
+                    return
+                }
+                
+                let businessList = safeResponse.businesses
+                return completion(businessList)
 
+                }
+            }
+        
+            task.resume()
+    }
+    
+    func getSearchResult(restaurantName: String, completion: @escaping ([Business]?) -> Void) {
+        
+        var components = URLComponents(string: baseURLString)!
+        var queryItems = [URLQueryItem]()
+        
+        let baseParams = [
+            "latitude": latitude,
+            "longitude": longitude,
+            "term": restaurantName
+        ]
+        
+        for (key, value) in baseParams {
+            let item = URLQueryItem(name: key, value: value)
+            queryItems.append(item)
+        }
+        
+        components.queryItems = queryItems
+        let url = components.url!
+        
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         
         // Insert API Key to request

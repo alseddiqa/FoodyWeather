@@ -10,35 +10,40 @@ import UIKit
 class BusinessesViewController: UIViewController {
 
     var businessesStore: BusinessStore!
-    var yelpApi: YelpAPI!
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var searchTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         businessesStore = BusinessStore()
+        
         tableView.delegate = self
         tableView.dataSource = self
-        
-//        yelpApi = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)
-//        yelpApi.getBusinessListForLocation() { (restaurants) in
-//            guard let restaurants = restaurants else {
-//                return
-//            }
-//            self.businessesList = restaurants
-//            self.tableView.reloadData()
-//        }
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(observeStoreLoadNotification(note:)),
                                                name: .businessesLoadedYelp,
                                                object: nil)
-        // Do any additional setup after loading the view.
         
+        setUpSubView()
     }
     
     @objc func observeStoreLoadNotification(note: Notification) {
         tableView.reloadData()
+    }
+    
+    func setUpSubView() {
+        searchTextField.layer.cornerRadius = 15.0
+        searchTextField.layer.masksToBounds = true
+    }
+    
+    @IBAction func searchRestaurant(_ sender: UIButton) {
+        print("se")
+        let searchKeyWord = searchTextField.text
+        print(searchKeyWord)
+
+        businessesStore.searchForBusiness(restaurant: searchKeyWord!)
     }
     
     
