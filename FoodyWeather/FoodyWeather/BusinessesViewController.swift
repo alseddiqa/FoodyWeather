@@ -28,8 +28,17 @@ class BusinessesViewController: UIViewController {
             self.businessesList = restaurants
             self.tableView.reloadData()
         }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(observeStoreLoadNotification(note:)),
+                                               name: .businessesLoadedYelp,
+                                               object: nil)
         // Do any additional setup after loading the view.
         
+    }
+    
+    @objc func observeStoreLoadNotification(note: Notification) {
+        tableView.reloadData()
     }
     
     

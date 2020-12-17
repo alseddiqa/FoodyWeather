@@ -20,6 +20,7 @@
 		B8383513258A75D2003A4D14 /* BusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8383512258A75D2003A4D14 /* BusinessesViewController.swift */; };
 		B8383518258A7657003A4D14 /* BusinessTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8383517258A7657003A4D14 /* BusinessTableCell.swift */; };
 		B8383520258B76A3003A4D14 /* YelpStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B838351F258B76A3003A4D14 /* YelpStars.swift */; };
+		B838352B258B9B4A003A4D14 /* BusinessStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B838352A258B9B4A003A4D14 /* BusinessStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		B8383512258A75D2003A4D14 /* BusinessesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessesViewController.swift; sourceTree = "<group>"; };
 		B8383517258A7657003A4D14 /* BusinessTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableCell.swift; sourceTree = "<group>"; };
 		B838351F258B76A3003A4D14 /* YelpStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpStars.swift; sourceTree = "<group>"; };
+		B838352A258B9B4A003A4D14 /* BusinessStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				B83834C3258A337B003A4D14 /* SceneDelegate.swift */,
 				B83834C5258A337B003A4D14 /* ViewController.swift */,
 				B83834C7258A337B003A4D14 /* Main.storyboard */,
+				B838352A258B9B4A003A4D14 /* BusinessStore.swift */,
 				B8383517258A7657003A4D14 /* BusinessTableCell.swift */,
 				B8383512258A75D2003A4D14 /* BusinessesViewController.swift */,
 				B838351F258B76A3003A4D14 /* YelpStars.swift */,
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B838352B258B9B4A003A4D14 /* BusinessStore.swift in Sources */,
 				B83834C6258A337B003A4D14 /* ViewController.swift in Sources */,
 				B8383520258B76A3003A4D14 /* YelpStars.swift in Sources */,
 				B83834F9258A3794003A4D14 /* Business.swift in Sources */,
