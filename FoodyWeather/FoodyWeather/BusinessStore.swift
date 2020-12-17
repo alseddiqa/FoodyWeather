@@ -11,6 +11,10 @@ class BusinessStore {
     
     var businesses = [Business]()
     
+    init() {
+        loadBusinessesForLocation()
+    }
+    
     func loadBusinessesForLocation() {
         let nc = NotificationCenter.default
         let yelpApi = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)
