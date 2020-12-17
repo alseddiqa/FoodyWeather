@@ -28,6 +28,8 @@ class BusinessStore {
             nc.post(name: .businessesLoadedYelp, object: self)
         }
     }
+    
+    func searchForBusiness()
 }
 
 extension Notification.Name {
