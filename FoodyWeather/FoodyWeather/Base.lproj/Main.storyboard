@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DuI-DN-AdD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -48,40 +48,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MAM-qE-gdY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="yRE-gu-4Uz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mappin.and.ellipse" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Dbj-ME-Kmt">
-                                            <rect key="frame" x="98" y="37.5" width="30" height="25"/>
+                                            <rect key="frame" x="95" y="46" width="30" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" systemColor="systemPinkColor"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today is Sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zK1-MT-p0M">
-                                            <rect key="frame" x="88" y="67" width="114" height="21"/>
+                                            <rect key="frame" x="85" y="75" width="114" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="San Francico, CA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKt-23-JcY">
-                                            <rect key="frame" x="134" y="40" width="130" height="21"/>
+                                            <rect key="frame" x="131" y="48" width="130" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cf1-6S-Fe0">
-                                            <rect key="frame" x="59" y="0.0" width="291" height="34"/>
+                                            <rect key="frame" x="57" y="8" width="291" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.94509803921568625" green="0.95294117647058818" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqv-Gu-BTY">
-                                            <rect key="frame" x="317" y="6" width="20" height="22"/>
+                                            <rect key="frame" x="314" y="14" width="20" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="magnifyingglass" catalog="system"/>
                                             <connections>
@@ -89,14 +89,14 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="25°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRW-8U-k32">
-                                            <rect key="frame" x="229" y="67" width="42" height="22"/>
+                                            <rect key="frame" x="226" y="75" width="42" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sun.max.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DfD-lv-qkq">
-                                            <rect key="frame" x="272" y="62.5" width="33" height="29"/>
+                                            <rect key="frame" x="269" y="71" width="33" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" systemColor="systemYellowColor"/>
                                         </imageView>
@@ -105,7 +105,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="172.5" id="M3j-Dd-nG9" customClass="BusinessTableCell" customModule="FoodyWeather" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="124" width="414" height="172.5"/>
+                                        <rect key="frame" x="0.0" y="136" width="414" height="172.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M3j-Dd-nG9" id="l6B-5j-mOj">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="172.5"/>
@@ -195,6 +195,7 @@
                             <constraint firstItem="MAM-qE-gdY" firstAttribute="trailing" secondItem="gNO-ce-AVB" secondAttribute="trailing" id="oDY-jJ-BNX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Yelpy" id="LgN-zy-omV"/>
                     <connections>
                         <outlet property="searchTextField" destination="cf1-6S-Fe0" id="es8-UE-fUi"/>
                         <outlet property="tableView" destination="MAM-qE-gdY" id="fjJ-ud-xly"/>
@@ -202,10 +203,105 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6d-xc-7dc" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2813.04347826087" y="41.517857142857139"/>
+        </scene>
+        <!--Business Detail View Controller-->
+        <scene sceneID="kt9-n7-Jwg">
+            <objects>
+                <viewController id="DuI-DN-AdD" customClass="BusinessDetailViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="foO-qg-d8E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RF2-5S-Zms">
+                                <rect key="frame" x="0.0" y="44" width="414" height="1122"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWQ-V3-fKI">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="externaldrive.badge.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TVB-2x-DZq">
+                                                <rect key="frame" x="87" y="32.5" width="240" height="128"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="130" id="3Bn-vc-qln"/>
+                                                    <constraint firstAttribute="width" constant="239" id="TkM-Id-T1x"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="externaldrive.badge.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Wb5-MN-UcG">
+                                                <rect key="frame" x="87" y="298.5" width="240" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="externaldrive.badge.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="V8k-EY-KKb">
+                                                <rect key="frame" x="71" y="492.5" width="240" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="externaldrive.badge.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eU9-Ka-1kX">
+                                                <rect key="frame" x="87" y="917.5" width="240" height="198"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="rdH-fK-mR3"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="externaldrive.badge.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eEw-3Y-mrL">
+                                                <rect key="frame" x="87" y="722.5" width="240" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="eU9-Ka-1kX" secondAttribute="trailing" constant="87" id="7If-Cn-tWE"/>
+                                            <constraint firstAttribute="trailing" secondItem="TVB-2x-DZq" secondAttribute="trailing" constant="87" id="8Y3-F5-Tyv"/>
+                                            <constraint firstAttribute="bottom" secondItem="eU9-Ka-1kX" secondAttribute="bottom" constant="84" id="OfK-N0-ttc"/>
+                                            <constraint firstItem="eU9-Ka-1kX" firstAttribute="leading" secondItem="pWQ-V3-fKI" secondAttribute="leading" constant="88" id="jnz-qV-fUC"/>
+                                            <constraint firstItem="TVB-2x-DZq" firstAttribute="top" secondItem="pWQ-V3-fKI" secondAttribute="top" constant="31" id="kZU-aJ-whN"/>
+                                            <constraint firstAttribute="height" constant="1200" id="tsa-p2-NML"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pWQ-V3-fKI" secondAttribute="bottom" id="25k-OY-QUS"/>
+                                    <constraint firstItem="pWQ-V3-fKI" firstAttribute="leading" secondItem="RF2-5S-Zms" secondAttribute="leading" id="2zS-K4-U9F"/>
+                                    <constraint firstItem="pWQ-V3-fKI" firstAttribute="top" secondItem="RF2-5S-Zms" secondAttribute="top" id="Y7N-6P-ROo"/>
+                                    <constraint firstAttribute="trailing" secondItem="pWQ-V3-fKI" secondAttribute="trailing" id="heL-gz-Lgc"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RLi-c3-5Sm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RLi-c3-5Sm" firstAttribute="bottom" secondItem="RF2-5S-Zms" secondAttribute="bottom" id="QGx-Lt-uyU"/>
+                            <constraint firstItem="RF2-5S-Zms" firstAttribute="top" secondItem="RLi-c3-5Sm" secondAttribute="top" id="Smg-Sp-Zq9"/>
+                            <constraint firstItem="RF2-5S-Zms" firstAttribute="leading" secondItem="RLi-c3-5Sm" secondAttribute="leading" id="TCd-8m-N6S"/>
+                            <constraint firstItem="RLi-c3-5Sm" firstAttribute="trailing" secondItem="RF2-5S-Zms" secondAttribute="trailing" id="Ybs-rs-XzQ"/>
+                            <constraint firstItem="pWQ-V3-fKI" firstAttribute="width" secondItem="foO-qg-d8E" secondAttribute="width" id="uQU-zV-q32"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lis-TR-9d7"/>
+                    <size key="freeformSize" width="414" height="1200"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0V-AO-Sg9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4279.7101449275369" y="41.517857142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="b27-6m-Upa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1tt-PO-075" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l1R-PM-8fc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vU6-t7-hCq" kind="relationship" relationship="rootViewController" id="qXR-xg-OQz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q24-5h-bmU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="1902.8985507246377" y="41.517857142857139"/>
         </scene>
     </scenes>
     <resources>
+        <image name="externaldrive.badge.xmark" catalog="system" width="128" height="92"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <image name="sun.max.fill" catalog="system" width="128" height="124"/>
