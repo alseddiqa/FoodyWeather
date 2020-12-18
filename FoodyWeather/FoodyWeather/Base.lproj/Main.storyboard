@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -226,7 +227,7 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CyS-C3-HGc">
-                                                <rect key="frame" x="20" y="245" width="374" height="114"/>
+                                                <rect key="frame" x="20" y="245" width="374" height="102"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZK-Ll-aPM">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -237,7 +238,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDk-6Q-XwO">
                                                         <rect key="frame" x="0.0" y="28" width="374" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                        <color key="textColor" red="0.13653683180000001" green="0.5" blue="0.1137791041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="StM-8p-Jbj">
@@ -258,17 +259,23 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppz-2B-SfR">
-                                                        <rect key="frame" x="0.0" y="84" width="374" height="30"/>
-                                                        <state key="normal" title="971-320-9625"/>
-                                                        <connections>
-                                                            <action selector="handlePhoneNumClick:" destination="9f5-AJ-8sb" eventType="touchUpInside" id="32a-Jr-KYb"/>
-                                                        </connections>
-                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOo-Vg-tnd">
+                                                        <rect key="frame" x="0.0" y="84" width="374" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                        <color key="textColor" red="0.94684141870000005" green="0.35117870569999998" blue="0.47058701520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XB8-dk-6xg">
+                                                <rect key="frame" x="0.0" y="380" width="414" height="234"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                <connections>
+                                                    <segue destination="frj-mJ-gO4" kind="embed" id="tuq-FY-PuE"/>
+                                                </connections>
+                                            </containerView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.95686274510000002" green="0.92156862750000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.78823529410000004" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="CyS-C3-HGc" firstAttribute="top" secondItem="sIG-4F-qtq" secondAttribute="bottom" constant="20" id="DNP-IF-VqO"/>
                                             <constraint firstAttribute="trailing" secondItem="sIG-4F-qtq" secondAttribute="trailing" id="Igw-fg-oVI"/>
@@ -322,6 +329,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q24-5h-bmU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1902.8985507246377" y="41.517857142857139"/>
+        </scene>
+        <!--Business Photos View Controller-->
+        <scene sceneID="Wyi-TG-jQ8">
+            <objects>
+                <viewController id="frj-mJ-gO4" customClass="BusinessPhotosViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Gz-PN-mN7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="234"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sdX-4H-5sw">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="234"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CzG-9I-EJe">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BusinessPhotoCell" id="WwF-rX-8ox" customClass="PhotoCollectionViewCell" customModule="FoodyWeather" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="53" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pkK-it-RqB">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uCi-FE-azp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uCi-FE-azp" firstAttribute="leading" secondItem="pkK-it-RqB" secondAttribute="leading" id="T46-7O-yCU"/>
+                                                <constraint firstItem="uCi-FE-azp" firstAttribute="centerY" secondItem="pkK-it-RqB" secondAttribute="centerY" id="Ytw-Gj-gFO"/>
+                                                <constraint firstAttribute="bottom" secondItem="uCi-FE-azp" secondAttribute="bottom" id="Zy4-hf-o3x"/>
+                                                <constraint firstAttribute="trailing" secondItem="uCi-FE-azp" secondAttribute="trailing" id="dvc-gb-DCd"/>
+                                                <constraint firstItem="uCi-FE-azp" firstAttribute="top" secondItem="pkK-it-RqB" secondAttribute="top" id="rXK-e7-kbk"/>
+                                                <constraint firstItem="uCi-FE-azp" firstAttribute="centerX" secondItem="pkK-it-RqB" secondAttribute="centerX" id="tTd-T9-cMB"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="128" height="128"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="uCi-FE-azp" id="UjC-up-eXW"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sdX-4H-5sw" firstAttribute="leading" secondItem="7Gz-PN-mN7" secondAttribute="leading" id="c4x-rV-Z1x"/>
+                            <constraint firstAttribute="trailing" secondItem="sdX-4H-5sw" secondAttribute="trailing" id="gvt-gQ-7Ip"/>
+                            <constraint firstItem="sdX-4H-5sw" firstAttribute="top" secondItem="7Gz-PN-mN7" secondAttribute="top" id="qjE-e5-kLP"/>
+                            <constraint firstAttribute="bottom" secondItem="sdX-4H-5sw" secondAttribute="bottom" id="vP7-Wu-lcz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="sdX-4H-5sw" id="6kb-P4-B3T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ERY-xj-nb6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5128.985507246377" y="-104.46428571428571"/>
         </scene>
     </scenes>
     <resources>
