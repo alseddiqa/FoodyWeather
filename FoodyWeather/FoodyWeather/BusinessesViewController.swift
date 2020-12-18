@@ -39,11 +39,24 @@ class BusinessesViewController: UIViewController {
     }
     
     @IBAction func searchRestaurant(_ sender: UIButton) {
-        print("se")
         let searchKeyWord = searchTextField.text
         print(searchKeyWord)
 
         businessesStore.searchForBusiness(restaurant: searchKeyWord!)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "BusinessDetail":
+            if let selectedIndexPath =
+                tableView.indexPathForSelectedRow?.row {
+                let business = businessesStore.businesses[selectedIndexPath]
+                let destinationVC = segue.destination as! BusinessDetailViewController
+                destinationVC.business = business
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier.")
+        }
     }
     
     
