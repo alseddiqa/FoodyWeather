@@ -6,21 +6,26 @@
 //
 
 import UIKit
+import CoreLocation
 
 class BusinessesViewController: UIViewController {
 
     var businessesStore: BusinessStore!
+    var userLocationManager: UserLocationService!
     
     @IBOutlet var cityLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var weatherImage: UIImageView!
     @IBOutlet var tempratureLabel: UILabel!
+    @IBOutlet var weatherConditionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getWeatherInformation()
+        userLocationManager = UserLocationService()
+        userLocationManager.delegate = self
+        
         businessesStore = BusinessStore()
         
         tableView.delegate = self
@@ -38,8 +43,19 @@ class BusinessesViewController: UIViewController {
         tableView.reloadData()
     }
     
-    func fungetWeatherInformation() {
-        
+    func getWeatherInformation(latitude: Double, longitude: Double) {
+        let api = WeatherAPI(lat: latitude, lon: longitude)
+        api.getWeatherForLocation() { (weatherResult) in
+            guard let weatherResult = weatherResult else {
+                return
+            }
+            if let weatherIconUrl = URL(string: "http:" + weatherResult.current.condition.icon) {
+                self.weatherImage.load(url: weatherIconUrl)
+            }
+            self.cityLabel.text = weatherResult.location.name
+            self.tempratureLabel.text = String(weatherResult.current.tempC) + "°C"
+            self.weatherConditionLabel.text = weatherResult.current.condition.text
+        }
     }
 
     
@@ -50,8 +66,8 @@ class BusinessesViewController: UIViewController {
     
     @IBAction func searchRestaurant(_ sender: UIButton) {
         let searchKeyWord = searchTextField.text
-        businessesStore.searchForBusiness(restaurant: searchKeyWord!)
-    }
+        businessesStore.searchForBusiness(restaurant: searchKeyWord!, lat: userLocationManager.latitude, lon: userLocationManager.longitude)
+    } 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -120,5 +136,13 @@ extension UIImageView {
                 }
             }
         }
+    }
+}
+
+extension BusinessesViewController: LocationServiceDelegate {
+    
+    func tracingLocation(currentLocation: CLLocation) {
+        getWeatherInformation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+        businessesStore.loadBusinessesForLocation(lat: currentLocation.coordinate.latitude, lon: currentLocation.coordinate.longitude)
     }
 }

@@ -26,6 +26,7 @@
 		B8383520258B76A3003A4D14 /* YelpStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B838351F258B76A3003A4D14 /* YelpStars.swift */; };
 		B838352B258B9B4A003A4D14 /* BusinessStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B838352A258B9B4A003A4D14 /* BusinessStore.swift */; };
 		B83DA7DB258D2BA20004A403 /* BusinessDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7DA258D2BA20004A403 /* BusinessDetail.swift */; };
+		B83DA7E6258E38700004A403 /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7E5258E38700004A403 /* UserLocationService.swift */; };
 		B8447BAC258BC29400280790 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8447BAB258BC29400280790 /* WeatherAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		B838351F258B76A3003A4D14 /* YelpStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpStars.swift; sourceTree = "<group>"; };
 		B838352A258B9B4A003A4D14 /* BusinessStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStore.swift; sourceTree = "<group>"; };
 		B83DA7DA258D2BA20004A403 /* BusinessDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDetail.swift; sourceTree = "<group>"; };
+		B83DA7E5258E38700004A403 /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
 		B8447BAB258BC29400280790 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 				B80397BC258CD314006B9376 /* BusinessDetailViewController.swift */,
 				B80397D5258D1B86006B9376 /* PhotoCollectionViewCell.swift */,
 				B8447BAB258BC29400280790 /* WeatherAPI.swift */,
+				B83DA7E5258E38700004A403 /* UserLocationService.swift */,
 				B80397B1258BF51A006B9376 /* LocationWeather.swift */,
 				B838352A258B9B4A003A4D14 /* BusinessStore.swift */,
 				B8383517258A7657003A4D14 /* BusinessTableCell.swift */,
@@ -307,6 +310,7 @@
 				B8447BAC258BC29400280790 /* WeatherAPI.swift in Sources */,
 				B80397D1258D188C006B9376 /* BusinessPhotosViewController.swift in Sources */,
 				B80397D6258D1B86006B9376 /* PhotoCollectionViewCell.swift in Sources */,
+				B83DA7E6258E38700004A403 /* UserLocationService.swift in Sources */,
 				B8383518258A7657003A4D14 /* BusinessTableCell.swift in Sources */,
 				B83834FE258A3CDD003A4D14 /* YelpAPI.swift in Sources */,
 			);
