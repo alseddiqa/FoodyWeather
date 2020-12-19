@@ -66,7 +66,7 @@ class BusinessesViewController: UIViewController {
     
     @IBAction func searchRestaurant(_ sender: UIButton) {
         let searchKeyWord = searchTextField.text
-        businessesStore.searchForBusiness(restaurant: searchKeyWord!)
+        businessesStore.searchForBusiness(restaurant: searchKeyWord!, lat: userLocationManager.latitude, lon: userLocationManager.longitude)
     } 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -143,5 +143,6 @@ extension BusinessesViewController: LocationServiceDelegate {
     
     func tracingLocation(currentLocation: CLLocation) {
         getWeatherInformation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+        businessesStore.loadBusinessesForLocation(lat: currentLocation.coordinate.latitude, lon: currentLocation.coordinate.longitude)
     }
 }

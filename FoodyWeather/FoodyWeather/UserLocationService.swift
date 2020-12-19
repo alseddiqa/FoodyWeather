@@ -56,6 +56,9 @@ class UserLocationService: NSObject, CLLocationManagerDelegate {
           guard let delegate = self.delegate else {
               return
           }
+        
+        self.latitude = currentLocation.coordinate.latitude
+        self.longitude = currentLocation.coordinate.longitude
           
         delegate.tracingLocation(currentLocation: currentLocation)
     }
