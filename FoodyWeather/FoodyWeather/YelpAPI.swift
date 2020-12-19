@@ -9,7 +9,7 @@ import Foundation
 
 struct YelpAPI {
     
-    var businessesStore = [Business]()
+    let businessDetailbaseURL = "https://api.yelp.com/v3/businesses"
     
     //Declaring params to prepare for call
     let baseURLString = "https://api.yelp.com/v3/businesses/search"
@@ -120,6 +120,55 @@ struct YelpAPI {
         
             task.resume()
     }
+    
+    func getBusinessDetails(id: String, completion: @escaping (BusinessDetail?) -> Void) {
+        
+        var components = URLComponents(string: businessDetailbaseURL)!
+        components.path += "/\(id)"
+        print(components)
+//        var queryItems = [URLQueryItem]()
+//
+//        let baseParams = [
+//            "{id": id
+//        ]
+//
+//        for (key, value) in baseParams {
+//            let item = URLQueryItem(name: key, value: value)
+//            queryItems.append(item)
+//        }
+//
+//        components.queryItems = queryItems
+        let url = components.url!
+        
+        print(url)
+        
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        
+        // Insert API Key to request
+        request.setValue("Bearer \(self.apiKey)", forHTTPHeaderField: "Authorization")
+                
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                print(String(data: data, encoding: .utf8))
+                guard let safeResponse = try? JSONDecoder().decode(BusinessDetail.self, from: data) else {
+                    print("error decoding")
+                    return
+                }
+                
+                let businessDetail = safeResponse
+                return completion(businessDetail)
+
+                }
+            }
+        
+            task.resume()
+    }
+    
+    
     
 }
 

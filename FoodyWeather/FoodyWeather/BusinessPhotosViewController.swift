@@ -9,7 +9,7 @@ import UIKit
 
 class BusinessPhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var businessPhotos: [URL]!
+    var businessPhotos = [URL]()
 
     @IBOutlet var collectionView: UICollectionView!
     

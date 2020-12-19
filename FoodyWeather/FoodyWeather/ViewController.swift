@@ -26,6 +26,14 @@ class ViewController: UIViewController {
         
         //let api = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)
         //api.getBusinessListForLocation()
+        
+        let yelpApi = YelpAPI(lat: 0, lon: 0)
+        yelpApi.getBusinessDetails(id: "CYttYTEiQuhSfo3SEh79fA") { (details) in
+            guard let details = details else {
+                return
+            }
+            print(details)
+        }
     }
 
 

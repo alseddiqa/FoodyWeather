@@ -18,6 +18,7 @@ class BusinessDetailViewController: UIViewController {
     
     var business: Business!
     var businessPhotos: [URL]!
+    var businessDetail: BusinessDetail!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -33,7 +34,18 @@ class BusinessDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getBusinessDetails(businessId: business.id)
         // Do any additional setup after loading the view.
+    }
+    
+    func getBusinessDetails(businessId: String) {
+        let yelpApi = YelpAPI(lat: 0, lon: 0)
+        yelpApi.getBusinessDetails(id: businessId) { (details) in
+            guard let details = details else {
+                return
+            }
+            self.businessDetail = details
+        }
     }
 
 }
