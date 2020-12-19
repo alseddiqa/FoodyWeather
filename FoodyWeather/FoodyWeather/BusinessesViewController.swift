@@ -11,11 +11,16 @@ class BusinessesViewController: UIViewController {
 
     var businessesStore: BusinessStore!
     
+    @IBOutlet var cityLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
+    @IBOutlet var weatherImage: UIImageView!
+    @IBOutlet var tempratureLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getWeatherInformation()
         businessesStore = BusinessStore()
         
         tableView.delegate = self
@@ -33,17 +38,33 @@ class BusinessesViewController: UIViewController {
         tableView.reloadData()
     }
     
+    func fungetWeatherInformation() {
+        
+    }
+
+    
     func setUpSubView() {
         searchTextField.layer.cornerRadius = 15.0
         searchTextField.layer.masksToBounds = true
     }
     
     @IBAction func searchRestaurant(_ sender: UIButton) {
-        print("se")
         let searchKeyWord = searchTextField.text
-        print(searchKeyWord)
-
         businessesStore.searchForBusiness(restaurant: searchKeyWord!)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "BusinessDetail":
+            if let selectedIndexPath =
+                tableView.indexPathForSelectedRow?.row {
+                let business = businessesStore.businesses[selectedIndexPath]
+                let destinationVC = segue.destination as! BusinessDetailViewController
+                destinationVC.business = business
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier.")
+        }
     }
     
     
