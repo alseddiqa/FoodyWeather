@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class BusinessesViewController: UIViewController {
 
     var businessesStore: BusinessStore!
+    var userLocationManager: UserLocationService!
     
     @IBOutlet var cityLabel: UILabel!
     @IBOutlet var tableView: UITableView!
@@ -20,7 +22,9 @@ class BusinessesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getWeatherInformation()
+        userLocationManager = UserLocationService()
+        userLocationManager.delegate = self
+        //getWeatherInformation()
         businessesStore = BusinessStore()
         
         tableView.delegate = self
@@ -38,8 +42,15 @@ class BusinessesViewController: UIViewController {
         tableView.reloadData()
     }
     
-    func fungetWeatherInformation() {
-        
+    func getWeatherInformation(latitude: Double, longitude: Double) {
+        let api = WeatherAPI(lat: 37.7670169511878, lon: -122.42184275)
+        api.getWeatherForLocation() { (weatherResult) in
+            guard let weatherResult = weatherResult else {
+                return
+            }
+            let weatherIconUrl = URL(string: "http:" + weatherResult.condition.icon)
+            self.imageView.load(url: weatherIconUrl!)
+        }
     }
 
     
@@ -120,5 +131,12 @@ extension UIImageView {
                 }
             }
         }
+    }
+}
+
+extension BusinessesViewController: LocationServiceDelegate {
+    
+    func tracingLocation(currentLocation: CLLocation) {
+        getWeatherInformation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
     }
 }
