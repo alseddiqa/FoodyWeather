@@ -17,7 +17,6 @@ class BusinessDetailViewController: UIViewController {
     @IBOutlet var phoneNumLabel: UILabel!
     
     var business: Business!
-    var businessPhotos: [URL]!
     var businessDetail: BusinessDetail!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +32,6 @@ class BusinessDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         getBusinessDetails(businessId: business.id)
         // Do any additional setup after loading the view.
     }
@@ -45,6 +43,19 @@ class BusinessDetailViewController: UIViewController {
                 return
             }
             self.businessDetail = details
+            //do more update to UI
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "BusinessMorePhotos":
+            print("----seg")
+            let destinationVC = segue.destination as! BusinessPhotosViewController
+            destinationVC.business
+            = business
+        default:
+            preconditionFailure("Unexpected segue identifier.")
         }
     }
 

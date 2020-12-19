@@ -11,11 +11,16 @@ class BusinessesViewController: UIViewController {
 
     var businessesStore: BusinessStore!
     
+    @IBOutlet var cityLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
+    @IBOutlet var weatherImage: UIImageView!
+    @IBOutlet var tempratureLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getWeatherInformation()
         businessesStore = BusinessStore()
         
         tableView.delegate = self
@@ -33,6 +38,11 @@ class BusinessesViewController: UIViewController {
         tableView.reloadData()
     }
     
+    func fungetWeatherInformation() {
+        
+    }
+
+    
     func setUpSubView() {
         searchTextField.layer.cornerRadius = 15.0
         searchTextField.layer.masksToBounds = true
@@ -40,8 +50,6 @@ class BusinessesViewController: UIViewController {
     
     @IBAction func searchRestaurant(_ sender: UIButton) {
         let searchKeyWord = searchTextField.text
-        print(searchKeyWord)
-
         businessesStore.searchForBusiness(restaurant: searchKeyWord!)
     }
     

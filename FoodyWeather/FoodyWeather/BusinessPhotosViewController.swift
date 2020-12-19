@@ -9,6 +9,8 @@ import UIKit
 
 class BusinessPhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    var business: Business!
+    var businessDetails: BusinessDetail!
     var businessPhotos = [URL]()
 
     @IBOutlet var collectionView: UICollectionView!
@@ -19,6 +21,27 @@ class BusinessPhotosViewController: UIViewController, UICollectionViewDelegate, 
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.delegate = self
+        getBusinessDetails(businessId: business.id)
+    }
+    
+    func getBusinessDetails(businessId: String) {
+        let yelpApi = YelpAPI(lat: 0, lon: 0)
+        yelpApi.getBusinessDetails(id: businessId) { (details) in
+            guard let details = details else {
+                return
+            }
+            self.businessDetails = details
+            self.getPhotosURLs()
+            //do more update to UI
+        }
+    }
+    
+    func getPhotosURLs(){
+        for link in businessDetails.photos {
+            let url = URL(string: link)
+            businessPhotos.append(url!)
+        }
+        collectionView.reloadData()
     }
 
     

@@ -126,18 +126,7 @@ struct YelpAPI {
         var components = URLComponents(string: businessDetailbaseURL)!
         components.path += "/\(id)"
         print(components)
-//        var queryItems = [URLQueryItem]()
-//
-//        let baseParams = [
-//            "{id": id
-//        ]
-//
-//        for (key, value) in baseParams {
-//            let item = URLQueryItem(name: key, value: value)
-//            queryItems.append(item)
-//        }
-//
-//        components.queryItems = queryItems
+
         let url = components.url!
         
         print(url)
@@ -153,7 +142,6 @@ struct YelpAPI {
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                print(String(data: data, encoding: .utf8))
                 guard let safeResponse = try? JSONDecoder().decode(BusinessDetail.self, from: data) else {
                     print("error decoding")
                     return
