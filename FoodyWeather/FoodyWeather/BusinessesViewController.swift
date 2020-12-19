@@ -18,6 +18,7 @@ class BusinessesViewController: UIViewController {
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var weatherImage: UIImageView!
     @IBOutlet var tempratureLabel: UILabel!
+    @IBOutlet var weatherConditionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,8 @@ class BusinessesViewController: UIViewController {
                 self.weatherImage.load(url: weatherIconUrl)
             }
             self.cityLabel.text = weatherResult.location.name
+            self.tempratureLabel.text = String(weatherResult.current.tempC) + "°C"
+            self.weatherConditionLabel.text = weatherResult.current.condition.text
         }
     }
 
@@ -64,7 +67,7 @@ class BusinessesViewController: UIViewController {
     @IBAction func searchRestaurant(_ sender: UIButton) {
         let searchKeyWord = searchTextField.text
         businessesStore.searchForBusiness(restaurant: searchKeyWord!)
-    }
+    } 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
