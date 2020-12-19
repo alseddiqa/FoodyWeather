@@ -19,8 +19,8 @@ class ViewController: UIViewController {
             guard let weatherResult = weatherResult else {
                 return
             }
-            let weatherIconUrl = URL(string: "http:" + weatherResult.condition.icon)
-            self.imageView.load(url: weatherIconUrl!)
+            //let weatherIconUrl = URL(string: "http:" + weatherResult.condition.icon)
+            //self.imageView.load(url: weatherIconUrl!)
         }
 
         

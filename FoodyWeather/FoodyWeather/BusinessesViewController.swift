@@ -24,7 +24,7 @@ class BusinessesViewController: UIViewController {
         
         userLocationManager = UserLocationService()
         userLocationManager.delegate = self
-        //getWeatherInformation()
+        
         businessesStore = BusinessStore()
         
         tableView.delegate = self
@@ -43,13 +43,15 @@ class BusinessesViewController: UIViewController {
     }
     
     func getWeatherInformation(latitude: Double, longitude: Double) {
-        let api = WeatherAPI(lat: 37.7670169511878, lon: -122.42184275)
+        let api = WeatherAPI(lat: latitude, lon: longitude)
         api.getWeatherForLocation() { (weatherResult) in
             guard let weatherResult = weatherResult else {
                 return
             }
-            let weatherIconUrl = URL(string: "http:" + weatherResult.condition.icon)
-            self.imageView.load(url: weatherIconUrl!)
+            if let weatherIconUrl = URL(string: "http:" + weatherResult.current.condition.icon) {
+                self.weatherImage.load(url: weatherIconUrl)
+            }
+            self.cityLabel.text = weatherResult.location.name
         }
     }
 
