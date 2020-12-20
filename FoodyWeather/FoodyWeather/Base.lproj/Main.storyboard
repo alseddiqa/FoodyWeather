@@ -386,7 +386,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aDf-r0-OkA">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qH4-EI-dML" appends="YES" id="j6P-eG-L3E"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="g8Q-UE-9mS"/>
@@ -394,7 +398,7 @@
                         <constraints>
                             <constraint firstItem="g8Q-UE-9mS" firstAttribute="trailing" secondItem="aDf-r0-OkA" secondAttribute="trailing" id="Ilj-4F-UGY"/>
                             <constraint firstItem="aDf-r0-OkA" firstAttribute="top" secondItem="g8Q-UE-9mS" secondAttribute="top" id="S9t-sD-V8n"/>
-                            <constraint firstItem="g8Q-UE-9mS" firstAttribute="bottom" secondItem="aDf-r0-OkA" secondAttribute="bottom" id="blA-zh-aCH"/>
+                            <constraint firstAttribute="bottom" secondItem="aDf-r0-OkA" secondAttribute="bottom" id="blA-zh-aCH"/>
                             <constraint firstItem="aDf-r0-OkA" firstAttribute="leading" secondItem="g8Q-UE-9mS" secondAttribute="leading" id="zcB-im-B02"/>
                         </constraints>
                     </view>
@@ -403,6 +407,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mf0-7z-SCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qH4-EI-dML">
+                    <connections>
+                        <action selector="triggerTouchAction:" destination="Iks-K1-RQT" id="oFm-Wb-n9N"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1725" y="895"/>
         </scene>

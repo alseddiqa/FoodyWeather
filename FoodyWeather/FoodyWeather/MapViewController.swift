@@ -11,6 +11,7 @@ import MapKit
 class MapViewController: UIViewController {
 
     @IBOutlet var mapView: MKMapView!
+    var annotaionsCounter: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,5 +57,33 @@ class MapViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    @IBAction func triggerTouchAction(_ sender: UITapGestureRecognizer){
+        if sender.state == .ended{
+            let locationInView = sender.location(in: mapView)
+            let tappedCoordinate = mapView.convert(locationInView, toCoordinateFrom: mapView)
+            
+            //Making sure only one annotation is placed on the map
+            if annotaionsCounter == 1 {
+                mapView.removeAnnotations(mapView.annotations)
+                annotaionsCounter = 0
+                addAnnotation(coordinate: tappedCoordinate)
+            }
+            else {
+                mapView.removeAnnotations(mapView.annotations)
+                addAnnotation(coordinate: tappedCoordinate)
+                annotaionsCounter+=1
+            }
+        }
+    }
+    
+    /// A function that adds annotion on map for the sent cordinates where the user tapped
+    /// - Parameter coordinate: location of where the user tapped
+    func addAnnotation(coordinate:CLLocationCoordinate2D){
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
+//        showPinnedLocationPhotos(coordinate: coordinate)
     }
 }
