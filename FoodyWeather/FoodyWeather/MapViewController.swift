@@ -84,6 +84,21 @@ class MapViewController: UIViewController {
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
-//        showPinnedLocationPhotos(coordinate: coordinate)
+        showPinnedLocationPhotos(coordinate: coordinate)
+    }
+    
+    /// A function that pops the VC to show the list of businesses for the pinned location
+    /// - Parameter coordinate: the location where the user tapped -> location of the annoation
+    func showPinnedLocationPhotos(coordinate: CLLocationCoordinate2D)
+    {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let destVC = storyboard.instantiateViewController(withIdentifier: "navigationView") as! MainNavigationViewController
+        
+        destVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        destVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        destVC.cordinates = coordinate
+        destVC.currentLocationStatus = false
+        self.dismiss(animated: true, completion: nil)
+        self.present(destVC, animated: true, completion: nil)
     }
 }

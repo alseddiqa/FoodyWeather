@@ -43,7 +43,7 @@
         <!--Business List-->
         <scene sceneID="F4y-VS-jH5">
             <objects>
-                <viewController title="Business List" id="vU6-t7-hCq" customClass="BusinessesViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BusinessesListView" title="Business List" id="vU6-t7-hCq" customClass="BusinessesViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ids-6G-FWk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,18 +69,16 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UKo-Im-4kC">
-                                            <rect key="frame" x="60" y="47" width="153" height="20"/>
+                                            <rect key="frame" x="60" y="47" width="120" height="20"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.and.ellipse" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Dbj-ME-Kmt">
                                                     <rect key="frame" x="0.0" y="-0.5" width="19" height="20.5"/>
                                                     <color key="tintColor" systemColor="systemPinkColor"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francico, CA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKt-23-JcY">
-                                                    <rect key="frame" x="23" y="0.0" width="130" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySl-84-4HE">
+                                                    <rect key="frame" x="23" y="0.0" width="97" height="20"/>
+                                                    <state key="normal" title="San Francisco"/>
+                                                </button>
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="57" translatesAutoresizingMaskIntoConstraints="NO" id="vHh-3j-IhH">
@@ -223,7 +221,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Yelpy" id="LgN-zy-omV"/>
                     <connections>
-                        <outlet property="cityLabel" destination="BKt-23-JcY" id="Syk-tE-cpa"/>
+                        <outlet property="locationButton" destination="ySl-84-4HE" id="zbo-wd-PyG"/>
                         <outlet property="searchTextField" destination="cf1-6S-Fe0" id="es8-UE-fUi"/>
                         <outlet property="tableView" destination="MAM-qE-gdY" id="fjJ-ud-xly"/>
                         <outlet property="tempratureLabel" destination="JRW-8U-k32" id="QPU-T3-ggc"/>
@@ -359,10 +357,10 @@
             </objects>
             <point key="canvasLocation" x="3737.68115942029" y="58.928571428571423"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main Navigation View Controller-->
         <scene sceneID="b27-6m-Upa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1tt-PO-075" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationView" automaticallyAdjustsScrollViewInsets="NO" id="1tt-PO-075" customClass="MainNavigationViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="l1R-PM-8fc">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
