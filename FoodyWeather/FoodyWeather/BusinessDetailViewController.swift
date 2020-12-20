@@ -50,7 +50,6 @@ class BusinessDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "BusinessMorePhotos":
-            print("----seg")
             let destinationVC = segue.destination as! BusinessPhotosViewController
             destinationVC.business
             = business

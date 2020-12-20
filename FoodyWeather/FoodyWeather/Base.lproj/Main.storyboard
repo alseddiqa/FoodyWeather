@@ -43,7 +43,7 @@
         <!--Business List-->
         <scene sceneID="F4y-VS-jH5">
             <objects>
-                <viewController title="Business List" id="vU6-t7-hCq" customClass="BusinessesViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BusinessesListView" title="Business List" id="vU6-t7-hCq" customClass="BusinessesViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ids-6G-FWk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,18 +69,19 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UKo-Im-4kC">
-                                            <rect key="frame" x="60" y="47" width="153" height="20"/>
+                                            <rect key="frame" x="60" y="47" width="120" height="20"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.and.ellipse" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Dbj-ME-Kmt">
                                                     <rect key="frame" x="0.0" y="-0.5" width="19" height="20.5"/>
                                                     <color key="tintColor" systemColor="systemPinkColor"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francico, CA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKt-23-JcY">
-                                                    <rect key="frame" x="23" y="0.0" width="130" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySl-84-4HE">
+                                                    <rect key="frame" x="23" y="0.0" width="97" height="20"/>
+                                                    <state key="normal" title="San Francisco"/>
+                                                    <connections>
+                                                        <segue destination="Iks-K1-RQT" kind="show" identifier="MapViewSegue" id="GB3-h3-bOp"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="57" translatesAutoresizingMaskIntoConstraints="NO" id="vHh-3j-IhH">
@@ -223,7 +224,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Yelpy" id="LgN-zy-omV"/>
                     <connections>
-                        <outlet property="cityLabel" destination="BKt-23-JcY" id="Syk-tE-cpa"/>
+                        <outlet property="locationButton" destination="ySl-84-4HE" id="zbo-wd-PyG"/>
                         <outlet property="searchTextField" destination="cf1-6S-Fe0" id="es8-UE-fUi"/>
                         <outlet property="tableView" destination="MAM-qE-gdY" id="fjJ-ud-xly"/>
                         <outlet property="tempratureLabel" destination="JRW-8U-k32" id="QPU-T3-ggc"/>
@@ -359,10 +360,10 @@
             </objects>
             <point key="canvasLocation" x="3737.68115942029" y="58.928571428571423"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main Navigation View Controller-->
         <scene sceneID="b27-6m-Upa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1tt-PO-075" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationView" automaticallyAdjustsScrollViewInsets="NO" id="1tt-PO-075" customClass="MainNavigationViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="l1R-PM-8fc">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -376,6 +377,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q24-5h-bmU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1902.8985507246377" y="41.517857142857139"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="oZQ-M4-w09">
+            <objects>
+                <viewController storyboardIdentifier="MapView" id="Iks-K1-RQT" customClass="MapViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CaC-PH-vvP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aDf-r0-OkA">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qH4-EI-dML" appends="YES" id="j6P-eG-L3E"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="g8Q-UE-9mS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="g8Q-UE-9mS" firstAttribute="trailing" secondItem="aDf-r0-OkA" secondAttribute="trailing" id="Ilj-4F-UGY"/>
+                            <constraint firstItem="aDf-r0-OkA" firstAttribute="top" secondItem="g8Q-UE-9mS" secondAttribute="top" id="S9t-sD-V8n"/>
+                            <constraint firstAttribute="bottom" secondItem="aDf-r0-OkA" secondAttribute="bottom" id="blA-zh-aCH"/>
+                            <constraint firstItem="aDf-r0-OkA" firstAttribute="leading" secondItem="g8Q-UE-9mS" secondAttribute="leading" id="zcB-im-B02"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZQX-8g-xKp"/>
+                    <connections>
+                        <outlet property="mapView" destination="aDf-r0-OkA" id="bJi-Vj-qjj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mf0-7z-SCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qH4-EI-dML">
+                    <connections>
+                        <action selector="triggerTouchAction:" destination="Iks-K1-RQT" id="oFm-Wb-n9N"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1929" y="736"/>
         </scene>
         <!--Business Photos View Controller-->
         <scene sceneID="Wyi-TG-jQ8">

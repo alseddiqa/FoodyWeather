@@ -12,19 +12,24 @@ class BusinessesViewController: UIViewController {
 
     var businessesStore: BusinessStore!
     var userLocationManager: UserLocationService!
+    var currentLocationStatus: Bool = true
+
     
-    @IBOutlet var cityLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var weatherImage: UIImageView!
     @IBOutlet var tempratureLabel: UILabel!
     @IBOutlet var weatherConditionLabel: UILabel!
+    @IBOutlet var locationButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         userLocationManager = UserLocationService()
         userLocationManager.delegate = self
+        
         
         businessesStore = BusinessStore()
         
@@ -41,6 +46,15 @@ class BusinessesViewController: UIViewController {
     
     @objc func observeStoreLoadNotification(note: Notification) {
         tableView.reloadData()
+        if businessesStore.businesses.count != 0 {
+            let city = businessesStore.businesses[0].location.city
+            let state = businessesStore.businesses[0].location.state
+            if state.count != 0 && city.count != 0 {
+                let location = city + "," + state
+                locationButton.setTitle(location, for: .application)
+            }
+            
+        }
     }
     
     func getWeatherInformation(latitude: Double, longitude: Double) {
@@ -52,7 +66,8 @@ class BusinessesViewController: UIViewController {
             if let weatherIconUrl = URL(string: "http:" + weatherResult.current.condition.icon) {
                 self.weatherImage.load(url: weatherIconUrl)
             }
-            self.cityLabel.text = weatherResult.location.name
+            //self.cityLabel.text = weatherResult.location.name
+            self.locationButton.setTitle(weatherResult.location.name, for: .normal)
             self.tempratureLabel.text = String(weatherResult.current.tempC) + "°C"
             self.weatherConditionLabel.text = weatherResult.current.condition.text
         }
@@ -67,8 +82,17 @@ class BusinessesViewController: UIViewController {
     @IBAction func searchRestaurant(_ sender: UIButton) {
         let searchKeyWord = searchTextField.text
         businessesStore.searchForBusiness(restaurant: searchKeyWord!, lat: userLocationManager.latitude, lon: userLocationManager.longitude)
-    } 
+    }
     
+    func loadBusinessesForPinnedLocation(cordinates: CLLocationCoordinate2D) {
+        if currentLocationStatus == false {
+            businessesStore.loadBusinessesForLocation(lat: cordinates.latitude, lon: cordinates.longitude)
+            self.getWeatherInformation(latitude: cordinates.latitude, longitude: cordinates.longitude)
+        }
+    }
+    
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "BusinessDetail":
@@ -78,6 +102,10 @@ class BusinessesViewController: UIViewController {
                 let destinationVC = segue.destination as! BusinessDetailViewController
                 destinationVC.business = business
             }
+        case "MapViewSegue":
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.mapDelegate = self
+        
         default:
             preconditionFailure("Unexpected segue identifier.")
         }
@@ -145,4 +173,12 @@ extension BusinessesViewController: LocationServiceDelegate {
         getWeatherInformation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
         businessesStore.loadBusinessesForLocation(lat: currentLocation.coordinate.latitude, lon: currentLocation.coordinate.longitude)
     }
+}
+
+extension BusinessesViewController: MapViewDelegate {
+    
+    func getBusinessesForPinnedLocation(cordinates: CLLocationCoordinate2D) {
+        loadBusinessesForPinnedLocation(cordinates: cordinates)
+    }
+
 }
