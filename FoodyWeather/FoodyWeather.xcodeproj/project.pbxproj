@@ -29,6 +29,7 @@
 		B83DA7E6258E38700004A403 /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7E5258E38700004A403 /* UserLocationService.swift */; };
 		B83DA7F1258F36950004A403 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7F0258F36950004A403 /* MapViewController.swift */; };
 		B83DA7F6258F786F0004A403 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */; };
+		B83DA7FB258FBB800004A403 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */; };
 		B8447BAC258BC29400280790 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8447BAB258BC29400280790 /* WeatherAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		B83DA7E5258E38700004A403 /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
 		B83DA7F0258F36950004A403 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
+		B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
 		B8447BAB258BC29400280790 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 				B83834C3258A337B003A4D14 /* SceneDelegate.swift */,
 				B83834C5258A337B003A4D14 /* ViewController.swift */,
 				B83834C7258A337B003A4D14 /* Main.storyboard */,
+				B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */,
 				B83DA7F0258F36950004A403 /* MapViewController.swift */,
 				B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */,
 				B80397D0258D188C006B9376 /* BusinessPhotosViewController.swift */,
@@ -321,6 +324,7 @@
 				B8383518258A7657003A4D14 /* BusinessTableCell.swift in Sources */,
 				B83834FE258A3CDD003A4D14 /* YelpAPI.swift in Sources */,
 				B83DA7F1258F36950004A403 /* MapViewController.swift in Sources */,
+				B83DA7FB258FBB800004A403 /* MapViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

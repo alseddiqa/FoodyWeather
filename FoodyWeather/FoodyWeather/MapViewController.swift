@@ -12,6 +12,7 @@ class MapViewController: UIViewController {
 
     @IBOutlet var mapView: MKMapView!
     var annotaionsCounter: Int = 0
+    var mapDelegate: MapViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,14 +92,17 @@ class MapViewController: UIViewController {
     /// - Parameter coordinate: the location where the user tapped -> location of the annoation
     func showPinnedLocationPhotos(coordinate: CLLocationCoordinate2D)
     {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let destVC = storyboard.instantiateViewController(withIdentifier: "navigationView") as! MainNavigationViewController
-        
-        destVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        destVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        destVC.cordinates = coordinate
-        destVC.currentLocationStatus = false
-        self.dismiss(animated: true, completion: nil)
-        self.present(destVC, animated: true, completion: nil)
+        mapDelegate.getBusinessesForPinnedLocation(cordinates: coordinate)
+        self.navigationController?.popViewController(animated: true)
+
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//        let destVC = storyboard.instantiateViewController(withIdentifier: "navigationView") as! MainNavigationViewController
+//        
+//        destVC.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+//        destVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+//        destVC.cordinates = coordinate
+//        destVC.currentLocationStatus = false
+//        self.dismiss(animated: true, completion: nil)
+//        self.present(destVC, animated: true, completion: nil)
     }
 }

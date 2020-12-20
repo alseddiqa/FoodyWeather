@@ -61,9 +61,9 @@ struct YelpAPI {
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                
+                print(String(data: data, encoding: .utf8))
                 guard let safeResponse = try? JSONDecoder().decode(Result.self, from: data) else {
-                    print("error decoding")
+                    print("error decoding list of business")
                     return
                 }
                 
@@ -108,7 +108,7 @@ struct YelpAPI {
             } else if let data = data {
                 
                 guard let safeResponse = try? JSONDecoder().decode(Result.self, from: data) else {
-                    print("error decoding")
+                    print("error decoding search result")
                     return
                 }
                 

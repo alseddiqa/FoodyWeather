@@ -12,7 +12,6 @@ class BusinessesViewController: UIViewController {
 
     var businessesStore: BusinessStore!
     var userLocationManager: UserLocationService!
-    var cordinates: CLLocationCoordinate2D!
     var currentLocationStatus: Bool = true
 
     
@@ -27,17 +26,12 @@ class BusinessesViewController: UIViewController {
         super.viewDidLoad()
         
         
-        let navBar = navigationController as! MainNavigationViewController
-        self.cordinates = navBar.cordinates
-        self.currentLocationStatus = navBar.currentLocationStatus
         
-        if currentLocationStatus {
-            userLocationManager = UserLocationService()
-            userLocationManager.delegate = self
-        }
+        userLocationManager = UserLocationService()
+        userLocationManager.delegate = self
+        
         
         businessesStore = BusinessStore()
-        loadBusinessesForPinnedLocation()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,16 +47,17 @@ class BusinessesViewController: UIViewController {
     @objc func observeStoreLoadNotification(note: Notification) {
         tableView.reloadData()
         if businessesStore.businesses.count != 0 {
+            let city = businessesStore.businesses[0].location.city
             let state = businessesStore.businesses[0].location.state
-            if state.count != 0 {
-                locationButton.setTitle((locationButton.titleLabel?.text)! + ", " + state, for: .normal)
+            if state.count != 0 && city.count != 0 {
+                let location = city + "," + state
+                locationButton.setTitle(location, for: .application)
             }
             
         }
     }
     
     func getWeatherInformation(latitude: Double, longitude: Double) {
-        print(latitude)
         let api = WeatherAPI(lat: latitude, lon: longitude)
         api.getWeatherForLocation() { (weatherResult) in
             guard let weatherResult = weatherResult else {
@@ -89,14 +84,15 @@ class BusinessesViewController: UIViewController {
         businessesStore.searchForBusiness(restaurant: searchKeyWord!, lat: userLocationManager.latitude, lon: userLocationManager.longitude)
     }
     
-    func loadBusinessesForPinnedLocation() {
+    func loadBusinessesForPinnedLocation(cordinates: CLLocationCoordinate2D) {
         if currentLocationStatus == false {
-            print("----ppp")
             businessesStore.loadBusinessesForLocation(lat: cordinates.latitude, lon: cordinates.longitude)
             self.getWeatherInformation(latitude: cordinates.latitude, longitude: cordinates.longitude)
         }
     }
     
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "BusinessDetail":
@@ -106,6 +102,10 @@ class BusinessesViewController: UIViewController {
                 let destinationVC = segue.destination as! BusinessDetailViewController
                 destinationVC.business = business
             }
+        case "MapViewSegue":
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.mapDelegate = self
+        
         default:
             preconditionFailure("Unexpected segue identifier.")
         }
@@ -173,4 +173,12 @@ extension BusinessesViewController: LocationServiceDelegate {
         getWeatherInformation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
         businessesStore.loadBusinessesForLocation(lat: currentLocation.coordinate.latitude, lon: currentLocation.coordinate.longitude)
     }
+}
+
+extension BusinessesViewController: MapViewDelegate {
+    
+    func getBusinessesForPinnedLocation(cordinates: CLLocationCoordinate2D) {
+        loadBusinessesForPinnedLocation(cordinates: cordinates)
+    }
+
 }
