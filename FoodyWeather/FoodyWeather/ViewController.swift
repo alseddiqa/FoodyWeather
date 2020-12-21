@@ -15,25 +15,25 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let api = WeatherAPI(lat: 37.7670169511878, lon: -122.42184275)
-        api.getWeatherForLocation() { (weatherResult) in
-            guard let weatherResult = weatherResult else {
+        api.getWeatherForcastForBusiness()
+        { (weatherFocaseResult) in
+            guard let weatherFocaseResult = weatherFocaseResult else {
                 return
             }
-            //let weatherIconUrl = URL(string: "http:" + weatherResult.condition.icon)
-            //self.imageView.load(url: weatherIconUrl!)
+            print(weatherFocaseResult.forecast.forecastday.description)
         }
 
         
         //let api = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)
         //api.getBusinessListForLocation()
         
-        let yelpApi = YelpAPI(lat: 0, lon: 0)
-        yelpApi.getBusinessDetails(id: "CYttYTEiQuhSfo3SEh79fA") { (details) in
-            guard let details = details else {
-                return
-            }
-            print(details)
-        }
+//        let yelpApi = YelpAPI(lat: 0, lon: 0)
+//        yelpApi.getBusinessDetails(id: "CYttYTEiQuhSfo3SEh79fA") { (details) in
+//            guard let details = details else {
+//                return
+//            }
+//            print(details)
+//        }
     }
 
 

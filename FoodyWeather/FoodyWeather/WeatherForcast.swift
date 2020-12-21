@@ -7,24 +7,62 @@
 
 import Foundation
 
-// MARK: - Empty
-struct WeatherForcast: Codable {
-    let location: WeatherLocation
-    let current: CurrentWeather
+// MARK: - WeatherAPIForecastResponse
+struct WeatherForecast: Codable {
+    let location: ForecastLocation
+    let current: ForecastCurrent
     let forecast: Forecast
-    let alert: Alert
 }
 
-// MARK: - Alert
-struct Alert: Codable {
+// MARK: - Current
+struct ForecastCurrent: Codable {
+    let lastUpdatedEpoch: Int
+    let lastUpdated: String
+    let tempC, tempF: Double
+    let isDay: Int
+    let condition: WeatherCondition
+    let windMph, windKph: Double
+    let windDegree: Int
+    let windDir: String
+    let pressureMB, pressureIn: Double
+    let precipMm, precipIn, humidity, cloud: Int
+    let feelslikeC, feelslikeF, visKM, visMiles: Double
+    let uv: Int
+    let gustMph, gustKph: Double
+
+    enum CodingKeys: String, CodingKey {
+        case lastUpdatedEpoch = "last_updated_epoch"
+        case lastUpdated = "last_updated"
+        case tempC = "temp_c"
+        case tempF = "temp_f"
+        case isDay = "is_day"
+        case condition
+        case windMph = "wind_mph"
+        case windKph = "wind_kph"
+        case windDegree = "wind_degree"
+        case windDir = "wind_dir"
+        case pressureMB = "pressure_mb"
+        case pressureIn = "pressure_in"
+        case precipMm = "precip_mm"
+        case precipIn = "precip_in"
+        case humidity, cloud
+        case feelslikeC = "feelslike_c"
+        case feelslikeF = "feelslike_f"
+        case visKM = "vis_km"
+        case visMiles = "vis_miles"
+        case uv
+        case gustMph = "gust_mph"
+        case gustKph = "gust_kph"
+    }
 }
 
-enum WindDir: String, Codable {
-    case s = "S"
-    case ssw = "SSW"
-    case sw = "SW"
-    case wsw = "WSW"
+// MARK: - WeatherCondition
+struct WeatherCondition: Codable {
+    let text: String
+    let icon: String
+    let code: Int
 }
+
 
 // MARK: - Forecast
 struct Forecast: Codable {
@@ -67,7 +105,7 @@ struct Day: Codable {
     let dailyChanceOfRain: String
     let dailyWillItSnow: Int
     let dailyChanceOfSnow: String
-    let condition: Condition
+    let condition: WeatherCondition
     let uv: Int
 
     enum CodingKeys: String, CodingKey {
@@ -98,10 +136,10 @@ struct WeatherHour: Codable {
     let time: String
     let tempC, tempF: Double
     let isDay: Int
-    let condition: Condition
+    let condition: WeatherCondition
     let windMph, windKph: Double
     let windDegree: Int
-    let windDir: WindDir
+    let windDir: String
     let pressureMB: Int
     let pressureIn, precipMm, precipIn: Double
     let humidity, cloud: Int
@@ -147,5 +185,21 @@ struct WeatherHour: Codable {
         case visMiles = "vis_miles"
         case gustMph = "gust_mph"
         case gustKph = "gust_kph"
+    }
+}
+
+// MARK: - Location
+struct ForecastLocation: Codable {
+    let name, region, country: String
+    let lat, lon: Double
+    let tzID: String
+    let localtimeEpoch: Int
+    let localtime: String
+
+    enum CodingKeys: String, CodingKey {
+        case name, region, country, lat, lon
+        case tzID = "tz_id"
+        case localtimeEpoch = "localtime_epoch"
+        case localtime
     }
 }

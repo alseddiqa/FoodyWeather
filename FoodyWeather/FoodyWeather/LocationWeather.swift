@@ -76,3 +76,4 @@ struct WeatherLocation: Codable {
         case localtime
     }
 }
+

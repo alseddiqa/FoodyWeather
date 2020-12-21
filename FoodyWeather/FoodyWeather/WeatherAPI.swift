@@ -76,7 +76,7 @@ struct WeatherAPI {
     }
     
     func getWeatherForcastUrl() -> URL {
-        var components = URLComponents(string: baseURLString)!
+        var components = URLComponents(string: forcastBaseUrl)!
         var queryItems = [URLQueryItem]()
         
         let baseParams = [
@@ -94,7 +94,7 @@ struct WeatherAPI {
         return components.url!
     }
     
-    func getWeatherForLocation(completion: @escaping (WeatherForcast?) -> Void){
+    func getWeatherForcastForBusiness(completion: @escaping (WeatherForecast?) -> Void){
         
         let url = getWeatherForcastUrl()
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -105,14 +105,14 @@ struct WeatherAPI {
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                
-                guard let safeResponse = try? JSONDecoder().decode(WeatherResult.self, from: data) else {
+                print(String(data: data, encoding: .utf8))
+                guard let safeResponse = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
                     print("error decoding")
                     return
                 }
         
-                let weatherResult = safeResponse
-                return completion(weatherResult)
+                let weatherForcaseResult = safeResponse
+                return completion(weatherForcaseResult)
 
                 }
             }
