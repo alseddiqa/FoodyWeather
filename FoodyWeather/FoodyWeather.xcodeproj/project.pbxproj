@@ -30,6 +30,7 @@
 		B83DA7F1258F36950004A403 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7F0258F36950004A403 /* MapViewController.swift */; };
 		B83DA7F6258F786F0004A403 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */; };
 		B83DA7FB258FBB800004A403 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */; };
+		B83DA8092590D3200004A403 /* WeatherForcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA8082590D3200004A403 /* WeatherForcast.swift */; };
 		B8447BAC258BC29400280790 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8447BAB258BC29400280790 /* WeatherAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		B83DA7F0258F36950004A403 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 		B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
+		B83DA8082590D3200004A403 /* WeatherForcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForcast.swift; sourceTree = "<group>"; };
 		B8447BAB258BC29400280790 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +146,7 @@
 				B8447BAB258BC29400280790 /* WeatherAPI.swift */,
 				B83DA7E5258E38700004A403 /* UserLocationService.swift */,
 				B80397B1258BF51A006B9376 /* LocationWeather.swift */,
+				B83DA8082590D3200004A403 /* WeatherForcast.swift */,
 				B838352A258B9B4A003A4D14 /* BusinessStore.swift */,
 				B8383517258A7657003A4D14 /* BusinessTableCell.swift */,
 				B8383512258A75D2003A4D14 /* BusinessesViewController.swift */,
@@ -307,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B838352B258B9B4A003A4D14 /* BusinessStore.swift in Sources */,
+				B83DA8092590D3200004A403 /* WeatherForcast.swift in Sources */,
 				B83DA7F6258F786F0004A403 /* MainNavigationViewController.swift in Sources */,
 				B83834C6258A337B003A4D14 /* ViewController.swift in Sources */,
 				B8383520258B76A3003A4D14 /* YelpStars.swift in Sources */,

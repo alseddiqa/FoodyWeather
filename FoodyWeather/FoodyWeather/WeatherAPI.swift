@@ -11,9 +11,7 @@ import Foundation
 
 struct WeatherAPI {
         
-    //Declaring params to prepare for call
-    var currentWeather: CurrentWeather!
-    
+    let forcastBaseUrl = "http://api.weatherapi.com/v1/forecast.json"
     let baseURLString = "http://api.weatherapi.com/v1/current.json"
     private var apiKey = "96e182aa893140daa75163258201712"
 
@@ -54,6 +52,51 @@ struct WeatherAPI {
     func getWeatherForLocation(completion: @escaping (WeatherResult?) -> Void){
         
         let url = getWeatherUrl()
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+                
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                
+                guard let safeResponse = try? JSONDecoder().decode(WeatherResult.self, from: data) else {
+                    print("error decoding")
+                    return
+                }
+        
+                let weatherResult = safeResponse
+                return completion(weatherResult)
+
+                }
+            }
+        
+            task.resume()
+    }
+    
+    func getWeatherForcastUrl() -> URL {
+        var components = URLComponents(string: baseURLString)!
+        var queryItems = [URLQueryItem]()
+        
+        let baseParams = [
+            "q": location,
+            "key": apiKey,
+            "days": "5"
+        ]
+        
+        for (key, value) in baseParams {
+            let item = URLQueryItem(name: key, value: value)
+            queryItems.append(item)
+        }
+        
+        components.queryItems = queryItems
+        return components.url!
+    }
+    
+    func getWeatherForLocation(completion: @escaping (WeatherForcast?) -> Void){
+        
+        let url = getWeatherForcastUrl()
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
                 
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)

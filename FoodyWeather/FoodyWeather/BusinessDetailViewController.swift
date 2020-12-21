@@ -28,6 +28,7 @@ class BusinessDetailViewController: UIViewController {
         reviewNum.text = String(business.reviewCount)
         let reviewDouble = business.rating
         starsImage.image = Stars.dict[reviewDouble]!
+        phoneNumLabel.text = business.displayPhone
     }
     
     override func viewDidLoad() {

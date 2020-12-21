@@ -85,10 +85,9 @@ class BusinessesViewController: UIViewController {
     }
     
     func loadBusinessesForPinnedLocation(cordinates: CLLocationCoordinate2D) {
-        if currentLocationStatus == false {
             businessesStore.loadBusinessesForLocation(lat: cordinates.latitude, lon: cordinates.longitude)
             self.getWeatherInformation(latitude: cordinates.latitude, longitude: cordinates.longitude)
-        }
+        
     }
     
     

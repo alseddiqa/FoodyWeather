@@ -297,19 +297,19 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XB8-dk-6xg">
-                                                <rect key="frame" x="-2" y="404" width="416" height="208"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                <connections>
-                                                    <segue destination="frj-mJ-gO4" kind="embed" identifier="BusinessMorePhotos" id="tuq-FY-PuE"/>
-                                                </connections>
-                                            </containerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNP-ay-Qs0">
                                                 <rect key="frame" x="20" y="370" width="374" height="25.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="0.13653683180000001" green="0.5" blue="0.1137791041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XB8-dk-6xg">
+                                                <rect key="frame" x="0.0" y="423" width="414" height="176"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                <connections>
+                                                    <segue destination="frj-mJ-gO4" kind="embed" identifier="BusinessMorePhotos" id="tuq-FY-PuE"/>
+                                                </connections>
+                                            </containerView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.95686274509803915" green="0.92156862745098034" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -422,28 +422,28 @@
             <objects>
                 <viewController id="frj-mJ-gO4" customClass="BusinessPhotosViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Gz-PN-mN7">
-                        <rect key="frame" x="0.0" y="0.0" width="416" height="208"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sdX-4H-5sw">
-                                <rect key="frame" x="0.0" y="0.0" width="416" height="208"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.92156862750000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CzG-9I-EJe">
-                                    <size key="itemSize" width="160" height="158"/>
+                                    <size key="itemSize" width="153" height="152"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BusinessPhotoCell" id="WwF-rX-8ox" customClass="PhotoCollectionViewCell" customModule="FoodyWeather" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="25" width="160" height="158"/>
+                                        <rect key="frame" x="5" y="12" width="153" height="152"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pkK-it-RqB">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="158"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="153" height="152"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uCi-FE-azp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="158"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="152"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -455,7 +455,7 @@
                                                 <constraint firstItem="uCi-FE-azp" firstAttribute="centerX" secondItem="pkK-it-RqB" secondAttribute="centerX" id="tTd-T9-cMB"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="160" height="158"/>
+                                        <size key="customSize" width="153" height="152"/>
                                         <connections>
                                             <outlet property="imageView" destination="uCi-FE-azp" id="UjC-up-eXW"/>
                                         </connections>
@@ -478,7 +478,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ERY-xj-nb6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5128.2608695652179" y="-104.79910714285714"/>
+            <point key="canvasLocation" x="5127.536231884058" y="-105.13392857142857"/>
         </scene>
     </scenes>
     <resources>
