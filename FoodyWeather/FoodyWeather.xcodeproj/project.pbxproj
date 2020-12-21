@@ -31,6 +31,8 @@
 		B83DA7F6258F786F0004A403 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */; };
 		B83DA7FB258FBB800004A403 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */; };
 		B83DA8092590D3200004A403 /* WeatherForcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA8082590D3200004A403 /* WeatherForcast.swift */; };
+		B83DA80E259107210004A403 /* WeatherDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA80D259107210004A403 /* WeatherDayCell.swift */; };
+		B83DA813259108630004A403 /* WeatherForcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA812259108630004A403 /* WeatherForcastViewController.swift */; };
 		B8447BAC258BC29400280790 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8447BAB258BC29400280790 /* WeatherAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 		B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
 		B83DA8082590D3200004A403 /* WeatherForcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForcast.swift; sourceTree = "<group>"; };
+		B83DA80D259107210004A403 /* WeatherDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDayCell.swift; sourceTree = "<group>"; };
+		B83DA812259108630004A403 /* WeatherForcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForcastViewController.swift; sourceTree = "<group>"; };
 		B8447BAB258BC29400280790 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +141,8 @@
 				B83834C3258A337B003A4D14 /* SceneDelegate.swift */,
 				B83834C5258A337B003A4D14 /* ViewController.swift */,
 				B83834C7258A337B003A4D14 /* Main.storyboard */,
+				B83DA812259108630004A403 /* WeatherForcastViewController.swift */,
+				B83DA80D259107210004A403 /* WeatherDayCell.swift */,
 				B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */,
 				B83DA7F0258F36950004A403 /* MapViewController.swift */,
 				B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */,
@@ -323,8 +329,10 @@
 				B83834C4258A337B003A4D14 /* SceneDelegate.swift in Sources */,
 				B8447BAC258BC29400280790 /* WeatherAPI.swift in Sources */,
 				B80397D1258D188C006B9376 /* BusinessPhotosViewController.swift in Sources */,
+				B83DA813259108630004A403 /* WeatherForcastViewController.swift in Sources */,
 				B80397D6258D1B86006B9376 /* PhotoCollectionViewCell.swift in Sources */,
 				B83DA7E6258E38700004A403 /* UserLocationService.swift in Sources */,
+				B83DA80E259107210004A403 /* WeatherDayCell.swift in Sources */,
 				B8383518258A7657003A4D14 /* BusinessTableCell.swift in Sources */,
 				B83834FE258A3CDD003A4D14 /* YelpAPI.swift in Sources */,
 				B83DA7F1258F36950004A403 /* MapViewController.swift in Sources */,

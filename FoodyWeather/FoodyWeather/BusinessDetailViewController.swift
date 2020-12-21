@@ -54,6 +54,10 @@ class BusinessDetailViewController: UIViewController {
             let destinationVC = segue.destination as! BusinessPhotosViewController
             destinationVC.business
             = business
+        case "forcastDays":
+            let destinationVC = segue.destination as! WeatherForcastViewController
+            destinationVC.business
+            = business
         default:
             preconditionFailure("Unexpected segue identifier.")
         }
