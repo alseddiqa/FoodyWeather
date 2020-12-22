@@ -26,7 +26,6 @@ class BusinessesViewController: UIViewController {
         super.viewDidLoad()
         
         
-        
         userLocationManager = UserLocationService()
         userLocationManager.delegate = self
         
@@ -68,7 +67,8 @@ class BusinessesViewController: UIViewController {
             }
             //self.cityLabel.text = weatherResult.location.name
             self.locationButton.setTitle(weatherResult.location.name, for: .normal)
-            self.tempratureLabel.text = String(weatherResult.current.tempC) + "°C"
+            let temp = Double(round(100*weatherResult.current.tempC)/100)
+            self.tempratureLabel.text = String(temp) + "°C"
             self.weatherConditionLabel.text = weatherResult.current.condition.text
         }
     }
