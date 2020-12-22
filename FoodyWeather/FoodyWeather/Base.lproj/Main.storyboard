@@ -257,12 +257,12 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CyS-C3-HGc">
-                                                <rect key="frame" x="20" y="245" width="374" height="102"/>
+                                                <rect key="frame" x="20" y="245" width="374" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZK-Ll-aPM">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" red="0.118929823" green="0.12367866819999999" blue="0.1335186428" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDk-6Q-XwO">
@@ -295,37 +295,40 @@
                                                         <color key="textColor" red="0.94684141870000005" green="0.35117870569999998" blue="0.47058701520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7e-IG-0Xb">
+                                                        <rect key="frame" x="0.0" y="106" width="374" height="22"/>
+                                                        <state key="normal" title="address" image="location" catalog="system">
+                                                            <color key="titleColor" systemColor="systemBlueColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="openMap:" destination="9f5-AJ-8sb" eventType="touchUpInside" id="w4F-IB-0v4"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XB8-dk-6xg">
-                                                <rect key="frame" x="0.0" y="423" width="414" height="160"/>
+                                                <rect key="frame" x="0.0" y="423" width="414" height="135"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <connections>
                                                     <segue destination="frj-mJ-gO4" kind="embed" identifier="BusinessMorePhotos" id="tuq-FY-PuE"/>
                                                 </connections>
                                             </containerView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNP-ay-Qs0">
-                                                <rect key="frame" x="20" y="370" width="374" height="25.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <color key="textColor" systemColor="systemBlueColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TRb-v2-1J0">
-                                                <rect key="frame" x="0.0" y="645" width="414" height="144"/>
+                                                <rect key="frame" x="0.0" y="595" width="414" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <connections>
                                                     <segue destination="z5P-8L-Lmg" kind="embed" identifier="forcastDays" id="TeL-HH-1E0"/>
                                                 </connections>
                                             </containerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weather Forcast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jd1-Bb-IIF">
-                                                <rect key="frame" x="144" y="616" width="126" height="21"/>
+                                                <rect key="frame" x="144" y="566" width="126" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" systemColor="systemBlueColor"/>
+                                                <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnb-k2-9Q3">
-                                                <rect key="frame" x="135" y="797" width="145" height="30"/>
+                                                <rect key="frame" x="135" y="731" width="145" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.41502902330000002" green="0.55771295509999996" blue="0.47058701520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
@@ -333,10 +336,16 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNP-ay-Qs0">
+                                                <rect key="frame" x="20" y="390" width="374" height="25.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.95686274509803915" green="0.92156862745098034" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="DNP-ay-Qs0" firstAttribute="top" secondItem="CyS-C3-HGc" secondAttribute="bottom" constant="23" id="2ld-8v-S5a"/>
+                                            <constraint firstItem="DNP-ay-Qs0" firstAttribute="top" secondItem="CyS-C3-HGc" secondAttribute="bottom" constant="17" id="2ld-8v-S5a"/>
                                             <constraint firstItem="CyS-C3-HGc" firstAttribute="top" secondItem="sIG-4F-qtq" secondAttribute="bottom" constant="20" id="DNP-IF-VqO"/>
                                             <constraint firstAttribute="trailing" secondItem="sIG-4F-qtq" secondAttribute="trailing" id="Igw-fg-oVI"/>
                                             <constraint firstItem="CyS-C3-HGc" firstAttribute="leading" secondItem="Okg-jA-t4A" secondAttribute="leading" constant="20" id="LCu-A8-9Fp"/>
@@ -371,6 +380,7 @@
                     <navigationItem key="navigationItem" id="POw-S5-NGH"/>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="addressButton" destination="j7e-IG-0Xb" id="gxB-vp-eVt"/>
                         <outlet property="businessImage" destination="sIG-4F-qtq" id="IWy-iZ-lje"/>
                         <outlet property="categoryLabel" destination="PDk-6Q-XwO" id="qfP-P7-Lwr"/>
                         <outlet property="nameOfBusiness" destination="0ZK-Ll-aPM" id="7oP-cy-DQS"/>
@@ -445,28 +455,28 @@
             <objects>
                 <viewController id="frj-mJ-gO4" customClass="BusinessPhotosViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Gz-PN-mN7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sdX-4H-5sw">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.92156862750000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CzG-9I-EJe">
-                                    <size key="itemSize" width="140" height="138"/>
+                                    <size key="itemSize" width="124" height="121"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BusinessPhotoCell" id="WwF-rX-8ox" customClass="PhotoCollectionViewCell" customModule="FoodyWeather" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="11" width="140" height="138"/>
+                                        <rect key="frame" x="5" y="7" width="124" height="121"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pkK-it-RqB">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="138"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="124" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uCi-FE-azp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="138"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="124" height="121"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -478,7 +488,7 @@
                                                 <constraint firstItem="uCi-FE-azp" firstAttribute="centerX" secondItem="pkK-it-RqB" secondAttribute="centerX" id="tTd-T9-cMB"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="140" height="138"/>
+                                        <size key="customSize" width="124" height="121"/>
                                         <connections>
                                             <outlet property="imageView" destination="uCi-FE-azp" id="UjC-up-eXW"/>
                                         </connections>
@@ -501,18 +511,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ERY-xj-nb6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4526" y="-137"/>
+            <point key="canvasLocation" x="4524.6376811594209" y="-137.61160714285714"/>
         </scene>
         <!--WeatherForcastViewController-->
         <scene sceneID="lWZ-Fw-kCk">
             <objects>
                 <viewController title="WeatherForcastViewController" id="z5P-8L-Lmg" customClass="WeatherForcastViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4xR-yp-Ou1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UwU-da-a8d">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.92156862750000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zSl-Aq-7DT">
                                     <size key="itemSize" width="110" height="103"/>
@@ -522,7 +532,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WeatherDayCell" id="vep-Ph-sR1" customClass="WeatherDayCell" customModule="FoodyWeather" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="20.5" width="110" height="103"/>
+                                        <rect key="frame" x="5" y="12.5" width="110" height="103"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kyI-JT-DhG">
                                             <rect key="frame" x="0.0" y="0.0" width="110" height="103"/>
@@ -581,6 +591,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="wDR-j2-aL4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UwU-da-a8d" firstAttribute="top" secondItem="4xR-yp-Ou1" secondAttribute="top" id="0R1-Wk-3JG"/>
@@ -599,6 +610,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="location" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <image name="sky" width="496" height="331"/>

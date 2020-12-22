@@ -68,16 +68,23 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
     }
 
     
-    func getDateText(dateString: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+    func getDateText(index: Int , dateString: String) -> String {
+        switch index{
+        case 0:
+           return "Today"
+        case 1:
+            return "Tomorrow"
+        default:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
 
-        let calendar = Calendar.current
-        
-        let date = dateFormatter.date(from: dateString)!
-        let day = calendar.component(.day, from: date)
-        let month = String(date.month.prefix(3))
-        return month + " " + String(day)
+            let calendar = Calendar.current
+            
+            let date = dateFormatter.date(from: dateString)!
+            let day = calendar.component(.day, from: date)
+            let month = String(date.month.prefix(3))
+            return month + " " + String(day)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,15 +98,8 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
         let weather = forcastDays[indexPath.item]
         cell.weatherTempLabel.text = String(weather.day.avgtempC) + "°C"
         cell.weatherImage.load(url: URL(string: "http:" + weather.day.condition.icon)!)
-        
-        switch indexPath.item{
-        case 0:
-            cell.dayLabel.text = "Today"
-        case 1:
-            cell.dayLabel.text = "Tomorrow"
-        default:
-            cell.dayLabel.text = getDateText(dateString: weather.date)
-        }
+        cell.dayLabel.text = getDateText(index: indexPath.item, dateString: weather.date)
+
         cell.shadowDecorate()
         return cell
     }
