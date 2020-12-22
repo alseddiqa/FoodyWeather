@@ -8,7 +8,9 @@
 import UIKit
 
 class WeatherHourCell: UITableViewCell {
-
+    
+    @IBOutlet var conditionIcon: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
