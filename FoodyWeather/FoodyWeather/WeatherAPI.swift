@@ -11,9 +11,7 @@ import Foundation
 
 struct WeatherAPI {
         
-    //Declaring params to prepare for call
-    var currentWeather: CurrentWeather!
-    
+    let forcastBaseUrl = "http://api.weatherapi.com/v1/forecast.json"
     let baseURLString = "http://api.weatherapi.com/v1/current.json"
     private var apiKey = "96e182aa893140daa75163258201712"
 
@@ -70,6 +68,96 @@ struct WeatherAPI {
         
                 let weatherResult = safeResponse
                 return completion(weatherResult)
+
+                }
+            }
+        
+            task.resume()
+    }
+    
+    func getWeatherForcastUrl() -> URL {
+        var components = URLComponents(string: forcastBaseUrl)!
+        var queryItems = [URLQueryItem]()
+        
+        let baseParams = [
+            "q": location,
+            "key": apiKey,
+            "days": "5"
+        ]
+        
+        for (key, value) in baseParams {
+            let item = URLQueryItem(name: key, value: value)
+            queryItems.append(item)
+        }
+        
+        components.queryItems = queryItems
+        return components.url!
+    }
+    
+    func getWeatherForcastForBusiness(completion: @escaping (WeatherForecast?) -> Void){
+        
+        let url = getWeatherForcastUrl()
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+                
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                guard let safeResponse = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
+                    print("error decoding")
+                    return
+                }
+        
+                let weatherForcaseResult = safeResponse
+                return completion(weatherForcaseResult)
+
+                }
+            }
+        
+            task.resume()
+    }
+    
+    func getWeatherForcastUrlForDay(date: String) -> URL {
+        var components = URLComponents(string: forcastBaseUrl)!
+        var queryItems = [URLQueryItem]()
+        
+        print(date)
+        let baseParams = [
+            "q": location,
+            "key": apiKey,
+            "dt": date
+        ]
+        
+        for (key, value) in baseParams {
+            let item = URLQueryItem(name: key, value: value)
+            queryItems.append(item)
+        }
+        
+        components.queryItems = queryItems
+        return components.url!
+    }
+    
+    func getWeatherInformationForDay(date: String, completion: @escaping (WeatherForecast?) -> Void){
+        
+        let url = getWeatherForcastUrlForDay(date: date)
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        print(url)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                //print(String(data: data, encoding: .utf8))
+                guard let safeResponse = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
+                    print("error decoding")
+                    return
+                }
+        
+                let weatherForcaseResult = safeResponse
+                return completion(weatherForcaseResult)
 
                 }
             }

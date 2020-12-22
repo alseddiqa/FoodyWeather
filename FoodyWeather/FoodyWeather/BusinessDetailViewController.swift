@@ -28,6 +28,7 @@ class BusinessDetailViewController: UIViewController {
         reviewNum.text = String(business.reviewCount)
         let reviewDouble = business.rating
         starsImage.image = Stars.dict[reviewDouble]!
+        phoneNumLabel.text = business.displayPhone
     }
     
     override func viewDidLoad() {
@@ -51,6 +52,10 @@ class BusinessDetailViewController: UIViewController {
         switch segue.identifier {
         case "BusinessMorePhotos":
             let destinationVC = segue.destination as! BusinessPhotosViewController
+            destinationVC.business
+            = business
+        case "forcastDays":
+            let destinationVC = segue.destination as! WeatherForcastViewController
             destinationVC.business
             = business
         default:
