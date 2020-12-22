@@ -36,8 +36,37 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
             self.forcast = weatherFocaseResult.forecast
             self.forcastDays = self.forcast.forecastday
             self.collectionView.reloadData()
+            self.getWeatherForNextDays()
         }
     }
+    
+    func getWeatherForNextDays() {
+        var today = Date()
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        for _ in 1...4 {
+            let updateDay = calendar.date(byAdding: .day, value: 1, to: today)
+            today = updateDay!
+            let dateString = dateFormatter.string(from: updateDay!)
+            requestWeatherInformationForDay(date: dateString)
+        }
+    }
+    
+    func  requestWeatherInformationForDay(date: String) {
+        let api = WeatherAPI(lat: business.coordinates.latitude, lon: business.coordinates.longitude)
+        api.getWeatherInformationForDay(date: date)
+        { (weatherFocaseResult) in
+            guard let weatherFocaseResult = weatherFocaseResult else {
+                return
+            }
+            self.forcastDays += weatherFocaseResult.forecast.forecastday
+            self.collectionView.reloadData()
+        }
+        
+    }
+
     
     func getDateText(dateString: String) -> String {
         let dateFormatter = DateFormatter()
@@ -59,7 +88,7 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
         let identifier = "WeatherDayCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! WeatherDayCell
         
-        let weather = forcast.forecastday[indexPath.item]
+        let weather = forcastDays[indexPath.item]
         cell.weatherTempLabel.text = String(weather.day.avgtempC) + "°C"
         cell.weatherImage.load(url: URL(string: "http:" + weather.day.condition.icon)!)
         
@@ -68,13 +97,21 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
             cell.dayLabel.text = "Today"
         case 1:
             cell.dayLabel.text = "Tomorrow"
-        case 2:
-            cell.dayLabel.text = getDateText(dateString: weather.date)
         default:
-            0
+            cell.dayLabel.text = getDateText(dateString: weather.date)
         }
         cell.shadowDecorate()
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let foter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "AnotherDay", for: indexPath) as UICollectionReusableView
+        
+//        anotherDay.layer.cornerRadius = 20.0
+//        anotherDay.layer.masksToBounds = true
+        
+        return foter
     }
     
 }

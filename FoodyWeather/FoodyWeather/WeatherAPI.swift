@@ -105,7 +105,52 @@ struct WeatherAPI {
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                print(String(data: data, encoding: .utf8))
+                guard let safeResponse = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
+                    print("error decoding")
+                    return
+                }
+        
+                let weatherForcaseResult = safeResponse
+                return completion(weatherForcaseResult)
+
+                }
+            }
+        
+            task.resume()
+    }
+    
+    func getWeatherForcastUrlForDay(date: String) -> URL {
+        var components = URLComponents(string: forcastBaseUrl)!
+        var queryItems = [URLQueryItem]()
+        
+        print(date)
+        let baseParams = [
+            "q": location,
+            "key": apiKey,
+            "dt": date
+        ]
+        
+        for (key, value) in baseParams {
+            let item = URLQueryItem(name: key, value: value)
+            queryItems.append(item)
+        }
+        
+        components.queryItems = queryItems
+        return components.url!
+    }
+    
+    func getWeatherInformationForDay(date: String, completion: @escaping (WeatherForecast?) -> Void){
+        
+        let url = getWeatherForcastUrlForDay(date: date)
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        print(url)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                //print(String(data: data, encoding: .utf8))
                 guard let safeResponse = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
                     print("error decoding")
                     return

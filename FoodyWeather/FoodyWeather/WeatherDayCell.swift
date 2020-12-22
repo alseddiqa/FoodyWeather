@@ -13,5 +13,8 @@ class WeatherDayCell: UICollectionViewCell {
     @IBOutlet var weatherTempLabel: UILabel!
     @IBOutlet var dayLabel: UILabel!
     
-    
+    override func layoutSubviews() {
+        weatherImage.layer.cornerRadius = 7.5
+        weatherImage.layer.masksToBounds = true
+    }
 }
