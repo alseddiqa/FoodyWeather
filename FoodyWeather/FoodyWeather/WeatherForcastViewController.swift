@@ -104,6 +104,20 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "weatherDayDetail":
+            if let selectedIndexPath =
+                collectionView.indexPathsForSelectedItems?.first {
+                let dayForcast = forcastDays[selectedIndexPath.row]
+                let destinationVC = segue.destination as! DayWeatherDetailViewController
+                destinationVC.forcastDay = dayForcast
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier.")
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let foter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "AnotherDay", for: indexPath) as UICollectionReusableView

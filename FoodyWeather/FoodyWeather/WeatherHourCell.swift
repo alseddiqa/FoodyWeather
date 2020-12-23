@@ -10,6 +10,9 @@ import UIKit
 class WeatherHourCell: UITableViewCell {
     
     @IBOutlet var conditionIcon: UIImageView!
+    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var tempLabel: UILabel!
+    @IBOutlet var rainChanceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
