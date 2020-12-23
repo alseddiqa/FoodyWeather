@@ -17,10 +17,26 @@ class BusinessHourCell: UICollectionViewCell {
     @IBOutlet var hoursOpenLabel: UILabel!
     
     override func layoutSubviews() {
+        
+        let radius: CGFloat = 10
+        contentView.layer.cornerRadius = radius
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.clear.cgColor
+        contentView.layer.masksToBounds = false
+        
+    
+        
         clockAnimation = .init(name: "clockAnimation")
         clockAnimation?.frame = viewBackground.frame
-        clockAnimation?.loopMode = .loop
         viewBackground.addSubview(clockAnimation!)
+
+        clockAnimation?.centerXAnchor.constraint(equalTo: viewBackground.centerXAnchor).isActive = true
+        clockAnimation?.centerYAnchor.constraint(equalTo: viewBackground.centerYAnchor).isActive = true
+        clockAnimation?.translatesAutoresizingMaskIntoConstraints = false
+
+        clockAnimation?.loopMode = .loop
         clockAnimation?.play()
+        
+        
     }
 }
