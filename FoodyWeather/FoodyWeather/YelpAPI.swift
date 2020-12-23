@@ -125,11 +125,8 @@ struct YelpAPI {
         
         var components = URLComponents(string: businessDetailbaseURL)!
         components.path += "/\(id)"
-        print(components)
 
         let url = components.url!
-        
-        print(url)
         
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         

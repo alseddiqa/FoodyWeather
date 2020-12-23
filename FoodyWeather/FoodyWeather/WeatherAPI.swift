@@ -123,7 +123,6 @@ struct WeatherAPI {
         var components = URLComponents(string: forcastBaseUrl)!
         var queryItems = [URLQueryItem]()
         
-        print(date)
         let baseParams = [
             "q": location,
             "key": apiKey,
@@ -143,7 +142,6 @@ struct WeatherAPI {
         
         let url = getWeatherForcastUrlForDay(date: date)
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        print(url)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
             // This will run when the network request returns
