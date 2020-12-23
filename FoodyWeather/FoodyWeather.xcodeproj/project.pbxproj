@@ -38,6 +38,7 @@
 		B83DA82B259286290004A403 /* WeatherHourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83DA82A259286290004A403 /* WeatherHourCell.swift */; };
 		B8447BAC258BC29400280790 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8447BAB258BC29400280790 /* WeatherAPI.swift */; };
 		B85097CB2593A8FA0037708D /* clockAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B85097CA2593A8FA0037708D /* clockAnimation.json */; };
+		B85097D02593B5FB0037708D /* BusinessHourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85097CF2593B5FB0037708D /* BusinessHourCell.swift */; };
 		CFC10B0580E3343EA02D1884 /* Pods_FoodyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821669E9BD3672240BFE3E3A /* Pods_FoodyWeather.framework */; };
 		D1D2FA63B770AB0D2977B1EA /* Pods_FoodyWeather_FoodyWeatherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2040221F44DBB0C44EB94 /* Pods_FoodyWeather_FoodyWeatherUITests.framework */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		B83DA82A259286290004A403 /* WeatherHourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHourCell.swift; sourceTree = "<group>"; };
 		B8447BAB258BC29400280790 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		B85097CA2593A8FA0037708D /* clockAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = clockAnimation.json; sourceTree = "<group>"; };
+		B85097CF2593B5FB0037708D /* BusinessHourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessHourCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				B83834C3258A337B003A4D14 /* SceneDelegate.swift */,
 				B83834C5258A337B003A4D14 /* ViewController.swift */,
 				B83834C7258A337B003A4D14 /* Main.storyboard */,
+				B85097CF2593B5FB0037708D /* BusinessHourCell.swift */,
 				B83DA82A259286290004A403 /* WeatherHourCell.swift */,
 				B83DA82525927A920004A403 /* DayWeatherDetailViewController.swift */,
 				B83DA812259108630004A403 /* WeatherForcastViewController.swift */,
@@ -495,6 +498,7 @@
 				B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */,
 				B83834C4258A337B003A4D14 /* SceneDelegate.swift in Sources */,
 				B8447BAC258BC29400280790 /* WeatherAPI.swift in Sources */,
+				B85097D02593B5FB0037708D /* BusinessHourCell.swift in Sources */,
 				B83DA82B259286290004A403 /* WeatherHourCell.swift in Sources */,
 				B80397D1258D188C006B9376 /* BusinessPhotosViewController.swift in Sources */,
 				B83DA813259108630004A403 /* WeatherForcastViewController.swift in Sources */,
