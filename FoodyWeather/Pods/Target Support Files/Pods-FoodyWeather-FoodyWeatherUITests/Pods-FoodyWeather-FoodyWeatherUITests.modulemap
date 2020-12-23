@@ -1,0 +1,6 @@
+framework module Pods_FoodyWeather_FoodyWeatherUITests {
+  umbrella header "Pods-FoodyWeather-FoodyWeatherUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

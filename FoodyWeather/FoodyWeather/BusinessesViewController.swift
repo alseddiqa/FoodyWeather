@@ -22,11 +22,13 @@ class BusinessesViewController: UIViewController {
     @IBOutlet var weatherConditionLabel: UILabel!
     @IBOutlet var locationButton: UIButton!
     @IBOutlet var spinner: UIActivityIndicatorView!
+    @IBOutlet var locationIcon: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         spinner.startAnimating()
+        locationIcon.isHidden = true
         userLocationManager = UserLocationService()
         userLocationManager.delegate = self
         
@@ -55,6 +57,7 @@ class BusinessesViewController: UIViewController {
             }
             spinner.stopAnimating()
             spinner.isHidden = true
+            locationIcon.isHidden = false
             
         }
     }
