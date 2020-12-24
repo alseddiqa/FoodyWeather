@@ -15,6 +15,7 @@ class BusinessHourCell: UICollectionViewCell {
     @IBOutlet var viewBackground: UIView!
     @IBOutlet var dayLabel: UILabel!
     @IBOutlet var hoursOpenLabel: UILabel!
+    @IBOutlet var closingHourLabel: UILabel!
     
     override func layoutSubviews() {
         
@@ -23,8 +24,6 @@ class BusinessHourCell: UICollectionViewCell {
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.clear.cgColor
         contentView.layer.masksToBounds = false
-        
-    
         
         clockAnimation = .init(name: "clockAnimation")
         clockAnimation?.frame = viewBackground.frame
@@ -35,6 +34,7 @@ class BusinessHourCell: UICollectionViewCell {
         clockAnimation?.translatesAutoresizingMaskIntoConstraints = false
 
         clockAnimation?.loopMode = .loop
+        clockAnimation?.animationSpeed = 0.5
         clockAnimation?.play()
         
         
