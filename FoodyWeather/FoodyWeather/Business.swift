@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Empty
+// MARK: - Result Businesses
 struct Result: Codable {
     let businesses: [Business]
     let total: Int

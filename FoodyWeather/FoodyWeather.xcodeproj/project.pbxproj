@@ -41,6 +41,7 @@
 		B85097D02593B5FB0037708D /* BusinessHourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85097CF2593B5FB0037708D /* BusinessHourCell.swift */; };
 		B85097D52593B8DB0037708D /* BusinessHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85097D42593B8DB0037708D /* BusinessHoursViewController.swift */; };
 		B85097E12594D2D70037708D /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85097E02594D2D70037708D /* ImageStore.swift */; };
+		B85097EC2594D70A0037708D /* SavedBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85097EB2594D70A0037708D /* SavedBusiness.swift */; };
 		CFC10B0580E3343EA02D1884 /* Pods_FoodyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821669E9BD3672240BFE3E3A /* Pods_FoodyWeather.framework */; };
 		D1D2FA63B770AB0D2977B1EA /* Pods_FoodyWeather_FoodyWeatherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2040221F44DBB0C44EB94 /* Pods_FoodyWeather_FoodyWeatherUITests.framework */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,7 @@
 		B85097CF2593B5FB0037708D /* BusinessHourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessHourCell.swift; sourceTree = "<group>"; };
 		B85097D42593B8DB0037708D /* BusinessHoursViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessHoursViewController.swift; sourceTree = "<group>"; };
 		B85097E02594D2D70037708D /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		B85097EB2594D70A0037708D /* SavedBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedBusiness.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				B83834FD258A3CDD003A4D14 /* YelpAPI.swift */,
 				B83DA7DA258D2BA20004A403 /* BusinessDetail.swift */,
 				B85097E02594D2D70037708D /* ImageStore.swift */,
+				B85097EB2594D70A0037708D /* SavedBusiness.swift */,
 			);
 			path = FoodyWeather;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				B80397B2258BF51A006B9376 /* LocationWeather.swift in Sources */,
 				B83834F9258A3794003A4D14 /* Business.swift in Sources */,
 				B83DA7DB258D2BA20004A403 /* BusinessDetail.swift in Sources */,
+				B85097EC2594D70A0037708D /* SavedBusiness.swift in Sources */,
 				B8383513258A75D2003A4D14 /* BusinessesViewController.swift in Sources */,
 				B83DA82625927A920004A403 /* DayWeatherDetailViewController.swift in Sources */,
 				B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */,
