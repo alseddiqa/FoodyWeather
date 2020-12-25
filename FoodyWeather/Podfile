@@ -7,6 +7,7 @@ target 'FoodyWeather' do
 
   # Pods for FoodyWeather
 	pod 'lottie-ios'
+	pod 'Kingfisher', '~> 5.0'
 
   target 'FoodyWeatherTests' do
     inherit! :search_paths

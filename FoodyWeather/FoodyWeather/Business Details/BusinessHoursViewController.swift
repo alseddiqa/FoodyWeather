@@ -14,13 +14,16 @@ class BusinessHoursViewController: UIViewController, UICollectionViewDelegate, U
     var business: Business!
     var businessDetail: BusinessDetail!
     var businessHours = [Open]()
-    
+    var businessStorage: BusinessStorage!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collectionView.dataSource = self
         collectionView.delegate = self
-        getBusinessDetails(businessId: business.id)
+        if business != nil {
+            getBusinessDetails(businessId: business.id)
+        }
     }
 
     func getBusinessDetails(businessId: String) {
@@ -33,7 +36,16 @@ class BusinessHoursViewController: UIViewController, UICollectionViewDelegate, U
             //do more update to UI
             self.businessHours = self.businessDetail.hours[0].hourOpen
             self.collectionView.reloadData()
+            self.storeBusinessHours()
         }
+    }
+    
+    func storeBusinessHours() {
+        let b = SavedBusiness(name: business.name, businessId: business.id, reviewCount: business.reviewCount, businessLocation: business.location, category: business.categories[0].title, rating: business.rating, phone: business.displayPhone, imageURL: business.imageURL)
+        businessStorage.addBusiness(b)
+        let updated = b
+        updated.businessHours = self.businessHours
+        businessStorage.updateBusinessInformaton(oldBusiness: b, newBusiness: updated)
     }
     
     func getTimeOfDay(hour: Int) -> String {

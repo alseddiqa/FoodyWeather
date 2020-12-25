@@ -12,6 +12,8 @@ class BusinessPhotosViewController: UIViewController, UICollectionViewDelegate, 
     var business: Business!
     var businessDetails: BusinessDetail!
     var businessPhotos = [URL]()
+    var businessStorage: BusinessStorage!
+
 
     @IBOutlet var collectionView: UICollectionView!
     
@@ -21,7 +23,9 @@ class BusinessPhotosViewController: UIViewController, UICollectionViewDelegate, 
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.delegate = self
-        getBusinessDetails(businessId: business.id)
+        if business != nil {
+            getBusinessDetails(businessId: business.id)
+        }
     }
     
     func getBusinessDetails(businessId: String) {
@@ -32,6 +36,7 @@ class BusinessPhotosViewController: UIViewController, UICollectionViewDelegate, 
             }
             self.businessDetails = details
             self.getPhotosURLs()
+            self.storeBusinessPhotos()
             //do more update to UI
         }
     }
@@ -42,6 +47,14 @@ class BusinessPhotosViewController: UIViewController, UICollectionViewDelegate, 
             businessPhotos.append(url!)
         }
         collectionView.reloadData()
+    }
+    
+    func storeBusinessPhotos() {
+        let b = SavedBusiness(name: business.name, businessId: business.id, reviewCount: business.reviewCount, businessLocation: business.location, category: business.categories[0].title, rating: business.rating, phone: business.displayPhone, imageURL: business.imageURL)
+        businessStorage.addBusiness(b)
+        let updated = b
+        updated.businessPhotos = self.businessPhotos
+        businessStorage.updateBusinessInformaton(oldBusiness: b, newBusiness: updated)
     }
 
     
@@ -54,7 +67,7 @@ class BusinessPhotosViewController: UIViewController, UICollectionViewDelegate, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! PhotoCollectionViewCell
         
         let imageUrl = businessPhotos[indexPath.item]
-        cell.imageView.load(url: imageUrl)
+        cell.imageView.kf.setImage(with: imageUrl)
         cell.shadowDecorate()
         return cell
     }
