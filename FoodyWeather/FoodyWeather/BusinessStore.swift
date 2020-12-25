@@ -38,12 +38,16 @@ class BusinessStore {
                 return
             }
             self.businesses = restaurants
-            nc.post(name: .businessesLoadedYelp, object: self)
+            nc.post(name: .businessesSearchYelp, object: self)
         }
     }
 }
 
 extension Notification.Name {
     static let businessesLoadedYelp = Notification.Name(rawValue: "businessesLoadedYelp")
+    static let businessesSearchYelp = Notification.Name(rawValue: "businessesSearchYelp")
+    static let noConnection = Notification.Name(rawValue: "noConnection")
+
+    
 }
 

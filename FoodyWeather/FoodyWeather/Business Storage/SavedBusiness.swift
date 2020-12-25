@@ -17,8 +17,9 @@ class SavedBusiness: Equatable, Codable {
     let reviewCount: Int
     let businessRating: Double
     let location: Location
+    let imageURL: String
     
-    init(name: String, businessId: String, reviewCount: Int, businessLocation: Location, category: String, rating: Double, phone: String) {
+    init(name: String, businessId: String, reviewCount: Int, businessLocation: Location, category: String, rating: Double, phone: String, imageURL: String) {
         self.name = name
         self.id = businessId
         self.reviewCount = reviewCount
@@ -26,5 +27,7 @@ class SavedBusiness: Equatable, Codable {
         self.businessCategory = category
         self.businessRating = rating
         self.displayPhone = phone
+        self.imageURL = imageURL
     }
+    
 }

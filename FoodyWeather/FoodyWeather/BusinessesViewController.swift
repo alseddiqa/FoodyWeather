@@ -7,14 +7,18 @@
 
 import UIKit
 import CoreLocation
+import Kingfisher
+import Network
 
 class BusinessesViewController: UIViewController {
 
     var businessesStore: BusinessStore!
     var userLocationManager: UserLocationService!
     var currentLocationStatus: Bool = true
+    var savedBusinesses: BusinessStorage!
+    var imageStore: ImageStore!
+    var connectedToWifi: Bool = true
 
-    
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var weatherImage: UIImageView!
@@ -28,21 +32,26 @@ class BusinessesViewController: UIViewController {
         super.viewDidLoad()
         
         spinner.startAnimating()
+        
+        savedBusinesses = BusinessStorage()
+        checkInternetConnection()
+        
+
         locationIcon.isHidden = true
-        userLocationManager = UserLocationService()
-        userLocationManager.delegate = self
         
+        if connectedToWifi == true {
+            userLocationManager = UserLocationService()
+            userLocationManager.delegate = self
+
+            businessesStore = BusinessStore()
+        }
         
-        businessesStore = BusinessStore()
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(observeStoreLoadNotification(note:)),
-                                               name: .businessesLoadedYelp,
-                                               object: nil)
-        
+        observeLoadNotifications()
+
         setUpSubView()
     }
     
@@ -62,6 +71,68 @@ class BusinessesViewController: UIViewController {
         }
     }
     
+    func checkInternetConnection(){
+        let nc = NotificationCenter.default
+
+        let monitor = NWPathMonitor()
+        
+        monitor.pathUpdateHandler = { path in
+            print("clos")
+            if path.status != .satisfied {
+                // Not connected
+                print("not connected")
+                self.connectedToWifi = false
+                nc.post(name: .noConnection, object: self)
+            }
+            else if path.usesInterfaceType(.cellular) {
+                // Cellular 3/4/5g connection
+            }
+            else if path.usesInterfaceType(.wifi) {
+                // Wi-fi connection
+            }
+            else if path.usesInterfaceType(.wiredEthernet) {
+                // Ethernet connection
+            }
+        }
+         
+        monitor.start(queue: DispatchQueue.global(qos: .background))
+         
+    }
+    
+    func observeLoadNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(observeStoreLoadNotification(note:)),
+                                               name: .businessesLoadedYelp,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(observeStoreSearchNotificataion(note:)),
+                                               name: .businessesSearchYelp,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(loadBusinessFromDisk(note:)),
+                                               name: .noConnection,
+                                               object: nil)
+    }
+    
+    @objc func observeStoreSearchNotificataion(note: Notification) {
+        tableView.reloadData()
+        if businessesStore.businesses.count != 0 {
+            let city = businessesStore.businesses[0].location.city
+            let state = businessesStore.businesses[0].location.state
+            if state.count != 0 && city.count != 0 {
+                let location = city + "," + state
+                locationButton.setTitle(location, for: .application)
+            }
+            spinner.stopAnimating()
+            spinner.isHidden = true
+            locationIcon.isHidden = false
+            
+        }
+        storeSearchResults()
+    }
+    
     func getWeatherInformation(latitude: Double, longitude: Double) {
         let api = WeatherAPI(lat: latitude, lon: longitude)
         api.getWeatherForLocation() { (weatherResult) in
@@ -78,7 +149,19 @@ class BusinessesViewController: UIViewController {
             self.weatherConditionLabel.text = weatherResult.current.condition.text
         }
     }
-
+    
+    func storeSearchResults() {
+        let list = businessesStore.businesses
+        if businessesStore.businesses.count != 0 {
+            for b in list {
+                let business = SavedBusiness(name: b.name, businessId: b.id, reviewCount: b.reviewCount, businessLocation: b.location, category: b.categories[0].title, rating: b.rating, phone: b.displayPhone, imageURL: b.imageURL)
+                savedBusinesses.addBusiness(business)
+                print(savedBusinesses.businessList)
+                
+            }
+        }
+        
+    }
     
     func setUpSubView() {
         searchTextField.layer.cornerRadius = 15.0
@@ -94,6 +177,15 @@ class BusinessesViewController: UIViewController {
             businessesStore.loadBusinessesForLocation(lat: cordinates.latitude, lon: cordinates.longitude)
             self.getWeatherInformation(latitude: cordinates.latitude, longitude: cordinates.longitude)
         
+    }
+    
+    @objc func loadBusinessFromDisk(note: Notification) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.spinner.stopAnimating()
+            self.spinner.isHidden = true
+            self.weatherConditionLabel.text = "no internet connection"
+        }
     }
     
 
@@ -121,36 +213,66 @@ class BusinessesViewController: UIViewController {
 extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        businessesStore.businesses.count
+        if connectedToWifi == false {
+            return savedBusinesses.businessList.count
+        }
+        else {
+            return businessesStore.businesses.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell") as! BusinessTableCell
         
-        let business = businessesStore.businesses[indexPath.row]
-        
-        // Set name and phone of cell label
-        cell.businessName.text = business.name
-        cell.phoneNumber.text = business.displayPhone
-        
-        // Get reviews
-        let reviews = business.reviewCount
-        cell.reviews.text = String(reviews)
-        
-        // Get categories
-        let categorie = business.categories[0].title
-        cell.category.text = categorie
-        
-        // Set stars images
-        let reviewDouble = business.rating
-        cell.starsImage.image = Stars.dict[reviewDouble]!
-        
-        // Set Image of restaurant
-        let imageUrlString = business.imageURL
-        if let imageUrl = URL(string: imageUrlString) {
-            cell.businessImage.load(url: imageUrl)
+        if connectedToWifi {
+            let business = businessesStore.businesses[indexPath.row]
+            
+            // Set name and phone of cell label
+            cell.businessName.text = business.name
+            cell.phoneNumber.text = business.displayPhone
+            
+            // Get reviews
+            let reviews = business.reviewCount
+            cell.reviews.text = String(reviews)
+            
+            // Get categories
+            let categorie = business.categories[0].title
+            cell.category.text = categorie
+            
+            // Set stars images
+            let reviewDouble = business.rating
+            cell.starsImage.image = Stars.dict[reviewDouble]!
+            
+            // Set Image of restaurant
+            let imageUrlString = business.imageURL
+            if let imageUrl = URL(string: imageUrlString) {
+    //            cell.businessImage.load(url: imageUrl)
+                cell.businessImage.kf.setImage(with: imageUrl)
+            }
+        }else {
+            let business = savedBusinesses.businessList[indexPath.row]
+            
+            // Set name and phone of cell label
+            cell.businessName.text = business.name
+            cell.phoneNumber.text = business.displayPhone
+            
+            // Get reviews
+            let reviews = business.reviewCount
+            cell.reviews.text = String(reviews)
+            
+            // Get categories
+            let categorie = business.businessCategory
+            cell.category.text = categorie
+            
+            // Set stars images
+            let reviewDouble = business.businessRating
+            cell.starsImage.image = Stars.dict[reviewDouble]!
+            
+            // Set Image of restaurant
+            let imageUrlString = URL(string: business.imageURL)
+            cell.businessImage.kf.setImage(with: imageUrlString)
         }
-    
+        
         return cell
 
     }
