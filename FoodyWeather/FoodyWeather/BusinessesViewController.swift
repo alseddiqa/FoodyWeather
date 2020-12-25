@@ -16,8 +16,8 @@ class BusinessesViewController: UIViewController {
     var userLocationManager: UserLocationService!
     var currentLocationStatus: Bool = true
     var savedBusinesses: BusinessStorage!
-    var imageStore: ImageStore!
     var connectedToWifi: Bool = true
+    var weatherForcast: WeatherResult!
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
@@ -72,17 +72,15 @@ class BusinessesViewController: UIViewController {
     }
     
     func checkInternetConnection(){
-        let nc = NotificationCenter.default
-
         let monitor = NWPathMonitor()
         
         monitor.pathUpdateHandler = { path in
-            print("clos")
             if path.status != .satisfied {
                 // Not connected
-                print("not connected")
+                print("not connected to internet")
                 self.connectedToWifi = false
-                nc.post(name: .noConnection, object: self)
+                //nc.post(name: .noConnection, object: self)
+                self.loadBusinessFromDisk()
             }
             else if path.usesInterfaceType(.cellular) {
                 // Cellular 3/4/5g connection
@@ -110,10 +108,10 @@ class BusinessesViewController: UIViewController {
                                                name: .businessesSearchYelp,
                                                object: nil)
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(loadBusinessFromDisk(note:)),
-                                               name: .noConnection,
-                                               object: nil)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(loadBusinessFromDisk(note:)),
+//                                               name: .noConnection,
+//                                               object: nil)
     }
     
     @objc func observeStoreSearchNotificataion(note: Notification) {
@@ -155,9 +153,7 @@ class BusinessesViewController: UIViewController {
         if businessesStore.businesses.count != 0 {
             for b in list {
                 let business = SavedBusiness(name: b.name, businessId: b.id, reviewCount: b.reviewCount, businessLocation: b.location, category: b.categories[0].title, rating: b.rating, phone: b.displayPhone, imageURL: b.imageURL)
-                savedBusinesses.addBusiness(business)
-                print(savedBusinesses.businessList)
-                
+                savedBusinesses.addBusiness(business)                
             }
         }
         
@@ -179,8 +175,9 @@ class BusinessesViewController: UIViewController {
         
     }
     
-    @objc func loadBusinessFromDisk(note: Notification) {
+    func loadBusinessFromDisk() {
         DispatchQueue.main.async {
+            //self.savedBusinesses.businessList.reverse()
             self.tableView.reloadData()
             self.spinner.stopAnimating()
             self.spinner.isHidden = true
@@ -194,9 +191,17 @@ class BusinessesViewController: UIViewController {
         case "BusinessDetail":
             if let selectedIndexPath =
                 tableView.indexPathForSelectedRow?.row {
-                let business = businessesStore.businesses[selectedIndexPath]
-                let destinationVC = segue.destination as! BusinessDetailViewController
-                destinationVC.business = business
+                if connectedToWifi {
+                    let business = businessesStore.businesses[selectedIndexPath]
+                    let destinationVC = segue.destination as! BusinessDetailViewController
+                    destinationVC.business = business
+                    destinationVC.businessStorage = savedBusinesses
+                }
+                else {
+                    let business = savedBusinesses.businessList[selectedIndexPath]
+                    let destinationVC = segue.destination as! BusinessDetailViewController
+                    destinationVC.savedBusiness = business
+                }
             }
         case "MapViewSegue":
             let destinationVC = segue.destination as! MapViewController

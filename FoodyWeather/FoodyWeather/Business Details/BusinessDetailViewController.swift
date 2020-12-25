@@ -19,27 +19,52 @@ class BusinessDetailViewController: UIViewController {
     
     var business: Business!
     var businessDetail: BusinessDetail!
+    var savedBusiness: SavedBusiness!
+    var businessStorage: BusinessStorage!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        nameOfBusiness.text = business.name
-        categoryLabel.text = business.categories[0].title
-        businessImage.load(url: URL(string: business.imageURL)!)
-        reviewNum.text = String(business.reviewCount)
-        let reviewDouble = business.rating
-        starsImage.image = Stars.dict[reviewDouble]!
-        phoneNumLabel.text = business.displayPhone
-        if let address1 = business.location.address1, let address2 = business.location.address2 {
-            let businessLocation = address1 + ", " + address2 + " " + business.location.city
-            addressButton.setTitle(businessLocation, for: .normal)
-        }
+        displayBusinessInformation()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getBusinessDetails(businessId: business.id)
+        if business != nil {
+            getBusinessDetails(businessId: business.id)
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    func displayBusinessInformation() {
+        if business != nil {
+            nameOfBusiness.text = business.name
+            categoryLabel.text = business.categories[0].title
+            businessImage.kf.setImage(with: URL(string: business.imageURL))
+            reviewNum.text = String(business.reviewCount)
+            let reviewDouble = business.rating
+            starsImage.image = Stars.dict[reviewDouble]!
+            phoneNumLabel.text = business.displayPhone
+            if let address1 = business.location.address1, let address2 = business.location.address2 {
+                let businessLocation = address1 + ", " + address2 + " " + business.location.city
+                addressButton.setTitle(businessLocation, for: .normal)
+            }
+        }
+        else {
+            nameOfBusiness.text = savedBusiness.name
+            categoryLabel.text = savedBusiness.businessCategory
+            businessImage.kf.setImage(with: URL(string: savedBusiness.imageURL))
+            reviewNum.text = String(savedBusiness.reviewCount)
+            let reviewDouble = savedBusiness.businessRating
+            starsImage.image = Stars.dict[reviewDouble]!
+            phoneNumLabel.text = savedBusiness.displayPhone
+            if let address1 = savedBusiness.location.address1, let address2 = savedBusiness.location.address2 {
+                let businessLocation = address1 + ", " + address2 + " " + savedBusiness.location.city
+                addressButton.setTitle(businessLocation, for: .normal)
+            }
+        }
+        
     }
     
     func getBusinessDetails(businessId: String) {
@@ -75,21 +100,37 @@ class BusinessDetailViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         switch segue.identifier {
         case "BusinessMorePhotos":
             let destinationVC = segue.destination as! BusinessPhotosViewController
             destinationVC.business
                 = business
+            destinationVC.businessStorage = businessStorage
+
+            if business == nil {
+                destinationVC.businessPhotos = savedBusiness.businessPhotos
+            }
         case "forcastDays":
             let destinationVC = segue.destination as! WeatherForcastViewController
             destinationVC.business
                 = business
+            destinationVC.businessStorage = businessStorage
+            if business == nil {
+                destinationVC.forcastDays = savedBusiness.forcastDays
+            }
         case "openHours":
             let destinationVC = segue.destination as! BusinessHoursViewController
             destinationVC.business
                 = business
+            destinationVC.businessStorage = businessStorage
+            if business == nil {
+                destinationVC.businessHours = savedBusiness.businessHours
+            }
+
         default:
             preconditionFailure("Unexpected segue identifier.")
+            
         }
     }
     

@@ -14,6 +14,7 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
     var business: Business!
     var forcast: Forecast!
     var forcastDays = [Forecastday]()
+    var businessStorage: BusinessStorage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,10 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.delegate = self
-        getWeatherInformation()
+        if business != nil {
+            getWeatherInformation()
+
+        }
         
     }
     
@@ -37,7 +41,16 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
             self.forcastDays = self.forcast.forecastday
             self.collectionView.reloadData()
             self.getWeatherForNextDays()
+            self.storeWeatherForcastResult()
         }
+    }
+    
+    func storeWeatherForcastResult() {
+        let b = SavedBusiness(name: business.name, businessId: business.id, reviewCount: business.reviewCount, businessLocation: business.location, category: business.categories[0].title, rating: business.rating, phone: business.displayPhone, imageURL: business.imageURL)
+        let updated = b
+        businessStorage.addBusiness(b)
+        updated.forcastDays = self.forcastDays
+        businessStorage.updateBusinessInformaton(oldBusiness: b, newBusiness: updated)
     }
     
     func getWeatherForNextDays() {
@@ -116,16 +129,6 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
         default:
             preconditionFailure("Unexpected segue identifier.")
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        let foter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "AnotherDay", for: indexPath) as UICollectionReusableView
-        
-//        anotherDay.layer.cornerRadius = 20.0
-//        anotherDay.layer.masksToBounds = true
-        
-        return foter
     }
     
 }

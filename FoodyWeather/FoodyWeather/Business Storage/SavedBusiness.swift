@@ -18,6 +18,9 @@ class SavedBusiness: Equatable, Codable {
     let businessRating: Double
     let location: Location
     let imageURL: String
+    var businessHours = [Open]()
+    var forcastDays = [Forecastday]()
+    var businessPhotos = [URL]()
     
     init(name: String, businessId: String, reviewCount: Int, businessLocation: Location, category: String, rating: Double, phone: String, imageURL: String) {
         self.name = name

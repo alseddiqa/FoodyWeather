@@ -28,7 +28,6 @@ class BusinessStorage {
     
     init() {
         let nc = NotificationCenter.default
-        
         let loadOp = BusinessLoadOperation(url: itemArchiveURL) { (items) in
             self.businessList = items
             print("list Loaded~!")
@@ -48,6 +47,13 @@ class BusinessStorage {
     func removeItem(_ business: SavedBusiness) {
         if let index = businessList.firstIndex(of: business) {
             businessList.remove(at: index)
+        }
+    }
+    
+    func updateBusinessInformaton(oldBusiness: SavedBusiness, newBusiness: SavedBusiness ) {
+        if let indexOfOld = businessList.firstIndex(of: oldBusiness)
+        {
+            businessList[indexOfOld] = newBusiness
         }
     }
 
