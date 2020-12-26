@@ -119,7 +119,6 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     @IBAction func handleCitySearch(_ sender: UITextField) {
         let textCount = sender.text?.count
         if textCount == 0 {
