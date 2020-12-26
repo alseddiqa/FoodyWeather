@@ -10,7 +10,7 @@ import CoreLocation
 import Kingfisher
 import Network
 
-class BusinessesViewController: UIViewController {
+class BusinessesViewController: UIViewController , UITextFieldDelegate{
 
     var businessesStore: BusinessStore!
     var userLocationManager: UserLocationService!
@@ -18,6 +18,7 @@ class BusinessesViewController: UIViewController {
     var savedBusinesses: BusinessStorage!
     var connectedToWifi: Bool = true
     var weatherForcast: WeatherResult!
+    var currentLocation: CLLocationCoordinate2D!
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
@@ -46,13 +47,13 @@ class BusinessesViewController: UIViewController {
             businessesStore = BusinessStore()
         }
         
-        
         tableView.delegate = self
         tableView.dataSource = self
         
         observeLoadNotifications()
 
         setUpSubView()
+        
     }
     
     @objc func observeStoreLoadNotification(note: Notification) {
@@ -132,8 +133,9 @@ class BusinessesViewController: UIViewController {
     }
     
     func getWeatherInformation(latitude: Double, longitude: Double) {
-        let api = WeatherAPI(lat: latitude, lon: longitude)
-        api.getWeatherForLocation() { (weatherResult) in
+        let latAndLong = String(latitude) + "," + String(longitude)
+        WeatherAPI.getWeatherForLocation(location: latAndLong)
+        { (weatherResult) in
             guard let weatherResult = weatherResult else {
                 return
             }
@@ -161,18 +163,19 @@ class BusinessesViewController: UIViewController {
     
     func setUpSubView() {
         searchTextField.layer.cornerRadius = 15.0
+        searchTextField.layer.borderWidth = 1.0
+        searchTextField.layer.borderColor = #colorLiteral(red: 0.3086441457, green: 0.5725629926, blue: 0.4548408389, alpha: 1)
         searchTextField.layer.masksToBounds = true
     }
     
     @IBAction func searchRestaurant(_ sender: UIButton) {
         let searchKeyWord = searchTextField.text
-        businessesStore.searchForBusiness(restaurant: searchKeyWord!, lat: userLocationManager.latitude, lon: userLocationManager.longitude)
+        businessesStore.searchForBusiness(restaurant: searchKeyWord!, lat: currentLocation.latitude, lon: currentLocation.longitude)
     }
     
     func loadBusinessesForPinnedLocation(cordinates: CLLocationCoordinate2D) {
-            businessesStore.loadBusinessesForLocation(lat: cordinates.latitude, lon: cordinates.longitude)
-            self.getWeatherInformation(latitude: cordinates.latitude, longitude: cordinates.longitude)
-        
+        businessesStore.loadBusinessesForLocation(lat: cordinates.latitude, lon: cordinates.longitude)
+        self.getWeatherInformation(latitude: cordinates.latitude, longitude: cordinates.longitude)
     }
     
     func loadBusinessFromDisk() {
@@ -212,6 +215,12 @@ class BusinessesViewController: UIViewController {
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let keyWord = textField.text!
+        businessesStore.searchForBusiness(restaurant: keyWord, lat: currentLocation.latitude, lon: currentLocation.longitude)
+        return true
+    }
     
 }
 
@@ -309,6 +318,8 @@ extension BusinessesViewController: LocationServiceDelegate {
     func tracingLocation(currentLocation: CLLocation) {
         getWeatherInformation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
         businessesStore.loadBusinessesForLocation(lat: currentLocation.coordinate.latitude, lon: currentLocation.coordinate.longitude)
+        let cordinates = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+        self.currentLocation = cordinates
     }
 }
 
@@ -316,6 +327,7 @@ extension BusinessesViewController: MapViewDelegate {
     
     func getBusinessesForPinnedLocation(cordinates: CLLocationCoordinate2D) {
         loadBusinessesForPinnedLocation(cordinates: cordinates)
+        self.currentLocation = cordinates
     }
 
 }
