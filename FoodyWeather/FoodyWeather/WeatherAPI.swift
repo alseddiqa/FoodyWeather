@@ -11,9 +11,11 @@ import Foundation
 
 struct WeatherAPI {
         
-    let forcastBaseUrl = "http://api.weatherapi.com/v1/forecast.json"
-    let baseURLString = "http://api.weatherapi.com/v1/current.json"
-    private var apiKey = "96e182aa893140daa75163258201712"
+    static let forcastBaseUrl = "http://api.weatherapi.com/v1/forecast.json"
+    static let baseURLString = "http://api.weatherapi.com/v1/current.json"
+    static let wetherAutoComplete = "http://api.weatherapi.com/v1/search.json"
+
+    private static var apiKey = "96e182aa893140daa75163258201712"
 
     var latitude = ""
     var longitude = ""
@@ -31,8 +33,15 @@ struct WeatherAPI {
     
     /// A function to set up the Yelp URL to get businesses
     /// - Returns: a URL after adding all of the params
-    func getWeatherUrl() -> URL {
-        var components = URLComponents(string: baseURLString)!
+    static func getWeatherUrl(location: String, search: Bool) -> URL {
+        
+        var components = URLComponents()
+        if search == false {
+            components = URLComponents(string: baseURLString)!
+        } else {
+            components = URLComponents(string: wetherAutoComplete)!
+        }
+        
         var queryItems = [URLQueryItem]()
         
         let baseParams = [
@@ -49,10 +58,10 @@ struct WeatherAPI {
         return components.url!
     }
     
-    func getWeatherForLocation(completion: @escaping (WeatherResult?) -> Void){
+    static func getWeatherForLocation(location: String, completion: @escaping (WeatherResult?) -> Void){
         
-        let url = getWeatherUrl()
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let url = getWeatherUrl(location: location, search: false)
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
                 
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -75,7 +84,7 @@ struct WeatherAPI {
             task.resume()
     }
     
-    func getWeatherForcastUrl() -> URL {
+    static func getWeatherForcastUrl(location: String) -> URL {
         var components = URLComponents(string: forcastBaseUrl)!
         var queryItems = [URLQueryItem]()
         
@@ -94,32 +103,35 @@ struct WeatherAPI {
         return components.url!
     }
     
-    func getWeatherForcastForBusiness(completion: @escaping (WeatherForecast?) -> Void){
+    static func getWeatherForcastForBusiness(location: String, completion: @escaping (WeatherForecast?) -> Void){
         
-        let url = getWeatherForcastUrl()
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let url = getWeatherForcastUrl(location: location)
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
                 
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
             // This will run when the network request returns
             if let error = error {
-                print(error.localizedDescription)
+                print(error)
+                
             } else if let data = data {
-                guard let safeResponse = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
-                    print("error decoding")
-                    return
-                }
-        
-                let weatherForcaseResult = safeResponse
-                return completion(weatherForcaseResult)
 
+                do {
+                    let safeResponse = try JSONDecoder().decode(WeatherForecast.self, from: data)
+                    let weatherForcaseResult = safeResponse
+                    return completion(weatherForcaseResult)
+                }
+                catch {
+                    print(error)
+                }
+                
                 }
             }
         
             task.resume()
     }
     
-    func getWeatherForcastUrlForDay(date: String) -> URL {
+    static func getWeatherForcastUrlForDay(location: String, date: String) -> URL {
         var components = URLComponents(string: forcastBaseUrl)!
         var queryItems = [URLQueryItem]()
         
@@ -138,10 +150,10 @@ struct WeatherAPI {
         return components.url!
     }
     
-    func getWeatherInformationForDay(date: String, completion: @escaping (WeatherForecast?) -> Void){
+    static func getWeatherInformationForDay(location: String, date: String, completion: @escaping (WeatherForecast?) -> Void) {
         
-        let url = getWeatherForcastUrlForDay(date: date)
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let url =  getWeatherForcastUrlForDay(location: location, date: date)
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
             // This will run when the network request returns
@@ -157,6 +169,32 @@ struct WeatherAPI {
                 let weatherForcaseResult = safeResponse
                 return completion(weatherForcaseResult)
 
+                }
+            }
+        
+            task.resume()
+    }
+    
+    static func getSearchAutoComplete(keyWord: String, completion: @escaping (SearchResultList?) -> Void) {
+        
+        let url = getWeatherUrl(location: keyWord, search: true)
+        print(url)
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                do {
+                    let safeResponse = try JSONDecoder().decode(SearchResultList.self, from: data)
+                    let weatherForcaseResult = safeResponse
+                    return completion(weatherForcaseResult)
+                }
+                catch {
+                    print(error)
+                }
+                
                 }
             }
         

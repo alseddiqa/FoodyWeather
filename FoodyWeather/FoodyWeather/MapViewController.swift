@@ -8,9 +8,12 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var mapView: MKMapView!
+    @IBOutlet var searchCityTextField: UITextField!
+    
     var annotaionsCounter: Int = 0
     var mapDelegate: MapViewDelegate!
     
@@ -18,7 +21,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setUpMapView()
+        //setUpMapView()
     }
     
     func setUpMapView() {
@@ -105,4 +108,25 @@ class MapViewController: UIViewController {
 //        self.dismiss(animated: true, completion: nil)
 //        self.present(destVC, animated: true, completion: nil)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
 }
+
+//extension MapViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
+//
+//
+//}

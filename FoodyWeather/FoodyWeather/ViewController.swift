@@ -16,19 +16,27 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        animation = .init(name: "clockAnimation")
-        animation?.frame = view.frame
-        animation?.loopMode = .loop
-        view.addSubview(animation!)
-        animation?.play()
-        let api = WeatherAPI(lat: 37.7670169511878, lon: -122.42184275)
-        api.getWeatherForcastForBusiness()
-        { (weatherFocaseResult) in
-            guard let weatherFocaseResult = weatherFocaseResult else {
-                return
+        WeatherAPI.getSearchAutoComplete(keyWord: "san jose") {
+            (weatherSearchResult) in
+            guard let weatherSearchResult = weatherSearchResult else {
+                    return
             }
-            //print(weatherFocaseResult.forecast.forecastday.description)
+            print(weatherSearchResult)
         }
+        
+//        animation = .init(name: "clockAnimation")
+//        animation?.frame = view.frame
+//        animation?.loopMode = .loop
+//        view.addSubview(animation!)
+//        animation?.play()
+//        let api = WeatherAPI(lat: 37.7670169511878, lon: -122.42184275)
+//        api.getWeatherForcastForBusiness()
+//        { (weatherFocaseResult) in
+//            guard let weatherFocaseResult = weatherFocaseResult else {
+//                return
+//            }
+//            //print(weatherFocaseResult.forecast.forecastday.description)
+//        }
 
         
         //let api = YelpAPI(lat: 37.7670169511878, lon: -122.42184275)

@@ -30,9 +30,8 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
     }
     
     func getWeatherInformation() {
-        
-        let api = WeatherAPI(lat: business.coordinates.latitude, lon: business.coordinates.longitude)
-        api.getWeatherForcastForBusiness()
+        let location = String(business.coordinates.latitude) + "," + String(business.coordinates.longitude)
+        WeatherAPI.getWeatherForcastForBusiness(location: location)
         { (weatherFocaseResult) in
             guard let weatherFocaseResult = weatherFocaseResult else {
                 return
@@ -68,8 +67,8 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
     }
     
     func  requestWeatherInformationForDay(date: String) {
-        let api = WeatherAPI(lat: business.coordinates.latitude, lon: business.coordinates.longitude)
-        api.getWeatherInformationForDay(date: date)
+        let location = String(business.coordinates.latitude) + "," + String(business.coordinates.longitude)
+        WeatherAPI.getWeatherInformationForDay(location: location , date: date)
         { (weatherFocaseResult) in
             guard let weatherFocaseResult = weatherFocaseResult else {
                 return

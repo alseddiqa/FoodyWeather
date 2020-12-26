@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1tt-PO-075">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -225,9 +225,6 @@
                             <constraint firstItem="MAM-qE-gdY" firstAttribute="bottom" secondItem="gNO-ce-AVB" secondAttribute="bottom" id="hVA-O2-IkJ"/>
                             <constraint firstItem="MAM-qE-gdY" firstAttribute="trailing" secondItem="gNO-ce-AVB" secondAttribute="trailing" id="oDY-jJ-BNX"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="eZn-dN-NFT" appends="YES" id="CqE-Y6-CdU"/>
-                        </connections>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Yelpy" id="LgN-zy-omV"/>
@@ -244,11 +241,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6d-xc-7dc" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="eZn-dN-NFT">
-                    <connections>
-                        <action selector="backgroundTapped:" destination="vU6-t7-hCq" id="8PX-lP-xkS"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2813.04347826087" y="41.517857142857139"/>
         </scene>
@@ -456,19 +448,50 @@
                                     <outletCollection property="gestureRecognizers" destination="qH4-EI-dML" appends="YES" id="j6P-eG-L3E"/>
                                 </connections>
                             </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="city name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ezq-Vm-ztc">
+                                <rect key="frame" x="20" y="98" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Iks-K1-RQT" id="HNF-fD-1Wf"/>
+                                </connections>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mEP-Rg-Jx7">
+                                <rect key="frame" x="0.0" y="156" width="414" height="740"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ufk-Bl-HqO">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ufk-Bl-HqO" id="YCw-VI-Cbq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="g8Q-UE-9mS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="g8Q-UE-9mS" firstAttribute="trailing" secondItem="aDf-r0-OkA" secondAttribute="trailing" id="Ilj-4F-UGY"/>
+                            <constraint firstItem="mEP-Rg-Jx7" firstAttribute="leading" secondItem="g8Q-UE-9mS" secondAttribute="leading" id="Kxn-mF-KU9"/>
+                            <constraint firstItem="Ezq-Vm-ztc" firstAttribute="leading" secondItem="g8Q-UE-9mS" secondAttribute="leading" constant="20" id="Mns-eU-Gjj"/>
                             <constraint firstItem="aDf-r0-OkA" firstAttribute="top" secondItem="g8Q-UE-9mS" secondAttribute="top" id="S9t-sD-V8n"/>
+                            <constraint firstAttribute="bottom" secondItem="mEP-Rg-Jx7" secondAttribute="bottom" id="Tp3-8r-A9b"/>
+                            <constraint firstItem="mEP-Rg-Jx7" firstAttribute="trailing" secondItem="g8Q-UE-9mS" secondAttribute="trailing" id="ZDV-p6-Qma"/>
                             <constraint firstAttribute="bottom" secondItem="aDf-r0-OkA" secondAttribute="bottom" id="blA-zh-aCH"/>
+                            <constraint firstItem="mEP-Rg-Jx7" firstAttribute="top" secondItem="Ezq-Vm-ztc" secondAttribute="bottom" constant="24" id="jbm-y8-g99"/>
+                            <constraint firstItem="g8Q-UE-9mS" firstAttribute="trailing" secondItem="Ezq-Vm-ztc" secondAttribute="trailing" constant="20" id="nQM-hh-epi"/>
+                            <constraint firstItem="Ezq-Vm-ztc" firstAttribute="top" secondItem="g8Q-UE-9mS" secondAttribute="top" constant="10" id="sEq-tu-PS5"/>
                             <constraint firstItem="aDf-r0-OkA" firstAttribute="leading" secondItem="g8Q-UE-9mS" secondAttribute="leading" id="zcB-im-B02"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZQX-8g-xKp"/>
                     <connections>
                         <outlet property="mapView" destination="aDf-r0-OkA" id="bJi-Vj-qjj"/>
+                        <outlet property="searchCityTextField" destination="Ezq-Vm-ztc" id="h6h-yd-1jz"/>
+                        <outlet property="tableView" destination="mEP-Rg-Jx7" id="om3-3K-hRl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mf0-7z-SCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -478,7 +501,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1929" y="736"/>
+            <point key="canvasLocation" x="1928.985507246377" y="735.9375"/>
         </scene>
         <!--Business Photos View Controller-->
         <scene sceneID="Wyi-TG-jQ8">

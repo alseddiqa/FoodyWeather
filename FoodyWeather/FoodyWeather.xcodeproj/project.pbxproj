@@ -45,6 +45,7 @@
 		B85097F92594F6030037708D /* SaveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85097F82594F6030037708D /* SaveOperation.swift */; };
 		B85097FE2594F64F0037708D /* BusinessLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85097FD2594F64F0037708D /* BusinessLoadOperation.swift */; };
 		B85DF9E5259677CC000E0CC3 /* StorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85DF9E4259677CC000E0CC3 /* StorageDelegate.swift */; };
+		B85DF9F9259779E5000E0CC3 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85DF9F8259779E5000E0CC3 /* SearchResult.swift */; };
 		CFC10B0580E3343EA02D1884 /* Pods_FoodyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821669E9BD3672240BFE3E3A /* Pods_FoodyWeather.framework */; };
 		D1D2FA63B770AB0D2977B1EA /* Pods_FoodyWeather_FoodyWeatherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2040221F44DBB0C44EB94 /* Pods_FoodyWeather_FoodyWeatherUITests.framework */; };
 /* End PBXBuildFile section */
@@ -119,6 +120,7 @@
 		B85097F82594F6030037708D /* SaveOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOperation.swift; sourceTree = "<group>"; };
 		B85097FD2594F64F0037708D /* BusinessLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLoadOperation.swift; sourceTree = "<group>"; };
 		B85DF9E4259677CC000E0CC3 /* StorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDelegate.swift; sourceTree = "<group>"; };
+		B85DF9F8259779E5000E0CC3 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				B83DA7F0258F36950004A403 /* MapViewController.swift */,
 				B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */,
 				B8447BAB258BC29400280790 /* WeatherAPI.swift */,
+				B85DF9F8259779E5000E0CC3 /* SearchResult.swift */,
 				B83DA7E5258E38700004A403 /* UserLocationService.swift */,
 				B80397B1258BF51A006B9376 /* LocationWeather.swift */,
 				B83DA8082590D3200004A403 /* WeatherForcast.swift */,
@@ -520,6 +523,7 @@
 			files = (
 				B838352B258B9B4A003A4D14 /* BusinessStore.swift in Sources */,
 				B83DA8092590D3200004A403 /* WeatherForcast.swift in Sources */,
+				B85DF9F9259779E5000E0CC3 /* SearchResult.swift in Sources */,
 				B83DA7F6258F786F0004A403 /* MainNavigationViewController.swift in Sources */,
 				B83834C6258A337B003A4D14 /* ViewController.swift in Sources */,
 				B8383520258B76A3003A4D14 /* YelpStars.swift in Sources */,

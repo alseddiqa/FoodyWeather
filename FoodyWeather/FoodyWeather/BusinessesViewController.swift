@@ -132,8 +132,9 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
     }
     
     func getWeatherInformation(latitude: Double, longitude: Double) {
-        let api = WeatherAPI(lat: latitude, lon: longitude)
-        api.getWeatherForLocation() { (weatherResult) in
+        let latAndLong = String(latitude) + "," + String(longitude)
+        WeatherAPI.getWeatherForLocation(location: latAndLong)
+        { (weatherResult) in
             guard let weatherResult = weatherResult else {
                 return
             }
@@ -210,10 +211,6 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
         default:
             preconditionFailure("Unexpected segue identifier.")
         }
-    }
-    
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
