@@ -10,7 +10,7 @@ import CoreLocation
 import Kingfisher
 import Network
 
-class BusinessesViewController: UIViewController {
+class BusinessesViewController: UIViewController , UITextFieldDelegate{
 
     var businessesStore: BusinessStore!
     var userLocationManager: UserLocationService!
@@ -212,6 +212,14 @@ class BusinessesViewController: UIViewController {
         }
     }
     
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 }
 

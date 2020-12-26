@@ -218,12 +218,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gNO-ce-AVB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="MAM-qE-gdY" firstAttribute="top" secondItem="gNO-ce-AVB" secondAttribute="top" id="MNA-oK-9kc"/>
                             <constraint firstItem="MAM-qE-gdY" firstAttribute="leading" secondItem="gNO-ce-AVB" secondAttribute="leading" id="gUD-39-f2M"/>
                             <constraint firstItem="MAM-qE-gdY" firstAttribute="bottom" secondItem="gNO-ce-AVB" secondAttribute="bottom" id="hVA-O2-IkJ"/>
                             <constraint firstItem="MAM-qE-gdY" firstAttribute="trailing" secondItem="gNO-ce-AVB" secondAttribute="trailing" id="oDY-jJ-BNX"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="eZn-dN-NFT" appends="YES" id="CqE-Y6-CdU"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Yelpy" id="LgN-zy-omV"/>
@@ -240,6 +244,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6d-xc-7dc" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="eZn-dN-NFT">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="vU6-t7-hCq" id="8PX-lP-xkS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2813.04347826087" y="41.517857142857139"/>
         </scene>
