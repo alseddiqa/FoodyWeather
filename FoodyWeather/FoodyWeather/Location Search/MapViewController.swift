@@ -108,15 +108,6 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.tableView.isHidden = false
-    }
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        let keyWord = textField.text
-        self.sendForAutoComplete(keyWord!)
-    }
-    
     func sendForAutoComplete(_ word: String) {
         WeatherAPI.getSearchAutoComplete(keyWord: word)
         { (weatherResult) in
@@ -126,8 +117,21 @@ class MapViewController: UIViewController, UITextFieldDelegate {
             self.results = weatherResult
             self.tableView.reloadData()
         }
-            
     }
+    
+    
+    @IBAction func handleCitySearch(_ sender: UITextField) {
+        let textCount = sender.text?.count
+        if textCount == 0 {
+            self.tableView.isHidden = true
+        }
+        else {
+            self.tableView.isHidden = false
+            let keyWord = sender.text
+            self.sendForAutoComplete(keyWord!)
+        }
+    }
+    
 }
 
 extension MapViewController: UITableViewDelegate, UITableViewDataSource {

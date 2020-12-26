@@ -56,10 +56,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cf1-6S-Fe0">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search food ...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cf1-6S-Fe0">
                                             <rect key="frame" x="60" y="8" width="294" height="29"/>
                                             <color key="backgroundColor" red="0.96375328299999996" green="0.93538171049999996" blue="0.79998022319999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <color key="textColor" red="1" green="0.67450980390000004" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.118929823" green="0.12367866819999999" blue="0.1335186428" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             <connections>
@@ -458,6 +458,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="handleCitySearch:" destination="Iks-K1-RQT" eventType="editingChanged" id="9Sn-FV-Vi9"/>
                                     <outlet property="delegate" destination="Iks-K1-RQT" id="HNF-fD-1Wf"/>
                                 </connections>
                             </textField>
