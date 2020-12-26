@@ -14,12 +14,16 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var searchCityTextField: UITextField!
     
+    var results = [SearchResult]()
+    
     var annotaionsCounter: Int = 0
     var mapDelegate: MapViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
         //setUpMapView()
     }
@@ -97,16 +101,6 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     {
         mapDelegate.getBusinessesForPinnedLocation(cordinates: coordinate)
         self.navigationController?.popViewController(animated: true)
-
-//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        let destVC = storyboard.instantiateViewController(withIdentifier: "navigationView") as! MainNavigationViewController
-//        
-//        destVC.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-//        destVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-//        destVC.cordinates = coordinate
-//        destVC.currentLocationStatus = false
-//        self.dismiss(animated: true, completion: nil)
-//        self.present(destVC, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -114,19 +108,50 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.tableView.isHidden = false
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        let keyWord = textField.text
+        self.sendForAutoComplete(keyWord!)
+    }
+    
+    func sendForAutoComplete(_ word: String) {
+        WeatherAPI.getSearchAutoComplete(keyWord: word)
+        { (weatherResult) in
+            guard let weatherResult = weatherResult else {
+                return
+            }
+            self.results = weatherResult
+            self.tableView.reloadData()
+        }
+            
     }
 }
 
-//extension MapViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//
-//
-//}
+extension MapViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return results.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! SearchResultCell
+
+        let result = results[indexPath.row]
+        cell.locationName.text = result.name
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCity = results[indexPath.row]
+        
+        let lat = selectedCity.lat
+        let long = selectedCity.lon
+        let corindates = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        mapDelegate.getBusinessesForPinnedLocation(cordinates: corindates)
+        self.navigationController?.popViewController(animated: true)
+    }
+
+}

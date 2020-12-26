@@ -46,6 +46,7 @@
 		B85097FE2594F64F0037708D /* BusinessLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85097FD2594F64F0037708D /* BusinessLoadOperation.swift */; };
 		B85DF9E5259677CC000E0CC3 /* StorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85DF9E4259677CC000E0CC3 /* StorageDelegate.swift */; };
 		B85DF9F9259779E5000E0CC3 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85DF9F8259779E5000E0CC3 /* SearchResult.swift */; };
+		B85DFA012597AA51000E0CC3 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85DFA002597AA51000E0CC3 /* SearchResultCell.swift */; };
 		CFC10B0580E3343EA02D1884 /* Pods_FoodyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821669E9BD3672240BFE3E3A /* Pods_FoodyWeather.framework */; };
 		D1D2FA63B770AB0D2977B1EA /* Pods_FoodyWeather_FoodyWeatherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2040221F44DBB0C44EB94 /* Pods_FoodyWeather_FoodyWeatherUITests.framework */; };
 /* End PBXBuildFile section */
@@ -121,6 +122,7 @@
 		B85097FD2594F64F0037708D /* BusinessLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLoadOperation.swift; sourceTree = "<group>"; };
 		B85DF9E4259677CC000E0CC3 /* StorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDelegate.swift; sourceTree = "<group>"; };
 		B85DF9F8259779E5000E0CC3 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		B85DFA002597AA51000E0CC3 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,9 +205,8 @@
 				B83834C3258A337B003A4D14 /* SceneDelegate.swift */,
 				B83834C5258A337B003A4D14 /* ViewController.swift */,
 				B83834C7258A337B003A4D14 /* Main.storyboard */,
+				B85DFA052597AA63000E0CC3 /* Location Search */,
 				B85097DF2594D28C0037708D /* Business Details */,
-				B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */,
-				B83DA7F0258F36950004A403 /* MapViewController.swift */,
 				B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */,
 				B8447BAB258BC29400280790 /* WeatherAPI.swift */,
 				B85DF9F8259779E5000E0CC3 /* SearchResult.swift */,
@@ -280,6 +281,16 @@
 				B85DF9E4259677CC000E0CC3 /* StorageDelegate.swift */,
 			);
 			path = "Business Storage";
+			sourceTree = "<group>";
+		};
+		B85DFA052597AA63000E0CC3 /* Location Search */ = {
+			isa = PBXGroup;
+			children = (
+				B85DFA002597AA51000E0CC3 /* SearchResultCell.swift */,
+				B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */,
+				B83DA7F0258F36950004A403 /* MapViewController.swift */,
+			);
+			path = "Location Search";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -552,6 +563,7 @@
 				B85097D52593B8DB0037708D /* BusinessHoursViewController.swift in Sources */,
 				B83834FE258A3CDD003A4D14 /* YelpAPI.swift in Sources */,
 				B83DA7F1258F36950004A403 /* MapViewController.swift in Sources */,
+				B85DFA012597AA51000E0CC3 /* SearchResultCell.swift in Sources */,
 				B83DA7FB258FBB800004A403 /* MapViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

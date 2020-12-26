@@ -162,6 +162,8 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
     
     func setUpSubView() {
         searchTextField.layer.cornerRadius = 15.0
+        searchTextField.layer.borderWidth = 1.0
+        searchTextField.layer.borderColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         searchTextField.layer.masksToBounds = true
     }
     

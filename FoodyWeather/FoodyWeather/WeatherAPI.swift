@@ -175,10 +175,9 @@ struct WeatherAPI {
             task.resume()
     }
     
-    static func getSearchAutoComplete(keyWord: String, completion: @escaping (SearchResultList?) -> Void) {
+    static func getSearchAutoComplete(keyWord: String, completion: @escaping ([SearchResult]?) -> Void) {
         
         let url = getWeatherUrl(location: keyWord, search: true)
-        print(url)
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -186,14 +185,13 @@ struct WeatherAPI {
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                do {
-                    let safeResponse = try JSONDecoder().decode(SearchResultList.self, from: data)
-                    let weatherForcaseResult = safeResponse
-                    return completion(weatherForcaseResult)
+                guard let safeResponse = try? JSONDecoder().decode([SearchResult].self, from: data) else {
+                    print("error decoding")
+                    return
                 }
-                catch {
-                    print(error)
-                }
+        
+                let weatherForcaseResult = safeResponse
+                return completion(weatherForcaseResult)
                 
                 }
             }
