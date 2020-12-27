@@ -9,34 +9,34 @@ import Foundation
 
 struct YelpAPI {
     
-    let businessDetailbaseURL = "https://api.yelp.com/v3/businesses"
+    //Declare endpoints to hit for search/detail
+    static let businessDetailbaseURL = "https://api.yelp.com/v3/businesses"
+    static let baseURLString = "https://api.yelp.com/v3/businesses/search"
     
-    //Declaring params to prepare for call
-    let baseURLString = "https://api.yelp.com/v3/businesses/search"
-    private var apiKey = "OP-aAcjnPw7tYtofhaksNCxwZCVg6V2IOJ57UtSasvytaQxWAD3gSqrIY2kuz00Xc1vY9y6DhO3itWS_tP-JIWdV6mP4UNyfNOQMTqJRPyAzeTHMJ9GtZNL9qvrZX3Yx"
-
-    var latitude = ""
-    var longitude = ""
+    //Declare API key
+    private static var apiKey = "OP-aAcjnPw7tYtofhaksNCxwZCVg6V2IOJ57UtSasvytaQxWAD3gSqrIY2kuz00Xc1vY9y6DhO3itWS_tP-JIWdV6mP4UNyfNOQMTqJRPyAzeTHMJ9GtZNL9qvrZX3Yx"
     
-    /// The Yelp API init to get businesses for a supploed lat and long
-    /// - Parameters:
-    ///   - lat: latitude of the location to get businesses for
-    ///   - lon: longitude of the location get businesses for
-    init(lat:Double, lon: Double) {
-        self.latitude = String(lat)
-        self.longitude = String(lon)
-    }
-    
-    /// A function to set up the Yelp URL to get businesses
+    /// A function to set up the Yelp URL to get businesses / search for business based on
     /// - Returns: a URL after adding all of the params
-    func getYelpUrl() -> URL {
+    static func getYelpUrl(latitude: String, longitude: String, keyWord: String = "", search: Bool) -> URL {
+        
+        var baseParams = [String:String]()
         var components = URLComponents(string: baseURLString)!
         var queryItems = [URLQueryItem]()
         
-        let baseParams = [
-            "latitude": latitude,
-            "longitude": longitude,
-        ]
+        if search {
+            baseParams = [
+               "latitude": latitude,
+               "longitude": longitude,
+                "term": keyWord
+           ]
+        }
+        else {
+            baseParams = [
+               "latitude": latitude,
+               "longitude": longitude,
+           ]
+        }
         
         for (key, value) in baseParams {
             let item = URLQueryItem(name: key, value: value)
@@ -46,10 +46,15 @@ struct YelpAPI {
         components.queryItems = queryItems
         return components.url!
     }
-    
-    func getBusinessListForLocation(completion: @escaping ([Business]?) -> Void) {
+
+    /// A function to fetch list of businesses from Yelp API useing lat & long
+    /// - Parameters:
+    ///   - latitude: latitiude of the specified location
+    ///   - longitude: lonitude of the specified location
+    ///   - completion: an array of businesses
+    static func getBusinessListForLocation(latitude: String, longitude: String, completion: @escaping ([Business]?) -> Void) {
         
-        let url = getYelpUrl()
+        let url = getYelpUrl(latitude: latitude, longitude: longitude, search: false)
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         
         // Insert API Key to request
@@ -62,7 +67,7 @@ struct YelpAPI {
                 print(error.localizedDescription)
             } else if let data = data {
                 
-                guard let safeResponse = try? JSONDecoder().decode(Result.self, from: data) else {
+                guard let safeResponse = try? JSONDecoder().decode(BusinessSearchResult.self, from: data) else {
                     print("error decoding list of business")
                     return
                 }
@@ -76,24 +81,15 @@ struct YelpAPI {
             task.resume()
     }
     
-    func getSearchResult(restaurantName: String, completion: @escaping ([Business]?) -> Void) {
+    /// A function that searches the yelp api based on the key word for the specified location
+    /// - Parameters:
+    ///   - latitude: latitiude of the specified location
+    ///   - longitude: lonitude of the specified location
+    ///   - restaurantName: the keyword to search
+    ///   - completion: list of businesses that have match with the key word in the location
+    static func getSearchResult(latitude: String, longitude: String, restaurantName: String, completion: @escaping ([Business]?) -> Void) {
         
-        var components = URLComponents(string: baseURLString)!
-        var queryItems = [URLQueryItem]()
-        
-        let baseParams = [
-            "latitude": latitude,
-            "longitude": longitude,
-            "term": restaurantName
-        ]
-        
-        for (key, value) in baseParams {
-            let item = URLQueryItem(name: key, value: value)
-            queryItems.append(item)
-        }
-        
-        components.queryItems = queryItems
-        let url = components.url!
+        let url = getYelpUrl(latitude: latitude, longitude: longitude, keyWord: restaurantName, search: true)
         
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         
@@ -107,7 +103,7 @@ struct YelpAPI {
                 print(error.localizedDescription)
             } else if let data = data {
                 
-                guard let safeResponse = try? JSONDecoder().decode(Result.self, from: data) else {
+                guard let safeResponse = try? JSONDecoder().decode(BusinessSearchResult.self, from: data) else {
                     print("error decoding search result")
                     return
                 }
@@ -121,7 +117,11 @@ struct YelpAPI {
             task.resume()
     }
     
-    func getBusinessDetails(id: String, completion: @escaping (BusinessDetail?) -> Void) {
+    /// A function that fetches more information for a business
+    /// - Parameters:
+    ///   - id: identification string for the business to retrieve more information about.
+    ///   - completion: business details of the searched business
+    static func getBusinessDetails(id: String, completion: @escaping (BusinessDetail?) -> Void) {
         
         var components = URLComponents(string: businessDetailbaseURL)!
         components.path += "/\(id)"
@@ -152,8 +152,6 @@ struct YelpAPI {
         
             task.resume()
     }
-    
-    
     
 }
 

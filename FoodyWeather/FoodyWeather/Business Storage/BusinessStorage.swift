@@ -31,7 +31,6 @@ class BusinessStorage {
         let loadOp = BusinessLoadOperation(url: itemArchiveURL) { (items) in
             self.businessList = items
             print("list Loaded~!")
-            print(self.itemArchiveURL)
         }
         diskIOQueue.addOperation(loadOp)
 
@@ -92,7 +91,6 @@ class BusinessStorage {
         print("Saving items to: \(itemArchiveURL)")
         let saveOp = SaveOperation(items: businessList, url: itemArchiveURL)
         diskIOQueue.addOperation(saveOp)
-        print(itemArchiveURL)
     }
     
     func storeLastSeatch(businesses: [Business]) {

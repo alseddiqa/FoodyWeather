@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Result Businesses
-struct Result: Codable {
+struct BusinessSearchResult: Codable {
     let businesses: [Business]
     let total: Int
     let region: Region

@@ -82,8 +82,7 @@ class BusinessDetailViewController: UIViewController {
     }
     
     func getBusinessDetails(businessId: String) {
-        let yelpApi = YelpAPI(lat: 0, lon: 0)
-        yelpApi.getBusinessDetails(id: businessId) { (details) in
+        YelpAPI.getBusinessDetails(id: businessId) { (details) in
             guard let details = details else {
                 return
             }

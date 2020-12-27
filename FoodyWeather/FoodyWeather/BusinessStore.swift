@@ -20,8 +20,7 @@ class BusinessStore {
     
     func loadBusinessesForLocation(lat: Double, lon: Double) {
         let nc = NotificationCenter.default
-        let yelpApi = YelpAPI(lat: lat, lon: lon)
-        yelpApi.getBusinessListForLocation() { (restaurants) in
+        YelpAPI.getBusinessListForLocation(latitude: String(lat), longitude: String(lon)) { (restaurants) in
             guard let restaurants = restaurants else {
                 return
             }
@@ -32,8 +31,8 @@ class BusinessStore {
     
     func searchForBusiness(restaurant: String, lat: Double, lon: Double) {
         let nc = NotificationCenter.default
-        let yelpApi = YelpAPI(lat: lat, lon: lon)
-        yelpApi.getSearchResult(restaurantName: restaurant) { (restaurants) in
+        YelpAPI.getSearchResult(latitude: String(lat), longitude: String(lon), restaurantName: restaurant)
+        { (restaurants) in
             guard let restaurants = restaurants else {
                 return
             }
