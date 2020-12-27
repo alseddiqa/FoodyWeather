@@ -176,6 +176,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B83496F82599310A00AC06EF /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				B83496FA2599321300AC06EF /* Weather API */,
+				B83496F9259931AA00AC06EF /* Yelp API */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		B83496F9259931AA00AC06EF /* Yelp API */ = {
+			isa = PBXGroup;
+			children = (
+				B838351F258B76A3003A4D14 /* YelpStars.swift */,
+				B83834F8258A3794003A4D14 /* Business.swift */,
+				B83834FD258A3CDD003A4D14 /* YelpAPI.swift */,
+				B83DA7DA258D2BA20004A403 /* BusinessDetail.swift */,
+			);
+			path = "Yelp API";
+			sourceTree = "<group>";
+		};
+		B83496FA2599321300AC06EF /* Weather API */ = {
+			isa = PBXGroup;
+			children = (
+				B85DF9F8259779E5000E0CC3 /* SearchResult.swift */,
+				B8447BAB258BC29400280790 /* WeatherAPI.swift */,
+				B80397B1258BF51A006B9376 /* LocationWeather.swift */,
+				B83DA8082590D3200004A403 /* WeatherForcast.swift */,
+			);
+			path = "Weather API";
+			sourceTree = "<group>";
+		};
 		B83834B5258A337B003A4D14 = {
 			isa = PBXGroup;
 			children = (
@@ -208,22 +239,15 @@
 				B85DFA052597AA63000E0CC3 /* Location Search */,
 				B85097DF2594D28C0037708D /* Business Details */,
 				B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */,
-				B8447BAB258BC29400280790 /* WeatherAPI.swift */,
-				B85DF9F8259779E5000E0CC3 /* SearchResult.swift */,
 				B83DA7E5258E38700004A403 /* UserLocationService.swift */,
-				B80397B1258BF51A006B9376 /* LocationWeather.swift */,
-				B83DA8082590D3200004A403 /* WeatherForcast.swift */,
 				B838352A258B9B4A003A4D14 /* BusinessStore.swift */,
 				B85098022594F8FE0037708D /* Business Storage */,
 				B8383517258A7657003A4D14 /* BusinessTableCell.swift */,
 				B8383512258A75D2003A4D14 /* BusinessesViewController.swift */,
-				B838351F258B76A3003A4D14 /* YelpStars.swift */,
+				B83496F82599310A00AC06EF /* APIs */,
 				B85097C92593A8CE0037708D /* Assets */,
 				B83834CC258A337D003A4D14 /* LaunchScreen.storyboard */,
 				B83834CF258A337D003A4D14 /* Info.plist */,
-				B83834F8258A3794003A4D14 /* Business.swift */,
-				B83834FD258A3CDD003A4D14 /* YelpAPI.swift */,
-				B83DA7DA258D2BA20004A403 /* BusinessDetail.swift */,
 			);
 			path = FoodyWeather;
 			sourceTree = "<group>";
