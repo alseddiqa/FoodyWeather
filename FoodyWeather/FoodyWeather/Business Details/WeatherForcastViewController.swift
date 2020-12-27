@@ -40,16 +40,11 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
             self.forcastDays = self.forcast.forecastday
             self.collectionView.reloadData()
             self.getWeatherForNextDays()
-            self.storeWeatherForcastResult()
         }
     }
     
     func storeWeatherForcastResult() {
-        let b = SavedBusiness(name: business.name, businessId: business.id, reviewCount: business.reviewCount, businessLocation: business.location, category: business.categories[0].title, rating: business.rating, phone: business.displayPhone, imageURL: business.imageURL)
-        let updated = b
-        businessStorage.addBusiness(b)
-        updated.forcastDays = self.forcastDays
-        businessStorage.updateBusinessInformaton(oldBusiness: b, newBusiness: updated)
+        businessStorage.updateForcastForBusiness(businessId: business.id, forcast: self.forcastDays)
     }
     
     func getWeatherForNextDays() {
@@ -64,6 +59,7 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
             let dateString = dateFormatter.string(from: updateDay!)
             requestWeatherInformationForDay(date: dateString)
         }
+        self.storeWeatherForcastResult()
     }
     
     func  requestWeatherInformationForDay(date: String) {
@@ -109,7 +105,7 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
         
         let weather = forcastDays[indexPath.item]
         cell.weatherTempLabel.text = String(weather.day.avgtempC) + "°C"
-        cell.weatherImage.load(url: URL(string: "http:" + weather.day.condition.icon)!)
+        cell.weatherImage.kf.setImage(with: URL(string: "http:" + weather.day.condition.icon)!)
         cell.dayLabel.text = getDateText(index: indexPath.item, dateString: weather.date)
 
         cell.shadowDecorate()
