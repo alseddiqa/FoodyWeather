@@ -222,9 +222,6 @@ extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
             return savedBusinesses.businessList.count
         }
         else {
-            if businessesStore.businesses.count == 0 {
-                self.tableView.setEmptyMessage("No data available!")
-            }
             return businessesStore.businesses.count
         }
     }

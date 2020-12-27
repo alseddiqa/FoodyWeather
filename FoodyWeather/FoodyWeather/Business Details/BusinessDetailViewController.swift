@@ -16,6 +16,9 @@ class BusinessDetailViewController: UIViewController {
     @IBOutlet var reviewNum: UILabel!
     @IBOutlet var phoneNumLabel: UILabel!
     @IBOutlet var addressButton: UIButton!
+    @IBOutlet var photosLabel: UILabel!
+    @IBOutlet var weatherLabel: UILabel!
+    @IBOutlet var hoursLabel: UILabel!
     
     var business: Business!
     var businessDetail: BusinessDetail!
@@ -47,7 +50,7 @@ class BusinessDetailViewController: UIViewController {
             starsImage.image = Stars.dict[reviewDouble]!
             phoneNumLabel.text = business.displayPhone
             if let address1 = business.location.address1, let address2 = business.location.address2 {
-                let businessLocation = address1 + ", " + address2 + " " + business.location.city
+                let businessLocation = address1 + ", " + address2 + business.location.city
                 addressButton.setTitle(businessLocation, for: .normal)
             }
         }
@@ -63,8 +66,19 @@ class BusinessDetailViewController: UIViewController {
                 let businessLocation = address1 + ", " + address2 + " " + savedBusiness.location.city
                 addressButton.setTitle(businessLocation, for: .normal)
             }
+            setInformationLabels()
         }
         
+    }
+    
+    func setInformationLabels(){
+        if savedBusiness.businessHours.count == 0{
+            hoursLabel.text = ""
+        }else if savedBusiness.businessPhotos.count == 0 {
+            photosLabel.text = ""
+        }else if savedBusiness.forcastDays.count == 0 {
+            weatherLabel.text = ""
+        }
     }
     
     func getBusinessDetails(businessId: String) {
