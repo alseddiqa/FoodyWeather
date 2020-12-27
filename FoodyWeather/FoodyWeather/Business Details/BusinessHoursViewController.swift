@@ -41,11 +41,7 @@ class BusinessHoursViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func storeBusinessHours() {
-        let b = SavedBusiness(name: business.name, businessId: business.id, reviewCount: business.reviewCount, businessLocation: business.location, category: business.categories[0].title, rating: business.rating, phone: business.displayPhone, imageURL: business.imageURL)
-        businessStorage.addBusiness(b)
-        let updated = b
-        updated.businessHours = self.businessHours
-        businessStorage.updateBusinessInformaton(oldBusiness: b, newBusiness: updated)
+        businessStorage.updateHoursForBusiness(businessId: business.id, hours: self.businessHours)
     }
     
     func getTimeOfDay(hour: Int) -> String {

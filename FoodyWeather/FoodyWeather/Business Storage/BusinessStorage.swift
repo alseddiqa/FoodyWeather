@@ -31,6 +31,7 @@ class BusinessStorage {
         let loadOp = BusinessLoadOperation(url: itemArchiveURL) { (items) in
             self.businessList = items
             print("list Loaded~!")
+            print(self.itemArchiveURL)
         }
         diskIOQueue.addOperation(loadOp)
 
@@ -56,11 +57,52 @@ class BusinessStorage {
             businessList[indexOfOld] = newBusiness
         }
     }
+    
+    func updatePhotosForBusiness(businessId: String, photos: [URL]) {
+        if businessList.count != 0 {
+            for (index, b) in businessList.enumerated() {
+                if b.id == businessId {
+                    businessList[index].businessPhotos = photos
+                }
+            }
+        }
+    }
+    
+    func updateHoursForBusiness(businessId: String, hours: [Open]) {
+        if businessList.count != 0 {
+            for (index, b) in businessList.enumerated() {
+                if b.id == businessId {
+                    businessList[index].businessHours = hours
+                }
+            }
+        }
+    }
+    
+    func updateForcastForBusiness(businessId: String, forcast: [Forecastday]) {
+        if businessList.count != 0 {
+            for (index, b) in businessList.enumerated() {
+                if b.id == businessId {
+                    businessList[index].forcastDays = forcast
+                }
+            }
+        }
+    }
 
     @objc func saveChanges() {
         print("Saving items to: \(itemArchiveURL)")
         let saveOp = SaveOperation(items: businessList, url: itemArchiveURL)
         diskIOQueue.addOperation(saveOp)
+        print(itemArchiveURL)
+    }
+    
+    func storeLastSeatch(businesses: [Business]) {
+        if businesses.count != 0 {
+            self.businessList.removeAll()
+            for b in businesses {
+                let business = SavedBusiness(name: b.name, businessId: b.id, reviewCount: b.reviewCount, businessLocation: b.location, category: b.categories[0].title, rating: b.rating, phone: b.displayPhone, imageURL: b.imageURL)
+                self.addBusiness(business)
+            }
+        }
     }
 
 }

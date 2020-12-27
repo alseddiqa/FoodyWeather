@@ -43,7 +43,6 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
         if connectedToWifi == true {
             userLocationManager = UserLocationService()
             userLocationManager.delegate = self
-
             businessesStore = BusinessStore()
         }
         
@@ -51,9 +50,7 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
         tableView.dataSource = self
         
         observeLoadNotifications()
-
         setUpSubView()
-        
     }
     
     @objc func observeStoreLoadNotification(note: Notification) {
@@ -68,7 +65,6 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
             spinner.stopAnimating()
             spinner.isHidden = true
             locationIcon.isHidden = false
-            
         }
     }
     
@@ -151,14 +147,7 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
     }
     
     func storeSearchResults() {
-        let list = businessesStore.businesses
-        if businessesStore.businesses.count != 0 {
-            for b in list {
-                let business = SavedBusiness(name: b.name, businessId: b.id, reviewCount: b.reviewCount, businessLocation: b.location, category: b.categories[0].title, rating: b.rating, phone: b.displayPhone, imageURL: b.imageURL)
-                savedBusinesses.addBusiness(business)                
-            }
-        }
-        
+        savedBusinesses.storeLastSeatch(businesses: businessesStore.businesses)
     }
     
     func setUpSubView() {
@@ -180,7 +169,6 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
     
     func loadBusinessFromDisk() {
         DispatchQueue.main.async {
-            //self.savedBusinesses.businessList.reverse()
             self.tableView.reloadData()
             self.spinner.stopAnimating()
             self.spinner.isHidden = true
@@ -330,28 +318,4 @@ extension BusinessesViewController: MapViewDelegate {
         self.currentLocation = cordinates
     }
 
-}
-
-extension UITableView {
-    
-    /// A function that sets a message for the table view to display when there are no tasks
-    /// - Parameter message: the message to display
-    func setEmptyMessage(_ message: String) {
-        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
-        messageLabel.text = message
-        messageLabel.textColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
-        messageLabel.sizeToFit()
-        
-        self.backgroundView = messageLabel
-        self.separatorStyle = .none
-    }
-    
-    /// A function that restores the table seprator
-    func restore() {
-        self.backgroundView = nil
-        self.separatorStyle = .singleLine
-    }
 }

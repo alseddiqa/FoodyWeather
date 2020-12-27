@@ -50,11 +50,7 @@ class BusinessPhotosViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func storeBusinessPhotos() {
-        let b = SavedBusiness(name: business.name, businessId: business.id, reviewCount: business.reviewCount, businessLocation: business.location, category: business.categories[0].title, rating: business.rating, phone: business.displayPhone, imageURL: business.imageURL)
-        businessStorage.addBusiness(b)
-        let updated = b
-        updated.businessPhotos = self.businessPhotos
-        businessStorage.updateBusinessInformaton(oldBusiness: b, newBusiness: updated)
+        businessStorage.updatePhotosForBusiness(businessId: business.id, photos: self.businessPhotos)
     }
 
     
