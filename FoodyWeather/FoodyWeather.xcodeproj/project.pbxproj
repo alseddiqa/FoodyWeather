@@ -12,6 +12,10 @@
 		B80397BD258CD314006B9376 /* BusinessDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80397BC258CD314006B9376 /* BusinessDetailViewController.swift */; };
 		B80397D1258D188C006B9376 /* BusinessPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80397D0258D188C006B9376 /* BusinessPhotosViewController.swift */; };
 		B80397D6258D1B86006B9376 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80397D5258D1B86006B9376 /* PhotoCollectionViewCell.swift */; };
+		B8349702259A1AC100AC06EF /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8349701259A1AC100AC06EF /* ReviewsViewController.swift */; };
+		B8349707259A214200AC06EF /* BusinessReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8349706259A214200AC06EF /* BusinessReviewCell.swift */; };
+		B834970C259A23AC00AC06EF /* BusinessReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834970B259A23AC00AC06EF /* BusinessReview.swift */; };
+		B8349714259A512500AC06EF /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8349713259A512500AC06EF /* ReviewDetailViewController.swift */; };
 		B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C1258A337B003A4D14 /* AppDelegate.swift */; };
 		B83834C4258A337B003A4D14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C3258A337B003A4D14 /* SceneDelegate.swift */; };
 		B83834C6258A337B003A4D14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C5258A337B003A4D14 /* ViewController.swift */; };
@@ -82,6 +86,10 @@
 		B80397BC258CD314006B9376 /* BusinessDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDetailViewController.swift; sourceTree = "<group>"; };
 		B80397D0258D188C006B9376 /* BusinessPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessPhotosViewController.swift; sourceTree = "<group>"; };
 		B80397D5258D1B86006B9376 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		B8349701259A1AC100AC06EF /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
+		B8349706259A214200AC06EF /* BusinessReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReviewCell.swift; sourceTree = "<group>"; };
+		B834970B259A23AC00AC06EF /* BusinessReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReview.swift; sourceTree = "<group>"; };
+		B8349713259A512500AC06EF /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
 		B83834BE258A337B003A4D14 /* FoodyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83834C1258A337B003A4D14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B83834C3258A337B003A4D14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				B838351F258B76A3003A4D14 /* YelpStars.swift */,
+				B834970B259A23AC00AC06EF /* BusinessReview.swift */,
 				B83834F8258A3794003A4D14 /* Business.swift */,
 				B83834FD258A3CDD003A4D14 /* YelpAPI.swift */,
 				B83DA7DA258D2BA20004A403 /* BusinessDetail.swift */,
@@ -291,6 +300,9 @@
 				B80397D0258D188C006B9376 /* BusinessPhotosViewController.swift */,
 				B80397BC258CD314006B9376 /* BusinessDetailViewController.swift */,
 				B80397D5258D1B86006B9376 /* PhotoCollectionViewCell.swift */,
+				B8349701259A1AC100AC06EF /* ReviewsViewController.swift */,
+				B8349706259A214200AC06EF /* BusinessReviewCell.swift */,
+				B8349713259A512500AC06EF /* ReviewDetailViewController.swift */,
 			);
 			path = "Business Details";
 			sourceTree = "<group>";
@@ -556,6 +568,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8349707259A214200AC06EF /* BusinessReviewCell.swift in Sources */,
 				B838352B258B9B4A003A4D14 /* BusinessStore.swift in Sources */,
 				B83DA8092590D3200004A403 /* WeatherForcast.swift in Sources */,
 				B85DF9F9259779E5000E0CC3 /* SearchResult.swift in Sources */,
@@ -572,6 +585,7 @@
 				B8383513258A75D2003A4D14 /* BusinessesViewController.swift in Sources */,
 				B83DA82625927A920004A403 /* DayWeatherDetailViewController.swift in Sources */,
 				B85DF9E5259677CC000E0CC3 /* StorageDelegate.swift in Sources */,
+				B834970C259A23AC00AC06EF /* BusinessReview.swift in Sources */,
 				B85097F12594E00C0037708D /* BusinessStorage.swift in Sources */,
 				B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */,
 				B83834C4258A337B003A4D14 /* SceneDelegate.swift in Sources */,
@@ -588,7 +602,9 @@
 				B83834FE258A3CDD003A4D14 /* YelpAPI.swift in Sources */,
 				B83DA7F1258F36950004A403 /* MapViewController.swift in Sources */,
 				B85DFA012597AA51000E0CC3 /* SearchResultCell.swift in Sources */,
+				B8349702259A1AC100AC06EF /* ReviewsViewController.swift in Sources */,
 				B83DA7FB258FBB800004A403 /* MapViewDelegate.swift in Sources */,
+				B8349714259A512500AC06EF /* ReviewDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
