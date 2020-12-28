@@ -23,7 +23,17 @@ class DayWeatherDetailViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         setMinAndMaxDate()
+        setPickerDate()
         
+    }
+    
+    func setPickerDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let selectedDate = dateFormatter.date(from: forcastDay.date)
+        if let selectedDate = selectedDate {
+            self.datePicker.date = selectedDate
+        }
     }
     
     func setMinAndMaxDate() {
