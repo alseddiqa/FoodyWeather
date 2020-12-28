@@ -140,6 +140,10 @@ class BusinessDetailViewController: UIViewController {
             if business == nil {
                 destinationVC.businessHours = savedBusiness.businessHours
             }
+        case "businessReview":
+            let destinationVC = segue.destination as! ReviewsViewController
+            destinationVC.business
+                = business
 
         default:
             preconditionFailure("Unexpected segue identifier.")

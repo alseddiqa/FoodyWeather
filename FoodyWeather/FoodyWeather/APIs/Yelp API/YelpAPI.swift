@@ -153,6 +153,38 @@ struct YelpAPI {
             task.resume()
     }
     
+    static func getBusinessReviews(id: String, completion: @escaping (BusinessReview?) -> Void) {
+        
+        var components = URLComponents(string: businessDetailbaseURL)!
+        components.path += "/\(id)/reviews"
+
+        let url = components.url!
+        
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        
+        // Insert API Key to request
+        request.setValue("Bearer \(self.apiKey)", forHTTPHeaderField: "Authorization")
+                
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                guard let safeResponse = try? JSONDecoder().decode(BusinessReview.self, from: data) else {
+                    print("error decoding")
+                    return
+                }
+                
+                let businessDetail = safeResponse
+                return completion(businessDetail)
+
+                }
+            }
+        
+            task.resume()
+    }
+    
 }
 
 extension Notification.Name {

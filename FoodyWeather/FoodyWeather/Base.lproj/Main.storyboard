@@ -372,7 +372,7 @@
                                                 <rect key="frame" x="0.0" y="943" width="414" height="156"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <connections>
-                                                    <segue destination="Icg-Xf-SNq" kind="embed" id="V1v-3m-PoZ"/>
+                                                    <segue destination="Icg-Xf-SNq" kind="embed" identifier="businessReview" id="V1v-3m-PoZ"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
@@ -392,6 +392,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.96375328299999996" green="0.93538171049999996" blue="0.79998022319999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Okg-jA-t4A" secondAttribute="trailing" id="K24-Pb-ZLZ"/>
                                     <constraint firstItem="Okg-jA-t4A" firstAttribute="leading" secondItem="L09-AB-Yg0" secondAttribute="leading" id="RUe-pq-oxK"/>
@@ -900,7 +901,7 @@
                                                 </label>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.67450980392156867" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.82745098039215681" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <size key="customSize" width="205" height="121"/>
                                         <connections>
                                             <outlet property="closingHourLabel" destination="ifg-aV-y1S" id="vnx-C7-cca"/>
@@ -961,12 +962,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="h4d-3Q-Fh6">
-                                                    <rect key="frame" x="120" y="0.0" width="60" height="18"/>
+                                                    <rect key="frame" x="-6" y="0.0" width="60" height="18"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHf-I9-DA6">
                                                             <rect key="frame" x="0.0" y="0.0" width="34" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                            <color key="textColor" red="0.96078431369999995" green="0.72549019609999998" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DCB-jF-ECB">
@@ -978,6 +979,7 @@
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
+                                                    <color key="backgroundColor" red="0.06887812167" green="0.21214231850000001" blue="0.36080086230000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.9137254901960784" green="0.76862745098039209" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
@@ -985,8 +987,8 @@
                                                 <constraint firstItem="h4d-3Q-Fh6" firstAttribute="top" secondItem="zfQ-hN-9Ru" secondAttribute="top" id="Hzg-5M-SlU"/>
                                                 <constraint firstItem="Ps1-gw-Df0" firstAttribute="top" secondItem="h4d-3Q-Fh6" secondAttribute="bottom" constant="8" symbolic="YES" id="KHr-RT-XzH"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ps1-gw-Df0" secondAttribute="bottom" constant="5" id="Njp-ta-RkD"/>
-                                                <constraint firstAttribute="trailing" secondItem="h4d-3Q-Fh6" secondAttribute="trailing" constant="120" id="ckB-fF-4oW"/>
-                                                <constraint firstItem="h4d-3Q-Fh6" firstAttribute="leading" secondItem="zfQ-hN-9Ru" secondAttribute="leading" constant="120" id="mr9-7j-DRc"/>
+                                                <constraint firstAttribute="trailing" secondItem="h4d-3Q-Fh6" secondAttribute="trailing" constant="246" id="ckB-fF-4oW"/>
+                                                <constraint firstItem="h4d-3Q-Fh6" firstAttribute="leading" secondItem="zfQ-hN-9Ru" secondAttribute="leading" constant="-6" id="mr9-7j-DRc"/>
                                                 <constraint firstItem="Ps1-gw-Df0" firstAttribute="leading" secondItem="zfQ-hN-9Ru" secondAttribute="leading" constant="11" id="xTh-WV-b5i"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ps1-gw-Df0" secondAttribute="trailing" constant="13" id="yPn-F0-HG0"/>
                                             </constraints>
@@ -1000,6 +1002,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="9pf-uy-fqQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YIf-nB-AyC" firstAttribute="leading" secondItem="0tp-5D-fpm" secondAttribute="leading" id="cim-PR-BU4"/>
@@ -1008,6 +1011,9 @@
                             <constraint firstAttribute="trailing" secondItem="YIf-nB-AyC" secondAttribute="trailing" id="xlZ-p2-UKZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="YIf-nB-AyC" id="aX4-se-mEY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFq-uN-wBf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
