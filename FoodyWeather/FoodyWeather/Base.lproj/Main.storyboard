@@ -335,7 +335,7 @@
                                                 </connections>
                                             </containerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azo-hr-Gm6">
-                                                <rect key="frame" x="20" y="742" width="46" height="22"/>
+                                                <rect key="frame" x="20" y="731" width="46" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -355,10 +355,24 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ar-aa-Q5M">
-                                                <rect key="frame" x="0.0" y="764" width="414" height="139"/>
+                                                <rect key="frame" x="0.0" y="752" width="414" height="139"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <connections>
                                                     <segue destination="KSF-Lh-guq" kind="embed" identifier="openHours" id="srl-Ae-QZI"/>
+                                                </connections>
+                                            </containerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXn-fv-Gzb">
+                                                <rect key="frame" x="20" y="910" width="59" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0f-RZ-AwX">
+                                                <rect key="frame" x="0.0" y="943" width="414" height="156"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                <connections>
+                                                    <segue destination="Icg-Xf-SNq" kind="embed" id="V1v-3m-PoZ"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
@@ -915,6 +929,90 @@
             </objects>
             <point key="canvasLocation" x="4621.739130434783" y="594.97767857142856"/>
         </scene>
+        <!--Reviews View Controller-->
+        <scene sceneID="OIX-zv-q2Z">
+            <objects>
+                <viewController id="Icg-Xf-SNq" customClass="ReviewsViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0tp-5D-fpm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="156"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YIf-nB-AyC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="156"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.92156862750000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tg3-S1-Isy">
+                                    <size key="itemSize" width="300" height="131"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BusinessReviewCell" id="HsT-a4-jWs" customClass="BusinessReviewCell" customModule="FoodyWeather" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="12.5" width="300" height="131"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zfQ-hN-9Ru">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="131"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ps1-gw-Df0">
+                                                    <rect key="frame" x="11" y="26" width="276" height="100"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.06887812167" green="0.21214231850000001" blue="0.36080086230000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="h4d-3Q-Fh6">
+                                                    <rect key="frame" x="120" y="0.0" width="60" height="18"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHf-I9-DA6">
+                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DCB-jF-ECB">
+                                                            <rect key="frame" x="42" y="-0.5" width="18" height="18"/>
+                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="18" id="AP5-NO-VTT"/>
+                                                                <constraint firstAttribute="height" constant="18" id="dSa-3a-Amn"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.9137254901960784" green="0.76862745098039209" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="h4d-3Q-Fh6" firstAttribute="top" secondItem="zfQ-hN-9Ru" secondAttribute="top" id="Hzg-5M-SlU"/>
+                                                <constraint firstItem="Ps1-gw-Df0" firstAttribute="top" secondItem="h4d-3Q-Fh6" secondAttribute="bottom" constant="8" symbolic="YES" id="KHr-RT-XzH"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ps1-gw-Df0" secondAttribute="bottom" constant="5" id="Njp-ta-RkD"/>
+                                                <constraint firstAttribute="trailing" secondItem="h4d-3Q-Fh6" secondAttribute="trailing" constant="120" id="ckB-fF-4oW"/>
+                                                <constraint firstItem="h4d-3Q-Fh6" firstAttribute="leading" secondItem="zfQ-hN-9Ru" secondAttribute="leading" constant="120" id="mr9-7j-DRc"/>
+                                                <constraint firstItem="Ps1-gw-Df0" firstAttribute="leading" secondItem="zfQ-hN-9Ru" secondAttribute="leading" constant="11" id="xTh-WV-b5i"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ps1-gw-Df0" secondAttribute="trailing" constant="13" id="yPn-F0-HG0"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="300" height="131"/>
+                                        <connections>
+                                            <outlet property="reviewLabel" destination="Ps1-gw-Df0" id="P8V-55-x2h"/>
+                                            <outlet property="reviewRating" destination="hHf-I9-DA6" id="iTl-io-C3B"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YIf-nB-AyC" firstAttribute="leading" secondItem="0tp-5D-fpm" secondAttribute="leading" id="cim-PR-BU4"/>
+                            <constraint firstItem="YIf-nB-AyC" firstAttribute="top" secondItem="0tp-5D-fpm" secondAttribute="top" id="eQm-Dj-f0f"/>
+                            <constraint firstAttribute="bottom" secondItem="YIf-nB-AyC" secondAttribute="bottom" id="hKs-dh-qwW"/>
+                            <constraint firstAttribute="trailing" secondItem="YIf-nB-AyC" secondAttribute="trailing" id="xlZ-p2-UKZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XFq-uN-wBf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4511.594202898551" y="239.73214285714283"/>
+        </scene>
     </scenes>
     <resources>
         <image name="depressed" width="512" height="512"/>
@@ -923,6 +1021,7 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <image name="sky" width="496" height="331"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="sun.max" catalog="system" width="128" height="124"/>
         <image name="sun.max.fill" catalog="system" width="128" height="124"/>
         <systemColor name="systemBackgroundColor">
@@ -930,6 +1029,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
