@@ -13,16 +13,34 @@ class DayWeatherDetailViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     
     var forcastDay: Forecastday!
+    var location = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         // Do any additional setup after loading the view.
         datePicker.backgroundColor = #colorLiteral(red: 0.1058823529, green: 0.1490196078, blue: 0.1725490196, alpha: 1)
         tableView.dataSource = self
         tableView.delegate = self
+        setMinAndMaxDate()
+        setPickerDate()
         
+    }
+    
+    func setPickerDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let selectedDate = dateFormatter.date(from: forcastDay.date)
+        if let selectedDate = selectedDate {
+            self.datePicker.date = selectedDate
+        }
+    }
+    
+    func setMinAndMaxDate() {
+        self.datePicker.minimumDate = Date()
+        let calendar = Calendar.current
+        let maxDate = calendar.date(byAdding: .day, value: 9, to: Date())
+        self.datePicker.maximumDate = maxDate
     }
     
     func getHour(dateString: String) -> String {
@@ -48,6 +66,21 @@ class DayWeatherDetailViewController: UIViewController {
         
     }
     
+    @IBAction func handleDateChange(_ sender: UIDatePicker) {
+        let date = sender.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: date)
+        WeatherAPI.getWeatherInformationForDay(location: location, date: dateString) {
+            (weatherFocaseResult) in
+                guard let weatherFocaseResult = weatherFocaseResult else {
+                    return
+                }
+            self.forcastDay = weatherFocaseResult.forecast.forecastday[0]
+            self.tableView.reloadData()
+        }
+    }
+
 }
 
 extension DayWeatherDetailViewController: UITableViewDelegate, UITableViewDataSource {

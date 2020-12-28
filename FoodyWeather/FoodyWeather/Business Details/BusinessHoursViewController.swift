@@ -16,6 +16,10 @@ class BusinessHoursViewController: UIViewController, UICollectionViewDelegate, U
     var businessHours = [Open]()
     var businessStorage: BusinessStorage!
 
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

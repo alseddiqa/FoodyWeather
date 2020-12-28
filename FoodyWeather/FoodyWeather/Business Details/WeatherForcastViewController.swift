@@ -15,6 +15,7 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
     var forcast: Forecast!
     var forcastDays = [Forecastday]()
     var businessStorage: BusinessStorage!
+    var lastFourDays = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,14 +49,14 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
     }
     
     func getWeatherForNextDays() {
-        var today = Date()
+        let today = Date()
         let calendar = Calendar.current
+        var updateDay = calendar.date(byAdding: .day, value: 2, to: today)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         for _ in 1...4 {
-            let updateDay = calendar.date(byAdding: .day, value: 1, to: today)
-            today = updateDay!
+            updateDay = calendar.date(byAdding: .day, value: 1, to: updateDay!)
             let dateString = dateFormatter.string(from: updateDay!)
             requestWeatherInformationForDay(date: dateString)
         }
@@ -103,11 +104,11 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
         let identifier = "WeatherDayCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! WeatherDayCell
         
+        self.forcastDays.sort()
         let weather = forcastDays[indexPath.item]
         cell.weatherTempLabel.text = String(weather.day.avgtempC) + "°C"
         cell.weatherImage.kf.setImage(with: URL(string: "http:" + weather.day.condition.icon)!)
         cell.dayLabel.text = getDateText(index: indexPath.item, dateString: weather.date)
-
         cell.shadowDecorate()
         return cell
     }
@@ -120,6 +121,7 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
                 let dayForcast = forcastDays[selectedIndexPath.row]
                 let destinationVC = segue.destination as! DayWeatherDetailViewController
                 destinationVC.forcastDay = dayForcast
+                destinationVC.location = String(business.coordinates.latitude) + "," + String(business.coordinates.longitude)
             }
         default:
             preconditionFailure("Unexpected segue identifier.")

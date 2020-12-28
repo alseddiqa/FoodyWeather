@@ -188,7 +188,6 @@ struct WeatherAPI {
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                //print(String(data: data, encoding: .utf8))
                 guard let safeResponse = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
                     print("error decoding")
                     return

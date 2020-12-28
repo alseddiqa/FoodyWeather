@@ -71,7 +71,27 @@ struct Forecast: Codable {
 }
 
 // MARK: - Forecastday
-struct Forecastday: Codable {
+struct Forecastday: Codable, Comparable {
+    static func < (lhs: Forecastday, rhs: Forecastday) -> Bool {
+        let dateA = getDate(date: lhs.date)
+        let dateB = getDate(date: rhs.date)
+        if dateA < dateB {
+            return true
+        }else {
+            return false
+        }
+    }
+    
+    static func == (lhs: Forecastday, rhs: Forecastday) -> Bool {
+        let dateA = getDate(date: lhs.date)
+        let dateB = getDate(date: rhs.date)
+        if dateA == dateB {
+            return true
+        }else {
+            return false
+        }
+    }
+    
     let date: String
     let dateEpoch: Int
     let day: Day
@@ -82,6 +102,13 @@ struct Forecastday: Codable {
         case date
         case dateEpoch = "date_epoch"
         case day, astro, hour
+    }
+    
+    static func getDate(date: String) -> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: date)!
+        return date
     }
 }
 
