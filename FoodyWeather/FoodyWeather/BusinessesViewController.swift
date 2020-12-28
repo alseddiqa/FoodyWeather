@@ -155,6 +155,7 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
         searchTextField.layer.borderWidth = 1.0
         searchTextField.layer.borderColor = #colorLiteral(red: 0.3086441457, green: 0.5725629926, blue: 0.4548408389, alpha: 1)
         searchTextField.layer.masksToBounds = true
+        tempratureLabel.blink()
     }
     
     @IBAction func searchRestaurant(_ sender: UIButton) {

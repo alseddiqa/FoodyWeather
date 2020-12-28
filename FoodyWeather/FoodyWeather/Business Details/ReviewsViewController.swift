@@ -33,6 +33,20 @@ class ReviewsViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "reviewDetail":
+            if let selectedIndexPath =
+                collectionView.indexPathsForSelectedItems?.first {
+                let review = reviews[selectedIndexPath.row]
+                let destinationVC = segue.destination as! ReviewDetailViewController
+                destinationVC.businessReview = review
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier.")
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return reviews.count
     }
