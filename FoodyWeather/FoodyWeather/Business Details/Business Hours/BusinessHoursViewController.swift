@@ -9,8 +9,10 @@ import UIKit
 
 class BusinessHoursViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
+    //Declare outlets for the container view, collection view for the hours
     @IBOutlet var collectionView: UICollectionView!
     
+    //Declare variables
     var business: Business!
     var businessDetail: BusinessDetail!
     var businessHours = [Open]()
@@ -29,24 +31,29 @@ class BusinessHoursViewController: UIViewController, UICollectionViewDelegate, U
             getBusinessDetails(businessId: business.id)
         }
     }
-
+    
+    /// A helper function to get the business details
+    /// - Parameter businessId: the business id to fetch the hours for
     func getBusinessDetails(businessId: String) {
         YelpAPI.getBusinessDetails(id: businessId) { (details) in
             guard let details = details else {
                 return
             }
             self.businessDetail = details
-            //do more update to UI
             self.businessHours = self.businessDetail.hours[0].hourOpen
             self.collectionView.reloadData()
             self.storeBusinessHours()
         }
     }
     
+    /// A helper function to store business hours if viewed business was searched
     func storeBusinessHours() {
         businessStorage.updateHoursForBusiness(businessId: business.id, hours: self.businessHours)
     }
     
+    /// A helper function to transfer opening hours into pm or am
+    /// - Parameter hour: hour of the day
+    /// - Returns: Latin ante meridiem of the day
     func getTimeOfDay(hour: Int) -> String {
         if hour >= 0 && hour < 12 {
             return " am"
@@ -55,6 +62,9 @@ class BusinessHoursViewController: UIViewController, UICollectionViewDelegate, U
         }
     }
     
+    /// A helper function to get the day based on the index retrieved from yelp api
+    /// - Parameter day: day index
+    /// - Returns: returns the name of the day
     func getDayText(day: Int) -> String{
         switch day {
         case 0:
@@ -74,6 +84,9 @@ class BusinessHoursViewController: UIViewController, UICollectionViewDelegate, U
         }
     }
     
+    /// A helper function to reformat the open hours
+    /// - Parameter start: first hour the business open
+    /// - Returns: the open hour for the business
     func getHoursOpen(start: String) -> String{
         
         var resultTime = ""
@@ -91,6 +104,9 @@ class BusinessHoursViewController: UIViewController, UICollectionViewDelegate, U
        
     }
     
+    /// A helper function to reformat the closing hours
+    /// - Parameter start: last hour the business oerates
+    /// - Returns: the closing hour for the business
     func getClosingHour(end: String) -> String {
         
         var resultTime = ""

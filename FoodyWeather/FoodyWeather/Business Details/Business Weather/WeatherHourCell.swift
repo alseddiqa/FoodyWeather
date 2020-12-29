@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A cell class to configure weather table cell
 class WeatherHourCell: UITableViewCell {
     
     @IBOutlet var conditionIcon: UIImageView!

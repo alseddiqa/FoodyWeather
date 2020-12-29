@@ -1,5 +1,5 @@
 //
-//  BusinessStore.swift
+//  BusinessesFetcher.swift
 //  FoodyWeather
 //
 //  Created by Abdullah Alseddiq on 12/17/20.
@@ -7,10 +7,7 @@
 
 import Foundation
 
-class BusinessStore {
-    
-//    let lat = 37.7670169511878
-//    let lon = -122.42184275
+class BusinessesFetcher {
     
     var businesses = [Business]()
     
@@ -18,6 +15,10 @@ class BusinessStore {
         
     }
     
+    /// A helper function to execute businesses load for a specific location
+    /// - Parameters:
+    ///   - lat: the latitude of the location
+    ///   - lon: the logintitude of the location
     func loadBusinessesForLocation(lat: Double, lon: Double) {
         let nc = NotificationCenter.default
         YelpAPI.getBusinessListForLocation(latitude: String(lat), longitude: String(lon)) { (restaurants) in
@@ -29,6 +30,11 @@ class BusinessStore {
         }
     }
     
+    /// A function to execute a search for a restaurant
+    /// - Parameters:
+    ///   - restaurant: the search keyword
+    ///   - lat: latitude of the specified location
+    ///   - lon: lonitude of the specified location
     func searchForBusiness(restaurant: String, lat: Double, lon: Double) {
         let nc = NotificationCenter.default
         YelpAPI.getSearchResult(latitude: String(lat), longitude: String(lon), restaurantName: restaurant)
@@ -45,8 +51,6 @@ class BusinessStore {
 extension Notification.Name {
     static let businessesLoadedYelp = Notification.Name(rawValue: "businessesLoadedYelp")
     static let businessesSearchYelp = Notification.Name(rawValue: "businessesSearchYelp")
-    static let noConnection = Notification.Name(rawValue: "noConnection")
-
-    
+    static let loadFromDisk = Notification.Name(rawValue: "loadFromDisk")
 }
 

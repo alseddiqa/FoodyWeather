@@ -51,8 +51,22 @@ class BusinessPhotosViewController: UIViewController, UICollectionViewDelegate, 
     func storeBusinessPhotos() {
         businessStorage.updatePhotosForBusiness(businessId: business.id, photos: self.businessPhotos)
     }
-
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "photoDetail":
+            if let selectedIndexPath =
+                collectionView.indexPathsForSelectedItems?.first {
+                let photoURL = businessPhotos[selectedIndexPath.row]
+                let destinationVC = segue.destination as! PhotoDetailViewController
+                destinationVC.imageURL = photoURL
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier.")
+        }
+    
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return businessPhotos.count
     }

@@ -7,66 +7,34 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController, UITextFieldDelegate {
 
+    //declare VC outlets
     @IBOutlet var tableView: UITableView!
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var searchCityTextField: UITextField!
     
+    //Array to hold search results
     var results = [SearchResult]()
-    
+    var locationManager = UserLocationService()
     var annotaionsCounter: Int = 0
     var mapDelegate: MapViewDelegate!
+    var currentLocation: CLLocation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+                
+        locationManager.delegate = self
+        mapView.showsUserLocation = true
+        
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
-        //setUpMapView()
     }
     
-    func setUpMapView() {
-        
-        let standardString = NSLocalizedString("Standard", comment: "Standard map view")
-        let hybridString = NSLocalizedString("Hybrid", comment: "Hybrid map view")
-        let satelliteString = NSLocalizedString("Satellite", comment: "Satellite map view")
-        
-        let segmentedControl
-            = UISegmentedControl(items: [standardString, hybridString, satelliteString])
-        segmentedControl.backgroundColor = UIColor.systemBackground
-        segmentedControl.selectedSegmentIndex = 0
-        
-        segmentedControl.addTarget(self, action: #selector(mapTypeChanged(_:)), for: .valueChanged)
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(segmentedControl)
-        
-        let topConstraint = segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8)
-        
-        let margins = view.layoutMarginsGuide
-        let leadingConstraint = segmentedControl.leadingAnchor.constraint(equalTo: margins.leadingAnchor)
-        let trailingConstraint = segmentedControl.trailingAnchor.constraint(equalTo: margins.trailingAnchor)
-        
-        topConstraint.isActive = true
-        leadingConstraint.isActive = true
-        trailingConstraint.isActive = true
-    }
-    
-    @objc func  mapTypeChanged(_ segControl: UISegmentedControl){
-        switch segControl.selectedSegmentIndex {
-        case 0:
-            mapView.mapType = .standard
-        case 1:
-            mapView.mapType = .hybrid
-        case 2:
-            mapView.mapType = .satellite
-        default:
-            break
-        }
-    }
-    
+    /// A  function that handles the tap on the map, and gets the location where the user tapped
+    /// - Parameter sender: tap gesture recognizer
     @IBAction func triggerTouchAction(_ sender: UITapGestureRecognizer){
         if sender.state == .ended{
             let locationInView = sender.location(in: mapView)
@@ -103,11 +71,16 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
+    /// A function to dismiss the keyboard when the user hits enter
+    /// - Parameter textField: the search text fields
+    /// - Returns: true when dismissed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    /// A function to make a call to the weather api to get autocomplete
+    /// - Parameter word: the key word
     func sendForAutoComplete(_ word: String) {
         WeatherAPI.getSearchAutoComplete(keyWord: word)
         { (weatherResult) in
@@ -119,6 +92,8 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    /// A function that execute that search when the user starts typing
+    /// - Parameter sender: text field of search
     @IBAction func handleCitySearch(_ sender: UITextField) {
         let textCount = sender.text?.count
         if textCount == 0 {
@@ -134,6 +109,7 @@ class MapViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension MapViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
@@ -149,7 +125,6 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCity = results[indexPath.row]
-        
         let lat = selectedCity.lat
         let long = selectedCity.lon
         let corindates = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -183,3 +158,10 @@ extension UITableView {
     }
 }
 
+extension MapViewController: LocationServiceDelegate  {
+    func tracingLocation(currentLocation: CLLocation) {
+        self.currentLocation = currentLocation
+        let cordinates = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+        self.mapView.setCenter(cordinates, animated: true)
+    }
+}

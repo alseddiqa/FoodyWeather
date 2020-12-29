@@ -8,7 +8,9 @@
 
 import Foundation
 
-// MARK: - Element
+//Codable class for location autocomplete from the weather api
+
+// MARK: - Search result
 struct SearchResult: Codable {
     let id: Int
     let name: String

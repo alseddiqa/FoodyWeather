@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 
+/// A map delegate used to execue a search
 protocol MapViewDelegate: NSObject {
     func getBusinessesForPinnedLocation(cordinates: CLLocationCoordinate2D)
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class BusinessDetailViewController: UIViewController {
     
+    //Declaring outlets of the view
     @IBOutlet var businessImage: UIImageView!
     @IBOutlet var nameOfBusiness: UILabel!
     @IBOutlet var categoryLabel: UILabel!
@@ -19,6 +20,7 @@ class BusinessDetailViewController: UIViewController {
     @IBOutlet var photosLabel: UILabel!
     @IBOutlet var weatherLabel: UILabel!
     @IBOutlet var hoursLabel: UILabel!
+    @IBOutlet var reviewsSectionLabel: UILabel!
     
     var business: Business!
     var businessDetail: BusinessDetail!
@@ -29,7 +31,6 @@ class BusinessDetailViewController: UIViewController {
         super.viewWillAppear(true)
         
         displayBusinessInformation()
-        
     }
     
     override func viewDidLoad() {
@@ -37,9 +38,9 @@ class BusinessDetailViewController: UIViewController {
         if business != nil {
             getBusinessDetails(businessId: business.id)
         }
-        // Do any additional setup after loading the view.
     }
     
+    /// A function to display business details information depending if it's stored or fetched
     func displayBusinessInformation() {
         if business != nil {
             nameOfBusiness.text = business.name
@@ -71,26 +72,35 @@ class BusinessDetailViewController: UIViewController {
         
     }
     
+    /// set labels if no more information is available
     func setInformationLabels(){
         if savedBusiness.businessHours.count == 0{
             hoursLabel.text = ""
-        }else if savedBusiness.businessPhotos.count == 0 {
-            photosLabel.text = ""
-        }else if savedBusiness.forcastDays.count == 0 {
+        }
+        if savedBusiness.businessPhotos.count == 0 {
+            photosLabel.text = "Other information not available. (no internet) "
+        }
+        if savedBusiness.forcastDays.count == 0 {
             weatherLabel.text = ""
+        }
+        if savedBusiness.businessReviews.count == 0 {
+            reviewsSectionLabel.text = ""
         }
     }
     
+    /// A helper function to get the business details of the business
+    /// - Parameter businessId: business id
     func getBusinessDetails(businessId: String) {
         YelpAPI.getBusinessDetails(id: businessId) { (details) in
             guard let details = details else {
                 return
             }
             self.businessDetail = details
-            //do more update to UI
         }
     }
     
+    /// A helper function to open apple maps when the user taps on to allow the user to start the navigation
+    /// - Parameter sender: the location button
     @IBAction func openMap(_ sender: UIButton) {
         let latitude = Double(business.coordinates.latitude)
         let longitude = Double(business.coordinates.longitude)
@@ -111,7 +121,7 @@ class BusinessDetailViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    
+    //Preparing for the container views segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier {
@@ -144,6 +154,10 @@ class BusinessDetailViewController: UIViewController {
             let destinationVC = segue.destination as! ReviewsViewController
             destinationVC.business
                 = business
+            destinationVC.businessStorage = businessStorage
+            if business == nil {
+                destinationVC.reviews = savedBusiness.businessReviews
+            }
 
         default:
             preconditionFailure("Unexpected segue identifier.")
@@ -153,6 +167,7 @@ class BusinessDetailViewController: UIViewController {
     
 }
 
+// An animation to make a label
 extension UILabel {
     func blink() {
         self.alpha = 0.0;

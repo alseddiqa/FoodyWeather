@@ -7,8 +7,10 @@
 
 import UIKit
 
+/// A detail view for the day weather to show weather hour by hour
 class DayWeatherDetailViewController: UIViewController {
     
+    //Declaring outlets for the VC
     @IBOutlet var tableView: UITableView!
     @IBOutlet var datePicker: UIDatePicker!
     
@@ -24,9 +26,13 @@ class DayWeatherDetailViewController: UIViewController {
         tableView.delegate = self
         setMinAndMaxDate()
         setPickerDate()
+        if location.count == 0 {
+            datePicker.isEnabled = false
+        }
         
     }
     
+    /// A helper function to set the date picker to the selected day from the container view
     func setPickerDate() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -36,6 +42,7 @@ class DayWeatherDetailViewController: UIViewController {
         }
     }
     
+    /// A helper function to set the the max and min date to get weather for. API limit the calls to 10 days from the current day
     func setMinAndMaxDate() {
         self.datePicker.minimumDate = Date()
         let calendar = Calendar.current
@@ -43,6 +50,9 @@ class DayWeatherDetailViewController: UIViewController {
         self.datePicker.maximumDate = maxDate
     }
     
+    /// Get the hour of the day to display weather condition for
+    /// - Parameter dateString: the date retrieved from the API
+    /// - Returns: an hour of the day
     func getHour(dateString: String) -> String {
         
         let dateFormatter = DateFormatter()
@@ -66,6 +76,8 @@ class DayWeatherDetailViewController: UIViewController {
         
     }
     
+    /// A function to handle date change in date picker, and sends request to api
+    /// - Parameter sender: date picker holding the chosen date by the user
     @IBAction func handleDateChange(_ sender: UIDatePicker) {
         let date = sender.date
         let dateFormatter = DateFormatter()
@@ -96,10 +108,9 @@ extension DayWeatherDetailViewController: UITableViewDelegate, UITableViewDataSo
         cell.timeLabel.text = getHour(dateString: hour.time)
         cell.tempLabel.text = String(hour.tempC) + "°C"
         cell.rainChanceLabel.text = hour.chanceOfRain + "%"
-        cell.conditionIcon.load(url: URL(string: "http:" + hour.condition.icon)!)
-        
+        if let imageURL = URL(string: "http:" + hour.condition.icon) {
+            cell.conditionIcon.kf.setImage(with: imageURL)
+        }
         return cell
     }
-    
-    
 }

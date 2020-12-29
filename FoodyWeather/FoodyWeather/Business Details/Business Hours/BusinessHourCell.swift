@@ -8,10 +8,13 @@
 import UIKit
 import Lottie
 
+/// A cell class to configure the business hour cell
 class BusinessHourCell: UICollectionViewCell {
     
+    //lottie animation
     var clockAnimation: AnimationView?
     
+    //Declre outlets
     @IBOutlet var viewBackground: UIView!
     @IBOutlet var dayLabel: UILabel!
     @IBOutlet var hoursOpenLabel: UILabel!

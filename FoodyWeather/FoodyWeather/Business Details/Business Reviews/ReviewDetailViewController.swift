@@ -11,6 +11,7 @@ class ReviewDetailViewController: UIViewController {
 
     var businessReview: Review!
     
+    //Declaring outlets for the VC
     @IBOutlet var reviewLabel: UILabel!
     @IBOutlet var reviewerProfilePicture: UIImageView!
     @IBOutlet var dateLabel: UILabel!
@@ -21,14 +22,13 @@ class ReviewDetailViewController: UIViewController {
         reviewLabel.text = businessReview.text
         reviewerLabel.text = businessReview.user.name
         dateLabel.text = "Date: " + businessReview.timeCreated
-        reviewRating.text = "Review rating: " + String(businessReview.rating)
+        reviewRating.text = "Review rating: " + String(businessReview.rating) + "/5"
         let profileImge = URL(string: businessReview.user.imageURL!)
         reviewerProfilePicture.kf.setImage(with: profileImge)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         reviewerProfilePicture.layer.cornerRadius = 15
         reviewerProfilePicture.layer.masksToBounds = true
 

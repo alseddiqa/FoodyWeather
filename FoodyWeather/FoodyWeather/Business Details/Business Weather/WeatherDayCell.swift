@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A cell class for the weather for a day
 class WeatherDayCell: UICollectionViewCell {
     
     @IBOutlet var weatherImage: UIImageView!
