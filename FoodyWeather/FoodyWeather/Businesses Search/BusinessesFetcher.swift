@@ -1,5 +1,5 @@
 //
-//  BusinessStore.swift
+//  BusinessesFetcher.swift
 //  FoodyWeather
 //
 //  Created by Abdullah Alseddiq on 12/17/20.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BusinessStore {
+class BusinessesFetcher {
     
     var businesses = [Business]()
     

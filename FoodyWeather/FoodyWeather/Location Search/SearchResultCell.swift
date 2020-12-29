@@ -7,20 +7,17 @@
 
 import UIKit
 
+/// A table cell class to display auto complete location results from weather api
 class SearchResultCell: UITableViewCell {
 
     @IBOutlet var locationName: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

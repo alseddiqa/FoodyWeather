@@ -99,7 +99,9 @@ extension DayWeatherDetailViewController: UITableViewDelegate, UITableViewDataSo
         cell.timeLabel.text = getHour(dateString: hour.time)
         cell.tempLabel.text = String(hour.tempC) + "°C"
         cell.rainChanceLabel.text = hour.chanceOfRain + "%"
-        cell.conditionIcon.load(url: URL(string: "http:" + hour.condition.icon)!)
+        if let imageURL = URL(string: "http:" + hour.condition.icon) {
+            cell.conditionIcon.kf.setImage(with: imageURL)
+        }
         
         return cell
     }

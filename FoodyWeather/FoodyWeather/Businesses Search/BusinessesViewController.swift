@@ -12,7 +12,7 @@ import Network
 
 class BusinessesViewController: UIViewController , UITextFieldDelegate{
 
-    var businessesStore: BusinessStore!
+    var businessesStore: BusinessesFetcher!
     var userLocationManager: UserLocationService!
     var currentLocationStatus: Bool = true
     var savedBusinesses: BusinessStorage!
@@ -48,7 +48,7 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
         if connectedToWifi == true {
             userLocationManager = UserLocationService()
             userLocationManager.delegate = self
-            businessesStore = BusinessStore()
+            businessesStore = BusinessesFetcher()
         }
         
         tableView.delegate = self

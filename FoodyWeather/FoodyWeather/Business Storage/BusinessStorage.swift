@@ -31,7 +31,6 @@ class BusinessStorage {
         let loadOp = BusinessLoadOperation(url: itemArchiveURL) { (items) in
             self.businessList = items
             print("list Loaded~!")
-            print(self.itemArchiveURL)
             nc.post(name: .loadFromDisk, object: self)
         }
         diskIOQueue.addOperation(loadOp)
