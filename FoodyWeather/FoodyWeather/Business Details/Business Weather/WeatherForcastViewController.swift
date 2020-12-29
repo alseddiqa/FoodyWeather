@@ -7,8 +7,10 @@
 
 import UIKit
 
+/// The VC class for the container view holding weather forcast for the current week
 class WeatherForcastViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    //Declare outlets
     @IBOutlet var collectionView: UICollectionView!
     
     var business: Business!
@@ -20,16 +22,15 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.delegate = self
+        
         if business != nil {
             getWeatherInformation()
-
         }
-        
     }
     
+    /// A function to get the weather information for the current week
     func getWeatherInformation() {
         let location = String(business.coordinates.latitude) + "," + String(business.coordinates.longitude)
         WeatherAPI.getWeatherForcastForBusiness(location: location)
@@ -44,10 +45,12 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
+    /// A helper function to store 3-days weather information if business was searched
     func storeWeatherForcastResult() {
         businessStorage.updateForcastForBusiness(businessId: business.id, forcast: self.forcastDays)
     }
     
+    /// A helper function to request weather for more days. Weahter API free account  limits the result to 3 days. To get arround that, i request weather infomration for more days individually
     func getWeatherForNextDays() {
         let today = Date()
         let calendar = Calendar.current
@@ -63,6 +66,8 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
         self.storeWeatherForcastResult()
     }
     
+    /// A function that makes the calls to weather APi to fetch weather information for a specific date
+    /// - Parameter date: the date to request weather for
     func  requestWeatherInformationForDay(date: String) {
         let location = String(business.coordinates.latitude) + "," + String(business.coordinates.longitude)
         WeatherAPI.getWeatherInformationForDay(location: location , date: date)
@@ -75,8 +80,12 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
         }
         
     }
-
     
+    /// A helper function to get the day of the week from the retrieved forcast
+    /// - Parameters:
+    ///   - index: index of the day
+    ///   - dateString: the date to reformat
+    /// - Returns: the description of the day
     func getDateText(index: Int , dateString: String) -> String {
         switch index{
         case 0:

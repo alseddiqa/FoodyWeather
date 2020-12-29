@@ -276,6 +276,14 @@
 			path = "App Bootstrapping";
 			sourceTree = "<group>";
 		};
+		B834973B259B7AF800AC06EF /* Main Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */,
+			);
+			path = "Main Navigation";
+			sourceTree = "<group>";
+		};
 		B83834B5258A337B003A4D14 = {
 			isa = PBXGroup;
 			children = (
@@ -304,8 +312,7 @@
 				B8349731259B661000AC06EF /* App Bootstrapping */,
 				B85DFA052597AA63000E0CC3 /* Location Search */,
 				B85097DF2594D28C0037708D /* Business Details */,
-				B83DA7F5258F786F0004A403 /* MainNavigationViewController.swift */,
-				B83DA7E5258E38700004A403 /* UserLocationService.swift */,
+				B834973B259B7AF800AC06EF /* Main Navigation */,
 				B85098022594F8FE0037708D /* Business Storage */,
 				B8349723259B647000AC06EF /* Businesses Search */,
 				B83496F82599310A00AC06EF /* APIs */,
@@ -373,6 +380,7 @@
 				B85DFA002597AA51000E0CC3 /* SearchResultCell.swift */,
 				B83DA7FA258FBB800004A403 /* MapViewDelegate.swift */,
 				B83DA7F0258F36950004A403 /* MapViewController.swift */,
+				B83DA7E5258E38700004A403 /* UserLocationService.swift */,
 			);
 			path = "Location Search";
 			sourceTree = "<group>";

@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A cell for the reivew of business
 class BusinessReviewCell: UICollectionViewCell {
     
     @IBOutlet var reviewRating: UILabel!

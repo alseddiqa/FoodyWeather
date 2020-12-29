@@ -9,6 +9,7 @@ import UIKit
 
 class ReviewsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    //Declare outlets
     @IBOutlet var collectionView: UICollectionView!
     
     var business: Business!
@@ -26,6 +27,7 @@ class ReviewsViewController: UIViewController, UICollectionViewDelegate, UIColle
         
     }
     
+    /// A helper function to make API call to get the reviews for a specific business
     func getBusinessReviews() {
         YelpAPI.getBusinessReviews(id: business.id) {
             (businessReviews) in
@@ -38,6 +40,7 @@ class ReviewsViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    /// A function to store business review if business was searched
     func storeBusinessReviews() {
         businessStorage.updateReviewsForBusiness(businessId: business.id, reviews: reviews)
     }

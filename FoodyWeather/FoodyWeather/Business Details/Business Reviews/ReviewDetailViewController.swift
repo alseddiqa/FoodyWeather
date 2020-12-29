@@ -11,6 +11,7 @@ class ReviewDetailViewController: UIViewController {
 
     var businessReview: Review!
     
+    //Declaring outlets for the VC
     @IBOutlet var reviewLabel: UILabel!
     @IBOutlet var reviewerProfilePicture: UIImageView!
     @IBOutlet var dateLabel: UILabel!
@@ -28,7 +29,6 @@ class ReviewDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         reviewerProfilePicture.layer.cornerRadius = 15
         reviewerProfilePicture.layer.masksToBounds = true
 
