@@ -17,6 +17,7 @@
 		B834970C259A23AC00AC06EF /* BusinessReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834970B259A23AC00AC06EF /* BusinessReview.swift */; };
 		B8349714259A512500AC06EF /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8349713259A512500AC06EF /* ReviewDetailViewController.swift */; };
 		B834971F259A801A00AC06EF /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834971E259A801A00AC06EF /* PhotoDetailViewController.swift */; };
+		B8349740259BA85B00AC06EF /* Extensions+BusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834973F259BA85B00AC06EF /* Extensions+BusinessesViewController.swift */; };
 		B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C1258A337B003A4D14 /* AppDelegate.swift */; };
 		B83834C4258A337B003A4D14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C3258A337B003A4D14 /* SceneDelegate.swift */; };
 		B83834C9258A337B003A4D14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83834C7258A337B003A4D14 /* Main.storyboard */; };
@@ -91,6 +92,7 @@
 		B834970B259A23AC00AC06EF /* BusinessReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReview.swift; sourceTree = "<group>"; };
 		B8349713259A512500AC06EF /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
 		B834971E259A801A00AC06EF /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		B834973F259BA85B00AC06EF /* Extensions+BusinessesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+BusinessesViewController.swift"; sourceTree = "<group>"; };
 		B83834BE258A337B003A4D14 /* FoodyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83834C1258A337B003A4D14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B83834C3258A337B003A4D14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				B838352A258B9B4A003A4D14 /* BusinessesFetcher.swift */,
 				B8383517258A7657003A4D14 /* BusinessTableCell.swift */,
 				B8383512258A75D2003A4D14 /* BusinessesViewController.swift */,
+				B834973F259BA85B00AC06EF /* Extensions+BusinessesViewController.swift */,
 			);
 			path = "Businesses Search";
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				B80397B2258BF51A006B9376 /* LocationWeather.swift in Sources */,
 				B85097FE2594F64F0037708D /* BusinessLoadOperation.swift in Sources */,
 				B83834F9258A3794003A4D14 /* Business.swift in Sources */,
+				B8349740259BA85B00AC06EF /* Extensions+BusinessesViewController.swift in Sources */,
 				B83DA7DB258D2BA20004A403 /* BusinessDetail.swift in Sources */,
 				B85097EC2594D70A0037708D /* SavedBusiness.swift in Sources */,
 				B85097F92594F6030037708D /* SaveOperation.swift in Sources */,

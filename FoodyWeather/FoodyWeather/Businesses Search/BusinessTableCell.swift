@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A cell class for the table of businesses
 class BusinessTableCell: UITableViewCell {
 
     @IBOutlet var businessName: UILabel!
@@ -26,6 +27,8 @@ class BusinessTableCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        //styling image
         businessImage.layer.cornerRadius = 15.0
         businessImage.layer.masksToBounds = true
     }

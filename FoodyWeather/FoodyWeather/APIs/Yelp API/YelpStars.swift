@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-// To call image
+// A struct to map yelp rating to stars image
 struct Stars {
     
     static let dict = [

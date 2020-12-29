@@ -1038,12 +1038,17 @@
                                 <color key="textColor" red="0.057608973664292989" green="0.053997450771119629" blue="0.27695133800812577" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruy-uS-Zbf">
-                                <rect key="frame" x="20" y="401" width="232" height="23"/>
-                                <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="17"/>
-                                <color key="textColor" red="0.05760897366" green="0.053997450769999997" blue="0.27695133799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3Os-mG-mt1">
+                                <rect key="frame" x="20" y="401" width="294" height="23"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruy-uS-Zbf">
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="23"/>
+                                        <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="17"/>
+                                        <color key="textColor" red="0.05760897366" green="0.053997450769999997" blue="0.27695133799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGs-B3-7tK">
                                 <rect key="frame" x="20" y="185" width="374" height="23"/>
                                 <color key="backgroundColor" red="0.066666666669999999" green="0.23529411759999999" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1063,34 +1068,26 @@
                                 <color key="textColor" red="0.05760897366" green="0.053997450769999997" blue="0.27695133799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JNk-7O-p3z">
-                                <rect key="frame" x="176" y="397.5" width="40" height="28.5"/>
-                                <color key="tintColor" systemColor="systemOrangeColor"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RYv-la-jUz"/>
                         <color key="backgroundColor" red="0.88235294117647056" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="elp-VD-Bir" secondAttribute="trailing" constant="20" id="5ih-rx-UkW"/>
-                            <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="ruy-uS-Zbf" secondAttribute="trailing" constant="162" id="BVx-L7-i5I"/>
-                            <constraint firstItem="elp-VD-Bir" firstAttribute="top" secondItem="ruy-uS-Zbf" secondAttribute="bottom" constant="30" id="Ist-2M-1u9"/>
+                            <constraint firstItem="3Os-mG-mt1" firstAttribute="leading" secondItem="RYv-la-jUz" secondAttribute="leading" constant="20" id="6UD-wf-GbN"/>
                             <constraint firstItem="Ulp-NC-QoJ" firstAttribute="leading" secondItem="RYv-la-jUz" secondAttribute="leading" constant="43" id="J7E-bZ-RoJ"/>
+                            <constraint firstItem="3Os-mG-mt1" firstAttribute="top" secondItem="zs3-OJ-eex" secondAttribute="bottom" constant="141" id="Jmc-S4-LBT"/>
                             <constraint firstItem="Ulp-NC-QoJ" firstAttribute="top" secondItem="d3Q-aD-FgO" secondAttribute="bottom" constant="21" id="MdH-Ki-cgc"/>
-                            <constraint firstItem="ruy-uS-Zbf" firstAttribute="leading" secondItem="RYv-la-jUz" secondAttribute="leading" constant="20" id="Trn-Ya-WtF"/>
+                            <constraint firstItem="elp-VD-Bir" firstAttribute="top" secondItem="3Os-mG-mt1" secondAttribute="bottom" constant="30" id="PYq-X3-fMm"/>
                             <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="zs3-OJ-eex" secondAttribute="trailing" constant="20" id="XQa-DZ-6WO"/>
-                            <constraint firstItem="ruy-uS-Zbf" firstAttribute="top" secondItem="zs3-OJ-eex" secondAttribute="bottom" constant="141" id="Xk0-0I-RpZ"/>
                             <constraint firstItem="elp-VD-Bir" firstAttribute="leading" secondItem="RYv-la-jUz" secondAttribute="leading" constant="20" id="YRZ-9Z-0n5"/>
                             <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="Ulp-NC-QoJ" secondAttribute="trailing" constant="43" id="Yt6-wD-GNe"/>
                             <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="mGs-B3-7tK" secondAttribute="trailing" constant="20" id="Yws-gu-S6A"/>
                             <constraint firstItem="mGs-B3-7tK" firstAttribute="top" secondItem="Ulp-NC-QoJ" secondAttribute="bottom" constant="7.5" id="a3z-GA-qIL"/>
-                            <constraint firstItem="JNk-7O-p3z" firstAttribute="top" secondItem="zs3-OJ-eex" secondAttribute="bottom" constant="138" id="eGz-29-9ap"/>
                             <constraint firstItem="mGs-B3-7tK" firstAttribute="leading" secondItem="RYv-la-jUz" secondAttribute="leading" constant="20" id="en9-mK-xne"/>
-                            <constraint firstItem="JNk-7O-p3z" firstAttribute="leading" secondItem="ruy-uS-Zbf" secondAttribute="trailing" constant="-76" id="hBZ-5Y-JVB"/>
                             <constraint firstItem="zs3-OJ-eex" firstAttribute="leading" secondItem="RYv-la-jUz" secondAttribute="leading" constant="20" id="i71-mC-RTO"/>
                             <constraint firstItem="d3Q-aD-FgO" firstAttribute="top" secondItem="RYv-la-jUz" secondAttribute="top" constant="20" id="kCy-4N-20v"/>
-                            <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="JNk-7O-p3z" secondAttribute="trailing" constant="198" id="kMy-h6-QpK"/>
+                            <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="3Os-mG-mt1" secondAttribute="trailing" constant="100" id="kZp-fs-f0a"/>
                             <constraint firstItem="zs3-OJ-eex" firstAttribute="top" secondItem="mGs-B3-7tK" secondAttribute="bottom" constant="28" id="lr1-mH-tzR"/>
-                            <constraint firstItem="elp-VD-Bir" firstAttribute="top" secondItem="JNk-7O-p3z" secondAttribute="bottom" constant="27.5" id="mXa-he-9ya"/>
                             <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="d3Q-aD-FgO" secondAttribute="trailing" constant="152" id="vr9-xH-kZ1"/>
                             <constraint firstItem="d3Q-aD-FgO" firstAttribute="leading" secondItem="RYv-la-jUz" secondAttribute="leading" constant="152" id="wVr-7e-8Yd"/>
                         </constraints>

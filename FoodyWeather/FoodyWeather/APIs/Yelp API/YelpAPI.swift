@@ -153,6 +153,10 @@ struct YelpAPI {
             task.resume()
     }
     
+    /// A function that makes a call to yelp api to fetch reviews for a specific
+    /// - Parameters:
+    ///   - id: the id of the business
+    ///   - completion: list of business reviews
     static func getBusinessReviews(id: String, completion: @escaping (BusinessReview?) -> Void) {
         
         var components = URLComponents(string: businessDetailbaseURL)!

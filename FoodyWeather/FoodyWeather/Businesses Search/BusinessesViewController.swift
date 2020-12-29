@@ -20,6 +20,7 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
     var weatherForcast: WeatherResult!
     var currentLocation: CLLocationCoordinate2D!
     
+    //Declaring outlets for the VC
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
@@ -60,19 +61,12 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
     
     @objc func observeStoreLoadNotification(note: Notification) {
         tableView.reloadData()
-        if businessesStore.businesses.count != 0 {
-            let city = businessesStore.businesses[0].location.city
-            let state = businessesStore.businesses[0].location.state
-            if state.count != 0 && city.count != 0 {
-                let location = city + "," + state
-                locationButton.setTitle(location, for: .application)
-            }
-            spinner.stopAnimating()
-            spinner.isHidden = true
-            locationIcon.isHidden = false
-        }
+        spinner.stopAnimating()
+        spinner.isHidden = true
+        locationIcon.isHidden = false
     }
     
+    /// A helper function to check internet connectivity, if no connection will show businesses loaded from the disk
     func checkInternetConnection(){
         let monitor = NWPathMonitor()
         
@@ -81,8 +75,7 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
                 // Not connected
                 print("not connected to internet")
                 self.connectedToWifi = false
-                //nc.post(name: .noConnection, object: self)
-                self.loadBusinessFromDisk()
+                self.showSavedBusinessFromDisk()
             }
             else if path.usesInterfaceType(.cellular) {
                 // Cellular 3/4/5g connection
@@ -99,6 +92,7 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
          
     }
     
+    /// A helper function to add obervers for load notification from APIs/ or load
     func observeLoadNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(observeStoreLoadNotification(note:)),
@@ -122,21 +116,14 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
     
     @objc func observeStoreSearchNotificataion(note: Notification) {
         tableView.reloadData()
-        if businessesStore.businesses.count != 0 {
-            let city = businessesStore.businesses[0].location.city
-            let state = businessesStore.businesses[0].location.state
-            if state.count != 0 && city.count != 0 {
-                let location = city + "," + state
-                locationButton.setTitle(location, for: .application)
-            }
-            spinner.stopAnimating()
-            spinner.isHidden = true
-            locationIcon.isHidden = false
-            
-        }
+        spinner.stopAnimating()
         storeSearchResults()
     }
     
+    /// A function to the overall weather condition for the current location
+    /// - Parameters:
+    ///   - latitude: the latitude of the current location
+    ///   - longitude: the lonigitude for the current location
     func getWeatherInformation(latitude: Double, longitude: Double) {
         let latAndLong = String(latitude) + "," + String(longitude)
         WeatherAPI.getWeatherForLocation(location: latAndLong)
@@ -155,28 +142,37 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
         }
     }
     
+    /// A function to store the last search result made by the user
     func storeSearchResults() {
         savedBusinesses.storeLastSeatch(businesses: businessesStore.businesses)
     }
     
+    /// Styling the search textfield
     func setUpSubView() {
         searchTextField.layer.cornerRadius = 15.0
         searchTextField.layer.borderWidth = 1.0
-        searchTextField.layer.borderColor = #colorLiteral(red: 0.3086441457, green: 0.5725629926, blue: 0.4548408389, alpha: 1)
+        searchTextField.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         searchTextField.layer.masksToBounds = true
     }
     
+    /// A function that execute a search when the user hit the search button
+    /// - Parameter sender: search button with icon
     @IBAction func searchRestaurant(_ sender: UIButton) {
         let searchKeyWord = searchTextField.text
         businessesStore.searchForBusiness(restaurant: searchKeyWord!, lat: currentLocation.latitude, lon: currentLocation.longitude)
+        spinner.isHidden = false
+        spinner.startAnimating()
     }
     
+    /// A function that loads the businesses for a specific location when the user changes the current location
+    /// - Parameter cordinates: <#cordinates description#>
     func loadBusinessesForPinnedLocation(cordinates: CLLocationCoordinate2D) {
         businessesStore.loadBusinessesForLocation(lat: cordinates.latitude, lon: cordinates.longitude)
         self.getWeatherInformation(latitude: cordinates.latitude, longitude: cordinates.longitude)
     }
     
-    func loadBusinessFromDisk() {
+    /// if there's no wifi, saved business list will be shown
+    func showSavedBusinessFromDisk() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.spinner.stopAnimating()
@@ -217,83 +213,14 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
         }
     }
     
+    /// A function that execute a search when the user hits the return button from the keyboard
+    /// - Parameter textField: the text field
+    /// - Returns: true when the keyboard is dismissed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         let keyWord = textField.text!
         businessesStore.searchForBusiness(restaurant: keyWord, lat: currentLocation.latitude, lon: currentLocation.longitude)
         return true
-    }
-    
-}
-
-extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if connectedToWifi == false {
-            if savedBusinesses.businessList.count == 0 {
-                self.tableView.setEmptyMessage("No data available! check internet")
-            }
-            return savedBusinesses.businessList.count
-        }
-        else {
-            return businessesStore.businesses.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell") as! BusinessTableCell
-        
-        if connectedToWifi {
-            let business = businessesStore.businesses[indexPath.row]
-            
-            // Set name and phone of cell label
-            cell.businessName.text = business.name
-            cell.phoneNumber.text = business.displayPhone
-            
-            // Get reviews
-            let reviews = business.reviewCount
-            cell.reviews.text = String(reviews)
-            
-            // Get categories
-            let categorie = business.categories[0].title
-            cell.category.text = categorie
-            
-            // Set stars images
-            let reviewDouble = business.rating
-            cell.starsImage.image = Stars.dict[reviewDouble]!
-            
-            // Set Image of restaurant
-            let imageUrlString = business.imageURL
-            if let imageUrl = URL(string: imageUrlString) {
-    //            cell.businessImage.load(url: imageUrl)
-                cell.businessImage.kf.setImage(with: imageUrl)
-            }
-        }else {
-            let business = savedBusinesses.businessList[indexPath.row]
-            
-            // Set name and phone of cell label
-            cell.businessName.text = business.name
-            cell.phoneNumber.text = business.displayPhone
-            
-            // Get reviews
-            let reviews = business.reviewCount
-            cell.reviews.text = String(reviews)
-            
-            // Get categories
-            let categorie = business.businessCategory
-            cell.category.text = categorie
-            
-            // Set stars images
-            let reviewDouble = business.businessRating
-            cell.starsImage.image = Stars.dict[reviewDouble]!
-            
-            // Set Image of restaurant
-            let imageUrlString = URL(string: business.imageURL)
-            cell.businessImage.kf.setImage(with: imageUrlString)
-        }
-        
-        return cell
-
     }
     
 }
@@ -312,21 +239,4 @@ extension UIImageView {
     }
 }
 
-extension BusinessesViewController: LocationServiceDelegate {
-    
-    func tracingLocation(currentLocation: CLLocation) {
-        getWeatherInformation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
-        businessesStore.loadBusinessesForLocation(lat: currentLocation.coordinate.latitude, lon: currentLocation.coordinate.longitude)
-        let cordinates = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
-        self.currentLocation = cordinates
-    }
-}
 
-extension BusinessesViewController: MapViewDelegate {
-    
-    func getBusinessesForPinnedLocation(cordinates: CLLocationCoordinate2D) {
-        loadBusinessesForPinnedLocation(cordinates: cordinates)
-        self.currentLocation = cordinates
-    }
-
-}

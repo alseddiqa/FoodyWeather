@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A businss class to map decoded objects to
 class SavedBusiness: Equatable, Codable {
     
     static func == (lhs: SavedBusiness, rhs: SavedBusiness) -> Bool {

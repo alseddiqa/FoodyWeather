@@ -22,7 +22,7 @@ class ReviewDetailViewController: UIViewController {
         reviewLabel.text = businessReview.text
         reviewerLabel.text = businessReview.user.name
         dateLabel.text = "Date: " + businessReview.timeCreated
-        reviewRating.text = "Review rating: " + String(businessReview.rating)
+        reviewRating.text = "Review rating: " + String(businessReview.rating) + "/5"
         let profileImge = URL(string: businessReview.user.imageURL!)
         reviewerProfilePicture.kf.setImage(with: profileImge)
     }
