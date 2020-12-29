@@ -19,7 +19,8 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
     var connectedToWifi: Bool = true
     var weatherForcast: WeatherResult!
     var currentLocation: CLLocationCoordinate2D!
-
+    
+    @IBOutlet var searchButton: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var weatherImage: UIImageView!
@@ -29,11 +30,15 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet var spinner: UIActivityIndicatorView!
     @IBOutlet var locationIcon: UIImageView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tempratureLabel.blink()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         spinner.startAnimating()
-        
         savedBusinesses = BusinessStorage()
         checkInternetConnection()
         
@@ -105,10 +110,14 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
                                                name: .businessesSearchYelp,
                                                object: nil)
         
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(loadBusinessFromDisk(note:)),
-//                                               name: .noConnection,
-//                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(observeDiskLoad(note:)),
+                                               name: .loadFromDisk,
+                                               object: nil)
+    }
+    
+    @objc func observeDiskLoad(note: Notification) {
+        tableView.reloadData()
     }
     
     @objc func observeStoreSearchNotificataion(note: Notification) {
@@ -155,7 +164,6 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
         searchTextField.layer.borderWidth = 1.0
         searchTextField.layer.borderColor = #colorLiteral(red: 0.3086441457, green: 0.5725629926, blue: 0.4548408389, alpha: 1)
         searchTextField.layer.masksToBounds = true
-        tempratureLabel.blink()
     }
     
     @IBAction func searchRestaurant(_ sender: UIButton) {
@@ -173,7 +181,12 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
             self.tableView.reloadData()
             self.spinner.stopAnimating()
             self.spinner.isHidden = true
-            self.weatherConditionLabel.text = "no internet connection"
+            self.weatherConditionLabel.text = "Your Last search!"
+            self.searchTextField.isEnabled = false
+            self.locationIcon.image = UIImage(systemName: "wifi.slash")
+            self.locationIcon.isHidden = false
+            self.searchTextField.isHidden = true
+            self.searchButton.isHidden = true
         }
     }
     

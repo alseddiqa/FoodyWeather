@@ -9,9 +9,6 @@ import Foundation
 
 class BusinessStore {
     
-//    let lat = 37.7670169511878
-//    let lon = -122.42184275
-    
     var businesses = [Business]()
     
     init() {
@@ -45,8 +42,6 @@ class BusinessStore {
 extension Notification.Name {
     static let businessesLoadedYelp = Notification.Name(rawValue: "businessesLoadedYelp")
     static let businessesSearchYelp = Notification.Name(rawValue: "businessesSearchYelp")
-    static let noConnection = Notification.Name(rawValue: "noConnection")
-
-    
+    static let loadFromDisk = Notification.Name(rawValue: "loadFromDisk")
 }
 

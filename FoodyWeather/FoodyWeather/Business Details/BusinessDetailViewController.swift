@@ -19,6 +19,7 @@ class BusinessDetailViewController: UIViewController {
     @IBOutlet var photosLabel: UILabel!
     @IBOutlet var weatherLabel: UILabel!
     @IBOutlet var hoursLabel: UILabel!
+    @IBOutlet var reviewsSectionLabel: UILabel!
     
     var business: Business!
     var businessDetail: BusinessDetail!
@@ -74,10 +75,15 @@ class BusinessDetailViewController: UIViewController {
     func setInformationLabels(){
         if savedBusiness.businessHours.count == 0{
             hoursLabel.text = ""
-        }else if savedBusiness.businessPhotos.count == 0 {
-            photosLabel.text = ""
-        }else if savedBusiness.forcastDays.count == 0 {
+        }
+        if savedBusiness.businessPhotos.count == 0 {
+            photosLabel.text = "Other information not available. (no internet) "
+        }
+        if savedBusiness.forcastDays.count == 0 {
             weatherLabel.text = ""
+        }
+        if savedBusiness.businessReviews.count == 0 {
+            reviewsSectionLabel.text = ""
         }
     }
     
@@ -144,6 +150,10 @@ class BusinessDetailViewController: UIViewController {
             let destinationVC = segue.destination as! ReviewsViewController
             destinationVC.business
                 = business
+            destinationVC.businessStorage = businessStorage
+            if business == nil {
+                destinationVC.reviews = savedBusiness.businessReviews
+            }
 
         default:
             preconditionFailure("Unexpected segue identifier.")

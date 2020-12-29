@@ -12,7 +12,7 @@ class BusinessStorage {
 
     var businessList = [SavedBusiness]()
     
-    /// Operation Queue upon which SaveOperation and LoadOperation instances will be executed for loading/saving the items array.
+    /// Operation Queue upon which SaveOperation and LoadOperation instances will be executed for loading/saving the last search result made by the user.
     private let diskIOQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
@@ -31,6 +31,8 @@ class BusinessStorage {
         let loadOp = BusinessLoadOperation(url: itemArchiveURL) { (items) in
             self.businessList = items
             print("list Loaded~!")
+            print(self.itemArchiveURL)
+            nc.post(name: .loadFromDisk, object: self)
         }
         diskIOQueue.addOperation(loadOp)
 
@@ -82,6 +84,16 @@ class BusinessStorage {
             for (index, b) in businessList.enumerated() {
                 if b.id == businessId {
                     businessList[index].forcastDays = forcast
+                }
+            }
+        }
+    }
+    
+    func updateReviewsForBusiness(businessId: String, reviews: [Review]) {
+        if businessList.count != 0 {
+            for (index, b) in businessList.enumerated() {
+                if b.id == businessId {
+                    businessList[index].businessReviews = reviews
                 }
             }
         }

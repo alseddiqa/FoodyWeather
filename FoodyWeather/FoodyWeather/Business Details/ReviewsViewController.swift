@@ -10,15 +10,19 @@ import UIKit
 class ReviewsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet var collectionView: UICollectionView!
+    
     var business: Business!
     var reviews = [Review]()
+    var businessStorage: BusinessStorage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        getBusinessReviews()
+        if business != nil {
+            getBusinessReviews()
+        }
         
     }
     
@@ -30,7 +34,12 @@ class ReviewsViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
             self.reviews = businessReviews.reviews
             self.collectionView.reloadData()
+            self.storeBusinessReviews()
         }
+    }
+    
+    func storeBusinessReviews() {
+        businessStorage.updateReviewsForBusiness(businessId: business.id, reviews: reviews)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

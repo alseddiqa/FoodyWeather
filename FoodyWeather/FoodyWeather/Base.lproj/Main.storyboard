@@ -237,6 +237,7 @@
                     <connections>
                         <outlet property="locationButton" destination="ySl-84-4HE" id="zbo-wd-PyG"/>
                         <outlet property="locationIcon" destination="Dbj-ME-Kmt" id="ERy-Wc-vpX"/>
+                        <outlet property="searchButton" destination="Hqv-Gu-BTY" id="UuH-Oo-oUa"/>
                         <outlet property="searchTextField" destination="cf1-6S-Fe0" id="es8-UE-fUi"/>
                         <outlet property="spinner" destination="2GP-az-heT" id="SRL-gS-jrD"/>
                         <outlet property="tableView" destination="MAM-qE-gdY" id="fjJ-ud-xly"/>
@@ -422,6 +423,7 @@
                         <outlet property="phoneNumLabel" destination="BOo-Vg-tnd" id="DxU-zA-AGT"/>
                         <outlet property="photosLabel" destination="DNP-ay-Qs0" id="llg-Wi-fbX"/>
                         <outlet property="reviewNum" destination="cza-Kh-pve" id="kRi-g3-S3U"/>
+                        <outlet property="reviewsSectionLabel" destination="IXn-fv-Gzb" id="l5U-gF-VQk"/>
                         <outlet property="starsImage" destination="6Rz-ug-ifc" id="4gj-vT-ThL"/>
                         <outlet property="weatherLabel" destination="Jd1-Bb-IIF" id="48i-PO-T3L"/>
                     </connections>
@@ -545,6 +547,31 @@
             </objects>
             <point key="canvasLocation" x="2813" y="733"/>
         </scene>
+        <!--Photo Detail View Controller-->
+        <scene sceneID="KOf-hl-AG9">
+            <objects>
+                <viewController id="EnZ-tX-kRk" customClass="PhotoDetailViewController" customModule="FoodyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SKf-U1-06t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pY5-Zy-22c">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5n1-iJ-7RW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rjg-gf-Qn4"/>
+                    <connections>
+                        <outlet property="imageView" destination="pY5-Zy-22c" id="50I-df-8BS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yk4-KF-yOu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5292.753623188406" y="-698.4375"/>
+        </scene>
         <!--Business Photos View Controller-->
         <scene sceneID="Wyi-TG-jQ8">
             <objects>
@@ -586,6 +613,7 @@
                                         <size key="customSize" width="205" height="121"/>
                                         <connections>
                                             <outlet property="imageView" destination="uCi-FE-azp" id="UjC-up-eXW"/>
+                                            <segue destination="EnZ-tX-kRk" kind="show" identifier="photoDetail" id="Vdp-Fg-VNQ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1038,13 +1066,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abdullah Alseddiq" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ulp-NC-QoJ">
                                 <rect key="frame" x="43" y="151" width="328" height="26.5"/>
                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="26"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.057608973664292989" green="0.053997450771119629" blue="0.27695133800812577" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruy-uS-Zbf">
-                                <rect key="frame" x="20" y="401" width="232" height="17"/>
-                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="401" width="232" height="23"/>
+                                <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="17"/>
+                                <color key="textColor" red="0.05760897366" green="0.053997450769999997" blue="0.27695133799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGs-B3-7tK">
@@ -1061,18 +1089,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reviewed on: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elp-VD-Bir">
-                                <rect key="frame" x="20" y="448" width="374" height="17"/>
-                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="454" width="374" height="23"/>
+                                <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="17"/>
+                                <color key="textColor" red="0.05760897366" green="0.053997450769999997" blue="0.27695133799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JNk-7O-p3z">
-                                <rect key="frame" x="203" y="397" width="40" height="25"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wifi" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JNk-7O-p3z">
+                                <rect key="frame" x="176" y="400" width="40" height="24.5"/>
                                 <color key="tintColor" systemColor="systemOrangeColor"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RYv-la-jUz"/>
-                        <color key="backgroundColor" red="0.93183827399999997" green="0.81022685770000002" blue="0.65095347169999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.88235294117647056" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="elp-VD-Bir" secondAttribute="trailing" constant="20" id="5ih-rx-UkW"/>
                             <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="ruy-uS-Zbf" secondAttribute="trailing" constant="162" id="BVx-L7-i5I"/>
@@ -1086,14 +1114,14 @@
                             <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="Ulp-NC-QoJ" secondAttribute="trailing" constant="43" id="Yt6-wD-GNe"/>
                             <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="mGs-B3-7tK" secondAttribute="trailing" constant="20" id="Yws-gu-S6A"/>
                             <constraint firstItem="mGs-B3-7tK" firstAttribute="top" secondItem="Ulp-NC-QoJ" secondAttribute="bottom" constant="7.5" id="a3z-GA-qIL"/>
-                            <constraint firstItem="JNk-7O-p3z" firstAttribute="top" secondItem="zs3-OJ-eex" secondAttribute="bottom" constant="136" id="eGz-29-9ap"/>
+                            <constraint firstItem="JNk-7O-p3z" firstAttribute="top" secondItem="zs3-OJ-eex" secondAttribute="bottom" constant="138" id="eGz-29-9ap"/>
                             <constraint firstItem="mGs-B3-7tK" firstAttribute="leading" secondItem="RYv-la-jUz" secondAttribute="leading" constant="20" id="en9-mK-xne"/>
-                            <constraint firstItem="JNk-7O-p3z" firstAttribute="leading" secondItem="ruy-uS-Zbf" secondAttribute="trailing" constant="-49" id="hBZ-5Y-JVB"/>
+                            <constraint firstItem="JNk-7O-p3z" firstAttribute="leading" secondItem="ruy-uS-Zbf" secondAttribute="trailing" constant="-76" id="hBZ-5Y-JVB"/>
                             <constraint firstItem="zs3-OJ-eex" firstAttribute="leading" secondItem="RYv-la-jUz" secondAttribute="leading" constant="20" id="i71-mC-RTO"/>
                             <constraint firstItem="d3Q-aD-FgO" firstAttribute="top" secondItem="RYv-la-jUz" secondAttribute="top" constant="20" id="kCy-4N-20v"/>
-                            <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="JNk-7O-p3z" secondAttribute="trailing" constant="171" id="kMy-h6-QpK"/>
+                            <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="JNk-7O-p3z" secondAttribute="trailing" constant="198" id="kMy-h6-QpK"/>
                             <constraint firstItem="zs3-OJ-eex" firstAttribute="top" secondItem="mGs-B3-7tK" secondAttribute="bottom" constant="28" id="lr1-mH-tzR"/>
-                            <constraint firstItem="elp-VD-Bir" firstAttribute="top" secondItem="JNk-7O-p3z" secondAttribute="bottom" constant="24.5" id="mXa-he-9ya"/>
+                            <constraint firstItem="elp-VD-Bir" firstAttribute="top" secondItem="JNk-7O-p3z" secondAttribute="bottom" constant="27.5" id="mXa-he-9ya"/>
                             <constraint firstItem="RYv-la-jUz" firstAttribute="trailing" secondItem="d3Q-aD-FgO" secondAttribute="trailing" constant="152" id="vr9-xH-kZ1"/>
                             <constraint firstItem="d3Q-aD-FgO" firstAttribute="leading" secondItem="RYv-la-jUz" secondAttribute="leading" constant="152" id="wVr-7e-8Yd"/>
                         </constraints>
@@ -1122,9 +1150,9 @@
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="sky" width="496" height="331"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <image name="star.square.fill" catalog="system" width="128" height="114"/>
         <image name="sun.max" catalog="system" width="128" height="124"/>
         <image name="sun.max.fill" catalog="system" width="128" height="124"/>
+        <image name="wifi" catalog="system" width="128" height="91"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

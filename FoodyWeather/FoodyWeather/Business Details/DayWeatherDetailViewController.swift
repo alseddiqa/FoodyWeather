@@ -24,6 +24,9 @@ class DayWeatherDetailViewController: UIViewController {
         tableView.delegate = self
         setMinAndMaxDate()
         setPickerDate()
+        if location.count == 0 {
+            datePicker.isEnabled = false
+        }
         
     }
     

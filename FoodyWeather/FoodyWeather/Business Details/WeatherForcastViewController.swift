@@ -121,7 +121,9 @@ class WeatherForcastViewController: UIViewController, UICollectionViewDataSource
                 let dayForcast = forcastDays[selectedIndexPath.row]
                 let destinationVC = segue.destination as! DayWeatherDetailViewController
                 destinationVC.forcastDay = dayForcast
-                destinationVC.location = String(business.coordinates.latitude) + "," + String(business.coordinates.longitude)
+                if business != nil{
+                    destinationVC.location = String(business.coordinates.latitude) + "," + String(business.coordinates.longitude)
+                }
             }
         default:
             preconditionFailure("Unexpected segue identifier.")
