@@ -58,6 +58,13 @@ class BusinessStorage {
         }
     }
     
+    func checkIfBusinessExist(_ business: SavedBusiness) -> Bool {
+        if let index = businessList.firstIndex(of: business) {
+            return true
+        }
+        return false
+    }
+    
     /// A function to update information for a business
     /// - Parameters:
     ///   - oldBusiness: old business information
