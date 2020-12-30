@@ -117,6 +117,7 @@ class BusinessesViewController: UIViewController , UITextFieldDelegate{
     @objc func observeStoreSearchNotificataion(note: Notification) {
         tableView.reloadData()
         spinner.stopAnimating()
+        spinner.isHidden = true
         storeSearchResults()
     }
     
