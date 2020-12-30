@@ -14,8 +14,14 @@ class WeatherAPITest: XCTestCase {
         let url = WeatherAPI.getWeatherUrl(location: "San Jose", search: true)
         
         let expected = "http://api.weatherapi.com/v1/search.json?key=96e182aa893140daa75163258201712&q=San%20Jose"
+        let otherForm = "http://api.weatherapi.com/v1/search.json?q=San%20Jose&key=96e182aa893140daa75163258201712"
         
-        XCTAssertEqual(url.absoluteString, expected)
+        if expected == url.absoluteString {
+            XCTAssertEqual(url.absoluteString, expected)
+        }
+        else {
+            XCTAssertEqual(url.absoluteString, otherForm)
+        }
         
                
     }
