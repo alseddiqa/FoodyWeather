@@ -18,6 +18,10 @@
 		B8349714259A512500AC06EF /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8349713259A512500AC06EF /* ReviewDetailViewController.swift */; };
 		B834971F259A801A00AC06EF /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834971E259A801A00AC06EF /* PhotoDetailViewController.swift */; };
 		B8349740259BA85B00AC06EF /* Extensions+BusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834973F259BA85B00AC06EF /* Extensions+BusinessesViewController.swift */; };
+		B834974B259BC29800AC06EF /* BusinessStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834974A259BC29800AC06EF /* BusinessStorageTests.swift */; };
+		B8349750259C948400AC06EF /* YelpAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834974F259C948400AC06EF /* YelpAPITests.swift */; };
+		B8349755259CA0A300AC06EF /* WeatherAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8349754259CA0A300AC06EF /* WeatherAPITest.swift */; };
+		B834975A259CC2B500AC06EF /* TimeFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8349759259CC2B500AC06EF /* TimeFormattingTests.swift */; };
 		B83834C2258A337B003A4D14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C1258A337B003A4D14 /* AppDelegate.swift */; };
 		B83834C4258A337B003A4D14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83834C3258A337B003A4D14 /* SceneDelegate.swift */; };
 		B83834C9258A337B003A4D14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83834C7258A337B003A4D14 /* Main.storyboard */; };
@@ -93,6 +97,10 @@
 		B8349713259A512500AC06EF /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
 		B834971E259A801A00AC06EF /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		B834973F259BA85B00AC06EF /* Extensions+BusinessesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+BusinessesViewController.swift"; sourceTree = "<group>"; };
+		B834974A259BC29800AC06EF /* BusinessStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStorageTests.swift; sourceTree = "<group>"; };
+		B834974F259C948400AC06EF /* YelpAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPITests.swift; sourceTree = "<group>"; };
+		B8349754259CA0A300AC06EF /* WeatherAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPITest.swift; sourceTree = "<group>"; };
+		B8349759259CC2B500AC06EF /* TimeFormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormattingTests.swift; sourceTree = "<group>"; };
 		B83834BE258A337B003A4D14 /* FoodyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83834C1258A337B003A4D14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B83834C3258A337B003A4D14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -331,6 +339,10 @@
 			children = (
 				B83834D8258A337D003A4D14 /* FoodyWeatherTests.swift */,
 				B83834DA258A337D003A4D14 /* Info.plist */,
+				B834974A259BC29800AC06EF /* BusinessStorageTests.swift */,
+				B834974F259C948400AC06EF /* YelpAPITests.swift */,
+				B8349754259CA0A300AC06EF /* WeatherAPITest.swift */,
+				B8349759259CC2B500AC06EF /* TimeFormattingTests.swift */,
 			);
 			path = FoodyWeatherTests;
 			sourceTree = "<group>";
@@ -672,7 +684,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B834975A259CC2B500AC06EF /* TimeFormattingTests.swift in Sources */,
 				B83834D9258A337D003A4D14 /* FoodyWeatherTests.swift in Sources */,
+				B8349755259CA0A300AC06EF /* WeatherAPITest.swift in Sources */,
+				B8349750259C948400AC06EF /* YelpAPITests.swift in Sources */,
+				B834974B259BC29800AC06EF /* BusinessStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
